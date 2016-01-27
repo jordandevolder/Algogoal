@@ -36,6 +36,11 @@ class Welcome extends Controller
         $data['title'] = $this->language->get('welcome_text');
         $data['welcome_message'] = $this->language->get('welcome_message');
 
+        /*
+        * C'est ma bite
+        * C'est ma grosse bite
+        */
+
         View::renderTemplate('header', $data);
         View::render('welcome/welcome', $data);
         View::renderTemplate('footer', $data);
