@@ -63,7 +63,7 @@ $hooks = Hooks::get();
 </head>
 
 
-<body>
+<body style="padding-top:60px;">
 <?php
 //hook for running code after body tag
 $hooks->run('afterBody');
