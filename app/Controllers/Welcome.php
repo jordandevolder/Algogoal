@@ -39,7 +39,8 @@ class Welcome extends Controller
         /*
         * C'est ma bite
         * C'est ma grosse bite
-        */
+        * C'est une très grosse bite !
+	*/
 
         View::renderTemplate('header', $data);
         View::render('welcome/welcome', $data);
