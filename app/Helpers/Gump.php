@@ -14,7 +14,7 @@ namespace Helpers;
 /**
  * A fast, extensible PHP input validation class
  */
-class Gump
+class GUMP
 {
     /**
      * Validation rules for execution
