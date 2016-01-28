@@ -10,6 +10,10 @@
 
 namespace Helpers;
 
+/*
+ * Commentaire inutile pour test branche 2
+ */
+
 /**
  * Collect and output css and js link tags.
  */
