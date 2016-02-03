@@ -18,6 +18,8 @@ class Connexion extends Controller
 
     public function connexion()
     {
+
+        $data['datas'] = '';
         View::renderTemplate('header', $data);
         View::render('connexion/connexion', $data);
         View::renderTemplate('footer', $data);
