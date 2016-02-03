@@ -15,6 +15,9 @@ use Helpers\Hooks;
 Router::any('', 'Controllers\Welcome@index');
 Router::any('subpage', 'Controllers\Welcome@subPage');
 Router::any('connexion','Controllers\Connexion@connexion');
+Router::any('regles','Controllers\Regles@index');
+Router::any('scores','Controllers\Scores@index');
+Router::any('inscription','Controllers\Connexion@inscription');
 
 /** Module routes. */
 $hooks = Hooks::get();

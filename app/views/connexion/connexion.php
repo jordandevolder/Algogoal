@@ -7,23 +7,24 @@
  */
 
 use Helpers\Form;
-
-$form_connexion = new Form('formulaire_connexion');
-
-
-$form_connexion->method('POST');
-
-
-$form_connexion->add('Text', 'nom_utilisateur')->label("Votre nom d'utilisateur");
-
-
-$form_connexion->add('Password', 'mot_de_passe')->label("Votre mot de passe");
-
-
-$form_connexion->add('Submit', 'submit')->value("Connectez-moi !");
-
-
-// Pré-remplissage avec les valeurs précédemment entrées (s'il y en a)
-
-$form_connexion->bound($_POST);
 ?>
+
+<div class="page-header">
+    <h1><?php echo $data['title'] ?></h1>
+
+</div>
+
+<body>
+Connexion à l'espace membre :<br />
+<form action="index.php" method="post">
+Login : <input type="text" name="login" value="<?php if (isset($_POST['login'])) echo htmlentities(trim($_POST['login'])); ?>"><br />
+Mot de passe : <input type="password" name="pass" value="<?php if (isset($_POST['pass'])) echo htmlentities(trim($_POST['pass'])); ?>"><br />
+<input type="submit" name="connexion" value="Connexion">
+</form>
+<a href="/projet/inscription/">Vous inscrire</a>
+<?php
+if (isset($erreur)) echo '<br /><br />',$erreur;
+?>
+</body>
+
+

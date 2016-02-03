@@ -37,10 +37,10 @@ $hooks = Hooks::get();
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="#">Règles</a>
+                        <a href="/projet/regles/">Règles</a>
                     </li>
                     <li>
-                        <a href="#">Tableau des scores</a>
+                        <a href="/projet/scores/">Tableau des scores</a>
                     </li>
                     <li>
                         <a href="/projet/connexion/">Connexion</a>

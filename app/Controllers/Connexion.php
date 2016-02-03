@@ -19,7 +19,7 @@ class Connexion extends Controller
     public function connexion()
     {
 
-        $data['datas'] = '';
+        $data['title'] = 'Connexion';
         View::renderTemplate('header', $data);
         View::render('connexion/connexion', $data);
         View::renderTemplate('footer', $data);
@@ -62,7 +62,14 @@ class Connexion extends Controller
             }
         }
 
-        $data['title'] = 'Login';
+    }
 
+    public function inscription(){
+
+        $data['title'] = "Inscription";
+        $data['inscription'] = "Ici l'espace pour créer un compte";
+        View::renderTemplate('header', $data);
+        View::render('connexion/inscription', $data);
+        View::renderTemplate('footer', $data);
     }
 }
