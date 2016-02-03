@@ -5,16 +5,25 @@
  * Date: 27/01/16
  * Time: 19:33
  */
-?>
 
-<form method='post' action="/projet/connexion/">
-    <h1>Connectez-vous</h1>
-    <fieldset id="inputs">
-        <input id="login" type="text" placeholder="Pseudo" autofocus required>
-        <input id="password" type="password" placeholder="Mot de passe" required>
-    </fieldset>
-    <fieldset id="actions">
-        <input type="submit" id="submit" value="Connexion">
-        <a href="">Créer un compte ici</a>
-    </fieldset>
-</form>
+use Helpers\Form;
+
+$form_connexion = new Form('formulaire_connexion');
+
+
+$form_connexion->method('POST');
+
+
+$form_connexion->add('Text', 'nom_utilisateur')->label("Votre nom d'utilisateur");
+
+
+$form_connexion->add('Password', 'mot_de_passe')->label("Votre mot de passe");
+
+
+$form_connexion->add('Submit', 'submit')->value("Connectez-moi !");
+
+
+// Pré-remplissage avec les valeurs précédemment entrées (s'il y en a)
+
+$form_connexion->bound($_POST);
+?>
