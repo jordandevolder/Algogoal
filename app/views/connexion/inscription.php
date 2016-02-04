@@ -15,3 +15,12 @@
 <?php
 
 echo $data['inscription'];
+
+?>
+
+<form action="linscription" method="post">
+    Nom d'utilisateur: <input type="text" name="login"><br />
+    Mot de passe: <input type="password" name="password"><br />
+    Email: <input type="email" name="mail""><br />
+    <input type="submit" name="inscription"">
+</form>

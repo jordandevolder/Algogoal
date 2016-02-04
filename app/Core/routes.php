@@ -14,10 +14,12 @@ use Helpers\Hooks;
 /** Define routes. */
 Router::any('', 'Controllers\Welcome@index');
 Router::any('subpage', 'Controllers\Welcome@subPage');
-Router::any('connexion','Controllers\Connexion@connexion');
+Router::any('laconnexion','Controllers\Connexion@connexion');
+Router::any('connexion','Controllers\Connexion@index');
 Router::any('regles','Controllers\Regles@index');
 Router::any('scores','Controllers\Scores@index');
-Router::any('inscription','Controllers\Connexion@inscription');
+Router::any('inscription','Controllers\Connexion@indexInscription');
+Router::any('linscription','Controllers\Connexion@inscription');
 
 /** Module routes. */
 $hooks = Hooks::get();

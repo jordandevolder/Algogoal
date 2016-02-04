@@ -8,5 +8,17 @@
  */
 class Personne
 {
+    private $pseudo;
+    private $motdepasse;
+    private $mail;
+
+    public function __construct($pseudo, $motpasse, $mail)
+    {
+        $this->pseudo=$pseudo;
+        $this->motdepasse=$motpasse;
+        $this->mail=$mail;
+    }
+
+
 
 }

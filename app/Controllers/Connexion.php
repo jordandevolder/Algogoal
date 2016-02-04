@@ -16,14 +16,15 @@ class Connexion extends Controller
 {
 
 
-    public function connexion()
+    public function index()
     {
-
         $data['title'] = 'Connexion';
         View::renderTemplate('header', $data);
         View::render('connexion/connexion', $data);
         View::renderTemplate('footer', $data);
-
+    }
+    public function connexion()
+    {
         echo $_POST['login'];
         //Sanitize Data using Gump helper
         $_POST = Gump::sanitize($_POST);
@@ -64,12 +65,17 @@ class Connexion extends Controller
 
     }
 
-    public function inscription(){
+    public function indexInscription(){
 
         $data['title'] = "Inscription";
         $data['inscription'] = "Ici l'espace pour créer un compte";
         View::renderTemplate('header', $data);
         View::render('connexion/inscription', $data);
         View::renderTemplate('footer', $data);
+    }
+
+    public function inscription()
+    {
+
     }
 }
