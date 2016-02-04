@@ -1,1 +1,99 @@
-<p>Error on Jan 28, 2016 16:14PM - require(/var/www/html/projet/app/views/connexion.php): failed to open stream: No such file or directory in /var/www/html/projet/app/Core/View.php on line 34</p><p>Error on Jan 28, 2016 16:14PM - require(/var/www/html/projet/app/views/connexion.php): failed to open stream: No such file or directory in /var/www/html/projet/app/Core/View.php on line 34</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:33PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 04, 2016 9:37AM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Connexion' does not have a method 'inscription' in F:\wamp\www\projet\app\Core\Router.php on line 126</p>
+<p>Error on Jan 28, 2016 16:14PM - require(/var/www/html/projet/app/views/connexion.php): failed to open stream: No such file or directory in /var/www/html/projet/app/Core/View.php on line 34</p><p>Error on Jan 28, 2016 16:14PM - require(/var/www/html/projet/app/views/connexion.php): failed to open stream: No such file or directory in /var/www/html/projet/app/Core/View.php on line 34</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:32PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 13:33PM - Illegal string offset 'title' in /var/www/html/projet/app/templates/default/header.php on line 23</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 03, 2016 22:29PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'index' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Feb 04, 2016 9:37AM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Connexion' does not have a method 'inscription' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 04, 2016 17:45PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 La table 'projet.personne' n'existe pas SELECT * FROM personne WHERE login=?</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> F:\wamp\www\projet\app\Helpers\DB\DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 F:\wamp\www\projet\app\Helpers\DB\Query.php(62): Helpers\DB\DBManager->execute(Array)
+#1 F:\wamp\www\projet\app\Models\Queries\PersonneSQL.php(15): Helpers\DB\Query->execute()
+#2 F:\wamp\www\projet\app\Controllers\Connexion.php(101): Models\Queries\PersonneSQL->prepareFindByLogin('TestUser')
+#3 [internal function]: Controllers\Connexion->inscription()
+#4 F:\wamp\www\projet\app\Core\Router.php(126): call_user_func_array(Array, Array)
+#5 F:\wamp\www\projet\app\Core\Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 F:\wamp\www\projet\app\Core\routes.php(35): Core\Router::dispatch()
+#7 F:\wamp\www\projet\index.php(81): require('F:\\wamp\\www\\pro...')
+#8 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 04, 2016 17:45PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 La table 'projet.personne' n'existe pas SELECT * FROM personne WHERE login=?</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> F:\wamp\www\projet\app\Helpers\DB\DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 F:\wamp\www\projet\app\Helpers\DB\Query.php(62): Helpers\DB\DBManager->execute(Array)
+#1 F:\wamp\www\projet\app\Models\Queries\PersonneSQL.php(15): Helpers\DB\Query->execute()
+#2 F:\wamp\www\projet\app\Controllers\Connexion.php(101): Models\Queries\PersonneSQL->prepareFindByLogin('TestUser')
+#3 [internal function]: Controllers\Connexion->inscription()
+#4 F:\wamp\www\projet\app\Core\Router.php(126): call_user_func_array(Array, Array)
+#5 F:\wamp\www\projet\app\Core\Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 F:\wamp\www\projet\app\Core\routes.php(35): Core\Router::dispatch()
+#7 F:\wamp\www\projet\index.php(81): require('F:\\wamp\\www\\pro...')
+#8 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 04, 2016 17:49PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Champ 'login' inconnu dans where clause SELECT * FROM personne WHERE login=?</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> F:\wamp\www\projet\app\Helpers\DB\DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 F:\wamp\www\projet\app\Helpers\DB\Query.php(62): Helpers\DB\DBManager->execute(Array)
+#1 F:\wamp\www\projet\app\Models\Queries\PersonneSQL.php(15): Helpers\DB\Query->execute()
+#2 F:\wamp\www\projet\app\Controllers\Connexion.php(101): Models\Queries\PersonneSQL->prepareFindByLogin('TestBD')
+#3 [internal function]: Controllers\Connexion->inscription()
+#4 F:\wamp\www\projet\app\Core\Router.php(126): call_user_func_array(Array, Array)
+#5 F:\wamp\www\projet\app\Core\Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 F:\wamp\www\projet\app\Core\routes.php(35): Core\Router::dispatch()
+#7 F:\wamp\www\projet\index.php(81): require('F:\\wamp\\www\\pro...')
+#8 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 04, 2016 17:53PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Champ 'email' inconnu dans where clause SELECT * FROM personne WHERE email=?</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> F:\wamp\www\projet\app\Helpers\DB\DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 F:\wamp\www\projet\app\Helpers\DB\Query.php(62): Helpers\DB\DBManager->execute(Array)
+#1 F:\wamp\www\projet\app\Controllers\Connexion.php(109): Helpers\DB\Query->execute()
+#2 [internal function]: Controllers\Connexion->inscription()
+#3 F:\wamp\www\projet\app\Core\Router.php(126): call_user_func_array(Array, Array)
+#4 F:\wamp\www\projet\app\Core\Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#5 F:\wamp\www\projet\app\Core\routes.php(35): Core\Router::dispatch()
+#6 F:\wamp\www\projet\index.php(81): require('F:\\wamp\\www\\pro...')
+#7 {main}</pre>
+
+           <hr />

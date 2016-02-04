@@ -21,6 +21,7 @@ echo $data['inscription'];
 <form action="linscription" method="post">
     Nom d'utilisateur: <input type="text" name="login"><br />
     Mot de passe: <input type="password" name="password"><br />
-    Email: <input type="email" name="mail""><br />
+    Mot de passe de nouveau: <input type="password" name="password-again"><br />
+    Email: <input type="email" name="email""><br />
     <input type="submit" name="inscription"">
 </form>
