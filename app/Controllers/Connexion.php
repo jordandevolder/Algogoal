@@ -77,5 +77,6 @@ class Connexion extends Controller
     public function inscription()
     {
 
+
     }
 }
