@@ -9,7 +9,7 @@ abstract class Entity {
      * The id is false if the instance is not in DB
      * Otherwise, the id is set to the current record
      */
-    protected $id;
+    public $id;
 
 
     /**

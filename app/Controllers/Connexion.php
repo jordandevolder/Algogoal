@@ -8,18 +8,26 @@
 
 namespace Controllers;
 
+use Helpers\DB\DBManager;
+use Helpers\DB\EntityManager;
 use Helpers\Gump;
+use Helpers\Password;
+use Helpers\Session;
+use Helpers\Url;
 use Core\Controller;
 use Core\View;
+use Models\Tables\Personne;
 use Models\Queries\PersonneSQL;
 
 class Connexion extends Controller
 {
     private $userSQL;
+    private $entityManager;
 
     public function __construct() {
         parent::__construct();
         $this->userSQL = new PersonneSQL();
+        $this->entityManager = EntityManager::getInstance();
     }
 
 
@@ -34,7 +42,6 @@ class Connexion extends Controller
 
     public function connexion()
     {
-        echo $_POST['login'];
         //Sanitize Data using Gump helper
         $_POST = Gump::sanitize($_POST);
 
@@ -86,8 +93,12 @@ class Connexion extends Controller
 
     public function inscription()
     {
+
+        $data['title'] = "Inscription";
+        $data['inscription'] = "Ici l'espace pour créer un compte";
+
         $_POST = Gump::sanitize($_POST);
-        if (isset($_POST['login'])) {
+        if (isset($_POST['pseudo'])) {
             //Validate data using Gump
             $is_valid = Gump::is_valid($_POST, array(
                 'pseudo' => 'required|alpha_numeric',
@@ -98,7 +109,7 @@ class Connexion extends Controller
 
             if ($is_valid === true) {
                 //Test for duplicate username`
-                $user = $this->userSQL->prepareFindByLogin($_POST['login']);
+                $user = $this->userSQL->prepareFindByLogin($_POST['pseudo']);
 
                 if ($_POST['password'] != $_POST['password-again'])
                     $error[] = "Les deux mots de passes doivent être identiques";
@@ -111,15 +122,23 @@ class Connexion extends Controller
                 if (count($user) > 0)
                     $error[] = 'Ce compte email existe déjà.';
 
+                $data['erreurs'] = $error;
+                View::renderTemplate('header', $data);
+                View::render('connexion/inscription', $data);
+                View::renderTemplate('footer', $data);
+
+
             } else
                 $error = $is_valid;
 
             if (!$error) {
                 //Register and return the data as an array $data[]
-                $user = new Personne($_POST['login'], $_POST['email'], Password::make($_POST['password']), "");
+                $pseudo = $_POST['pseudo']; $mail = $_POST['email']; $password = Password::make($_POST['password']);
+                $user = new Personne($pseudo, $mail, $password);
+                print_r($user);
                 $this->entityManager->save($user);
                 Session::set('id', $user->getId());
-                Session::set('login', $user->login);
+                Session::set('pseudo', $user->login);
                 Session::set('loggedin', true);
                 Url::redirect();
             }

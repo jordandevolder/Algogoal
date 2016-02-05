@@ -70,12 +70,12 @@ class Config
         /**
          * Database username.
          */
-        define('DB_USER', 'root');
+        define('DB_USER', 'toto');
 
         /**
          * Database password.
          */
-        define('DB_PASS', '');
+        define('DB_PASS', 'mdp');
 
         /**
          * PREFER to be used in database calls default is smvc_

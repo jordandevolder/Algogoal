@@ -54,12 +54,13 @@ class EntityManager {
         $tableName = $instance->getTableName();
 
 
-        $sql = "INSERT INTO $tableName VALUES(NULL";
+        $sql = "INSERT INTO $tableName VALUES(?";
 
         $vars = get_class_vars(get_class($instance));
+        print_r($vars);
         $nb = count($vars);
 
-        for ($i = 0; $i < $nb; $i++)
+        for ($i = 0; $i < $nb-1; $i++)
             $sql = $sql . ",?";
         $sql = $sql . ")";
 
@@ -67,6 +68,7 @@ class EntityManager {
         foreach ($vars as $k => $v) {
             $values[] = $instance->$k;
         }
+        print($sql);
         $this->dbmanager->prepare($sql);
         $this->dbmanager->execute($values);
         $instance->setId($this->dbmanager->lastInsertId());

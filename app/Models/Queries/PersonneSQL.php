@@ -12,7 +12,7 @@ use Helpers\DB\Query;
 class PersonneSQL extends Query
 {
     public function prepareFindByLogin($login) {
-        $tmp = parent::__call("prepareFindByLogin",array($login))->execute();
+        $tmp = parent::__call("prepareFindByPseudo",array($login))->execute();
         if(count($tmp)==0)
             return false;
         return $tmp[0];

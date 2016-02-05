@@ -13,18 +13,18 @@ use Helpers\DB\Entity;
 
 class Personne extends Entity
 {
-    private $pseudo;
-    private $motdepasse;
-    private $mail;
+    public $pseudo;
+    public $motdepasse;
+    public $mail;
     public $cookie;
 
     public function __construct($pseudo = "", $mail = "", $motpasse = "", $cookie = "", $id = false)
     {
-        parent::_construct();
+        parent::__construct();
         $this->pseudo = $pseudo;
         $this->motdepasse = $motpasse;
         $this->mail = $mail;
-        $this->id = $id;
+        $this->id=$id;
         $this->cookie = $cookie;
     }
 
