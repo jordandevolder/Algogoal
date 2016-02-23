@@ -61,6 +61,10 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new WhileInstruction(true);
         case "endWhile":
             return new EndWhileInstruction();
+        case "if":
+            return new IfInstruction(true);
+        case "endif":
+            return new EndIfInstruction();
         case "move":
             return new MoveInstruction();
         case "jump":
@@ -73,6 +77,8 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new RotateRightInstruction();
         case "push":
             return new PushInstruction();
+        case "affichage":
+            return new Affichage();
     }
 };
 
@@ -117,7 +123,7 @@ var OrientationType = {
  \\-------//
  \*         */
 
-colliser = new Colliser();
+physic = new Physics();
 factoryTile = new TileFactory();
 factoryInstrution = new InstructionFactory();
 
@@ -127,11 +133,11 @@ factoryInstrution = new InstructionFactory();
 /*              */
 /****************/
 
-function Colliser(){
+function Physics(){
 
 }
 
-Colliser.prototype.willCollided = function(map,player,distance){
+Physics.prototype.willCollided = function(map,player,distance){
     var x1 = player.x + (player.dx * distance);
     var y1 = player.y + (player.dy * distance);
 
@@ -141,7 +147,7 @@ Colliser.prototype.willCollided = function(map,player,distance){
     )
 }
 
-Colliser.prototype.ableToPush = function(map,player){
+Physics.prototype.ableToPush = function(map,player){
     var x1 = player.x + player.dx;
     var y1 = player.y + player.dy;
     var x2 = player.x + (2*player.dx);
@@ -155,11 +161,11 @@ Colliser.prototype.ableToPush = function(map,player){
     )
 }
 
-Colliser.prototype.ableToGather = function(map,player){
+Physics.prototype.ableToGather = function(map,player){
     return (map.map[player.x][player.y].gatherable);
 }
 
-Colliser.prototype.ableToLook = function(map,player) {
+Physics.prototype.ableToLook = function(map,player) {
     return (map.map[player.x + player.dx][player.y + player.dy] !== undefined);
 }
 
@@ -324,8 +330,9 @@ Player.prototype.rightRotate = function(){
 }
 
 Player.prototype.move = function(map){
-    if(!colliser.willCollided(map,this,1)){
+    if(!physic.willCollided(map,this,1)){
         game.isWorking = false;
+        return;
     }
     this.x += this.dx;
     this.y += this.dy;
@@ -333,15 +340,16 @@ Player.prototype.move = function(map){
 
 
 Player.prototype.jump = function(map){
-    if(!colliser.willCollided(map,this,2)){
+    if(!physic.willCollided(map,this,2)){
         game.isWorking = false;
+        return;
     }
     this.x += 2*this.dx;
     this.y += 2*this.dy;
 }
 
 Player.prototype.collect = function(map){
-    if(!colliser.ableToGather(map,this)){
+    if(!physic.ableToGather(map,this)){
         return
     }
 
@@ -375,7 +383,7 @@ Player.prototype.showInformations = function(){
 }
 
 Player.prototype.push = function(map){
-    if(!colliser.ableToPush(map,this)) {
+    if(!physic.ableToPush(map,this)) {
         return;
     }
 
@@ -392,7 +400,7 @@ Player.prototype.push = function(map){
 }
 
 Player.prototype.lookAt = function(map){
-    if(!colliser.ableToLook(map,this)){
+    if(!physic.ableToLook(map,this)){
         return;
     }
 
@@ -421,7 +429,7 @@ Player.prototype.lookAt = function(map){
     }
 }
 
-/* Notice: 	Les méthodes suivantes seront
+/* Notice:  Les méthodes suivantes seront
  à implementer au fur et à mesure
  */
 
@@ -514,12 +522,23 @@ GameExecution.prototype.addInstruction = function(instruction){
 }
 
 GameExecution.prototype.createInstructionsFromArray = function(array){
-    var positionWhile;
+    //var positionWhile;
     var whilePosition = [];
+    var ifPosition = [];
     for(var i = 0; i < array.length; i++){
         this.listExecution.push(factoryInstrution.constructInstruction(array[i]));
         if(array[i] == "while"){
             whilePosition.push(i);
+        }
+
+        if(array[i] == "if"){
+            ifPosition.push(i);
+        }
+
+
+        if(array[i] == "endif"){
+            this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
+            ifPosition.pop();
         }
 
         if(array[i] == "endWhile"){
@@ -555,8 +574,31 @@ Instruction.prototype.execute = function(){
 
 }
 
+function IfInstruction(condition){
+    this.condition = condition;
+    this.positionEndIf = -1;
+}
 
+IfInstruction.prototype.evaluateCondition = function(){
 
+}
+
+IfInstruction.prototype.execute = function(){
+    if(this.condition){
+        game.executeNextInstruction();
+    }
+    else{ //Condition isn't valuate at true, we have to go after the end if
+        game.setCurrentPosition(this.positionEndIf+1);
+        game.executeNextInstruction();
+    }
+}
+
+function EndIfInstruction(){
+}
+
+EndIfInstruction.prototype.execute = function(){
+    game.executeNextInstruction();
+}
 
 
 function WhileInstruction(condition){
@@ -564,7 +606,7 @@ function WhileInstruction(condition){
     this.positionEndWhile = -1;
 }
 
-WhileInstruction.evaluateCondition = function(){
+WhileInstruction.prototype.evaluateCondition = function(){
 
 }
 
@@ -577,7 +619,6 @@ WhileInstruction.prototype.execute = function(){
         game.executeNextInstruction();
     }
 }
-
 
 
 function EndWhileInstruction(){
@@ -655,6 +696,17 @@ RotateRightInstruction.prototype.execute = function(){
     game.executeNextInstruction();
 }
 
+function Affichage(){
+
+}
+
+Affichage.prototype.execute = function(){
+    console.log("Affichage test ");
+    game.executeNextInstruction();
+}
+
+
+
 
 /***********************/
 /*                     */
@@ -664,11 +716,11 @@ RotateRightInstruction.prototype.execute = function(){
 
 var mapFile = [
     [7,7,7,7,7,7,7,8,7,7],
-    [7,0,0,0,0,0,0,6,0,7],
-    [7,0,0,0,0,0,0,6,0,7],
-    [7,0,0,0,0,0,6,6,0,7],
-    [7,0,0,0,0,0,6,0,0,7],
-    [7,0,0,0,0,0,6,0,0,7],
+    [7,0,0,5,0,0,0,6,0,7],
+    [7,0,0,6,0,0,0,2,0,7],
+    [7,0,0,6,0,0,6,6,0,7],
+    [7,4,6,9,6,6,9,0,0,7],
+    [7,0,0,6,0,0,6,0,0,7],
     [7,0,0,0,0,0,6,0,0,7],
     [6,6,6,6,6,6,6,9,0,7],
     [7,0,0,0,0,0,0,6,6,7],
@@ -682,91 +734,47 @@ map = new Map(10,10, mapFile);
 
 game = new GameExecution();
 
+
+
+/***********************/
+/*                     */
+/*     Game States     */
+/*                     */
+/***********************/
+
+hasCollectGold = false;
+hasCollectWeapon = false;
+hasCollectArrow = false;
+hasKillMonster = false;
+
+canMove = false;
+canJump = false;
+canCollect = false;
+canPush = false;
+
+function updateGameState(){
+    canMove = physic.willCollided(map,player,1);
+    canJump = physic.willCollided(map,player,2);
+    canCollect = physic.ableToGather(map,player);
+    canPush = physic.ableToPush(map,player);
+}
+
 /*****************/
 /*               */
 /* Test et debug */
 /*               */
 /*****************/
 
-var tokens = ["move","while","move","jump", "while","move", "push", "move","endWhile", "move", "move","endWhile"];
+//var tokens = ["move","while","move","jump", "while","move", "push", "move","endWhile", "move", "move","endWhile"];
+
+
+/*var tokens = ["while","move","if","if","affichage","endif","affichage","endif","endWhile"];
 game.createInstructionsFromArray(tokens);
 console.log(game.listExecution);
 game.lauchExecution();
-
-player.showInformations();
-
-
-/*
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.push(map);
-
-console.log(map.show());
-player.showInformations();
-
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.push(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.move(map);
-player.push(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-player.push(map);
-
-console.log(map.show());
-player.showInformations();
-console.log(player.lookAt(map));
-
 */
+player.showInformations();
+
+
 
 /* Fin test et debug */
