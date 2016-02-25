@@ -329,7 +329,7 @@ Player.prototype.rightRotate = function(){
     this.updateSpeedDirection();
 }
 
-Player.prototype.move = function(map){
+Player.prototype.move = function(){
     if(!physic.willCollided(map,this,1)){
         game.isWorking = false;
         return;
@@ -339,7 +339,7 @@ Player.prototype.move = function(map){
 }
 
 
-Player.prototype.jump = function(map){
+Player.prototype.jump = function(){
     if(!physic.willCollided(map,this,2)){
         game.isWorking = false;
         return;
@@ -348,7 +348,7 @@ Player.prototype.jump = function(map){
     this.y += 2*this.dy;
 }
 
-Player.prototype.collect = function(map){
+Player.prototype.collect = function(){
     if(!physic.ableToGather(map,this)){
         return
     }
@@ -358,14 +358,16 @@ Player.prototype.collect = function(map){
         case EntityType.AMMO:
             this.ammoQuantity+=3;
             map.map[player.x][player.y] = factoryTile.constructTile(EntityType.ROAD, player.x, player.y);
+            hasCollectArrow = true;
             break;
         case EntityType.GOLD:
-            //A implementer il faudra rajouter un objectif accompli car on a rammassé les sous
+            hasCollectGold = true;
             break;
         case EntityType.WEAPON:
             this.weapon = map.map[player.x][player.y];
             this.ammoQuantity++;
             map.map[player.x][player.y] = factoryTile.constructTile(EntityType.ROAD,player.x, player.y);
+            hasCollectWeapon = true;
             break;
     }
 }
@@ -382,7 +384,7 @@ Player.prototype.showInformations = function(){
     );
 }
 
-Player.prototype.push = function(map){
+Player.prototype.push = function(){
     if(!physic.ableToPush(map,this)) {
         return;
     }

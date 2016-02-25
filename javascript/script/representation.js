@@ -4,6 +4,57 @@ context = null;
 
 window.onload = function()
 {
+    var avancer = document.getElementById('avancer');
+
+    avancer.addEventListener('click', function() {
+        player.move();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+    var pousser = document.getElementById('pousser');
+
+        pousser.addEventListener('click', function() {
+        player.push();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+    var rotateL = document.getElementById('rotateL');
+
+        rotateL.addEventListener('click', function() {
+        player.leftRotate();;
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+    var rotateR = document.getElementById('rotateR');
+
+        rotateR.addEventListener('click', function() {
+        player.rightRotate();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+    var collect = document.getElementById('collect');
+
+        collect.addEventListener('click', function() {
+        player.collect();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+
     canvas = document.getElementById('mon_canvas');
     if(!canvas)
     {
@@ -16,6 +67,8 @@ window.onload = function()
         alert("Impossible de récupérer le context du canvas");
         return;
     }
+
+    context.clearRect(0, 0, canvas.width, canvas.height);
     
     var grid = new GridGraphic();
 
@@ -25,24 +78,12 @@ window.onload = function()
 
     context.clearRect(0, 0, canvas.width, canvas.height);
 
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.move(map);
-    player.leftRotate();
-    player.move(map);
-
     player.showInformations();
 
     grid.drawMap();
     grid.drawGrid();
     grid.drawPlayer();
-
-    context.stroke();
+    
     context.closePath();
 }
 
