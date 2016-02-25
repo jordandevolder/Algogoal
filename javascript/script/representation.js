@@ -1,6 +1,7 @@
 canvas = null;
 context = null;
 grid = null;
+instructionList = null;
 imageTab = {};
 
 window.onload = function()
@@ -21,6 +22,7 @@ window.onload = function()
     loadEvent();
 
     grid = new GridGraphic();
+    instructionList = new InstructionGraphic();
 
     createImageTab();
     draw();
@@ -196,5 +198,51 @@ GridGraphic.prototype.drawPlayer = function(){
     var imagePlayer = factoryImage.createImageFrom(EntityType.PLAYER,0,0);
     context.drawImage(imagePlayer, player.y*this.xPerTile, player.x*this.yPerTile);
 };
+
+function InstructionGraphic(){
+    this.divContainer = document.getElementById("instructionList");
+    var rect = this.divContainer.getBoundingClientRect();
+    this.positionStartX = rect.left;
+    this.positionStartY = rect.top;
+    this.incrementSize = 30.0;
+    this.sizeY = 20;
+    this.nbInstruction = 0;
+    this.nbIncrement = 0;
+}
+
+InstructionGraphic.prototype.addElement = function(element){
+    var p = document.createElement('p');
+    var node = document.createTextNode(element);
+    p.style.position = "absolute";
+    p.style.fontSize = 20+'px';
+    p.style.top = (this.nbInstruction*this.sizeY)+'px';
+
+    if(this.nbIncrement > 0){
+        if (element == "endWhile"){
+            this.nbIncrement--;
+        }
+        p.style.left = (this.incrementSize * this.nbIncrement)+'px';
+    }else{
+        p.style.left = 5+'px';
+    }
+
+    if(element == "while"){
+        this.nbIncrement++;
+    }
+
+    p.appendChild(node);
+    this.divContainer.appendChild(p);
+
+    this.nbInstruction++;
+};
+
+InstructionGraphic.prototype.clear = function(){
+
+};
+
+
+
+
+
 
 

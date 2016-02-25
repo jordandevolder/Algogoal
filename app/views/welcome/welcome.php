@@ -21,7 +21,7 @@ use Core\Language;
 	<!-- Game board and instruction list  -->
 	<div class="row">
 		<div class="col-lg-7"> <div id="board"><canvas id="mon_canvas" width="640" height="640"></canvas></div> </div>
-		<div class="col-lg-5"> <div id="instructionList"><canvas id="mon_canvas_2" width ="400" height="640"></canvas></div> </div>
+		<div class="col-lg-5"> <div id="instructionList"></div> </div>
 	</div>
 
 	</br>
@@ -45,9 +45,9 @@ use Core\Language;
 			<p> Control button</p>
 			<div class="instructionButtonBloc">
 				<button id="while"> while</button>
-				<button id="endwhile"> endwhile</button>
+				<button id="endWhile"> endWhile</button>
 				<button id="if"> if</button>
-				<button id="endif"> endif</button>
+				<button id="endIf"> endIf</button>
 				<button id="break"> break </button>
 			</div>
 		</div>
@@ -60,7 +60,7 @@ use Core\Language;
 				<button id="canMove"> canMove</button>
 				<button id="canJump"> canJump </button>
 				<button id="canCollect"> canCollect </button>
-				<button id="canPush"> canJump </button>
+				<button id="canPush"> canPush </button>
 			</div>
 		</div>
 		<div class="col-lg-3">

@@ -41,31 +41,31 @@ function loadEvent(){
 
     var while_ = document.getElementById('while');
     while_.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("while");
         draw();
     });
 
-    var endwhile = document.getElementById('endwhile');
-    endwhile.addEventListener('click', function() {
-        player.jump();
+    var endWhile = document.getElementById('endWhile');
+    endWhile.addEventListener('click', function() {
+        instructionList.addElement("endWhile");
         draw();
     });
 
     var if_ = document.getElementById("if");
     if_.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("if");
         draw();
     });
 
-    var endif = document.getElementById("endif");
-    endif.addEventListener('click', function() {
-        player.jump();
+    var endIf = document.getElementById("endIf");
+    endIf.addEventListener('click', function() {
+        instructionList.addElement("endIf");
         draw();
     });
 
     var break_ = document.getElementById("break");
     break_.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("break");
         draw();
     });
 
@@ -73,43 +73,43 @@ function loadEvent(){
 
     var and = document.getElementById('and');
     and.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("&&");
         draw();
     });
 
     var or = document.getElementById('or');
     or.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("||");
         draw();
     });
 
     var not = document.getElementById("not");
     not.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("!");
         draw();
     });
 
     var canMove = document.getElementById("canMove");
     canMove.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("canMove");
         draw();
     });
 
     var canJump = document.getElementById("canJump");
     canJump.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("canJump");
         draw();
     });
 
     var canCollect = document.getElementById("canCollect");
     canCollect.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("canCollect");
         draw();
     });
 
     var canPush = document.getElementById("canPush");
     canPush.addEventListener('click', function() {
-        player.jump();
+        instructionList.addElement("canPush");
         draw();
     });
 
