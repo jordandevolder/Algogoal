@@ -109,63 +109,63 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
     switch(typeTile)
     {
         case 0:
-            image.src = "../image/grass.jpg";
+            image.src = "../projet/image/grass.jpg";
             break;
         case 1:
             if(!hasCollectWeapon && map.map[posY][posX].typeId == EntityType.WEAPON){
-                image.src = "../image/Bow.png";
+                image.src = "../projet/image/Bow.png";
             }
             else{
-                image.src = "../image/DirtRoad.jpg";
+                image.src = "../projet/image/DirtRoad.jpg";
             }
             break;
         case 2:
             if(!hasCollectGold && map.map[posY][posX].typeId == EntityType.GOLD){
-                image.src = "../image/Gold.png";
+                image.src = "../projet/image/Gold.png";
             }
             else{
-                image.src = "../image/DirtRoad.jpg";
+                image.src = "../projet/image/DirtRoad.jpg";
             }
             break;
         case 3:
-            image.src = "../image/Player.png";
+            image.src = "../projet/image/Player.png";
             break;
         case 4:
             if(!hasKillMonster && map.map[posY][posX].typeId == EntityType.MONSTER){
-                image.src = "../image/Monster.png";
+                image.src = "../projet/image/Monster.png";
             }
             else{
-                image.src = "../image/DirtRoad.jpg";
+                image.src = "../projet/image/DirtRoad.jpg";
             }
             break;
         case 5:
             if(!hasCollectArrow && map.map[posY][posX].typeId == EntityType.AMMO){
-                image.src = "../image/Arrow.png";
+                image.src = "../projet/image/Arrow.png";
             }
             else{
-                image.src = "../image/DirtRoad.jpg";
+                image.src = "../projet/image/DirtRoad.jpg";
             }
             break;
         case 6:
-            image.src = "../image/DirtRoad.jpg";
+            image.src = "../projet/image/DirtRoad.jpg";
             break;
         case 7:
-            image.src = "../image/Stone.jpg";
+            image.src = "../projet/image/Stone.jpg";
             break;
         case 8:
-            image.src = "../image/Goal.jpg";
+            image.src = "../projet/image/Goal.jpg";
             break;
         case 9:
-            image.src = "../image/Obstacle.png";
+            image.src = "../projet/image/Obstacle.png";
             break;
         case 10:
-            image.src = "../image/Water.jpg";
+            image.src = "../projet/image/Water.jpg";
             break;
         case 11:
-            image.src = "../image/obstacleUnmovable.png";
+            image.src = "../projet/image/obstacleUnmovable.png";
             break;
         case 12:
-            image.src = "../image/WaterWalkable.png";
+            image.src = "../projet/image/WaterWalkable.png";
             break;
     }
     return image;

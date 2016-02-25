@@ -27,5 +27,9 @@ $hooks->run('js');
 $hooks->run('footer');
 ?>
 
+
+<script src="/projet/javascript/script/classesBases.js"></script>
+<script src="/projet/javascript/script/representation.js"></script>
+
 </body>
 </html>
