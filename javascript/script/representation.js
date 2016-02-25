@@ -3,7 +3,6 @@ context = null;
 grid = null;
 imageTab = {};
 
-
 window.onload = function()
 {
     canvas = document.getElementById('mon_canvas');
@@ -19,43 +18,9 @@ window.onload = function()
         return;
     }
 
+    loadEvent();
+
     grid = new GridGraphic();
-
-    var avancer = document.getElementById('avancer');
-    avancer.addEventListener('click', function() {
-        player.move();
-        draw();
-    });
-
-    var pousser = document.getElementById('pousser');
-    pousser.addEventListener('click', function() {
-        player.push();
-        draw();
-    });
-
-    var rotateL = document.getElementById('rotateL');
-    rotateL.addEventListener('click', function() {
-        player.leftRotate();;
-        draw();
-    });
-
-    var rotateR = document.getElementById('rotateR');
-    rotateR.addEventListener('click', function() {
-        player.rightRotate();
-        draw();
-    });
-
-    var collect = document.getElementById('collect');
-    collect.addEventListener('click', function() {
-        player.collect();
-        draw();
-    });
-
-    var jump = document.getElementById('jump');
-    jump.addEventListener('click', function() {
-        player.jump();
-        draw();
-    });
 
     createImageTab();
     draw();
@@ -194,75 +159,6 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
     }
 };
 
-/*
-FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
-    var image = new Image();
-    switch(typeTile)
-    {
-        case 0:
-            image.src = "../projet/image/grass.jpg";
-            break;
-        case 1:
-            if(!hasCollectWeapon && map.map[posY][posX].typeId == EntityType.WEAPON){
-                image.src = "../projet/image/Bow.png";
-            }
-            else{
-                image.src =  "../projet/image/DirtRoad.jpg";
-            }
-            break;
-        case 2:
-            if(!hasCollectGold && map.map[posY][posX].typeId == EntityType.GOLD){
-                image.src = "../projet/image/Gold.png";
-            }
-            else{
-                image.src = "../projet/image/DirtRoad.jpg";
-            }
-            break;
-        case 3:
-            image.src = "../projet/image/Player.png";
-            break;
-        case 4:
-            if(!hasKillMonster && map.map[posY][posX].typeId == EntityType.MONSTER){
-                image.src = "../projet/image/Monster.png";
-            }
-            else{
-                image.src = "../projet/image/DirtRoad.jpg";
-            }
-            break;
-        case 5:
-            if(!hasCollectArrow && map.map[posY][posX].typeId == EntityType.AMMO){
-                image.src = "../projet/image/Arrow.png";
-            }
-            else{
-                image.src = "../projet/image/DirtRoad.jpg";
-            }
-            break;
-        case 6:
-            image.src = "../projet/image/DirtRoad.jpg";
-            break;
-        case 7:
-            image.src = "../projet/image/Stone.jpg";
-            break;
-        case 8:
-            image.src = "../projet/image/Goal.jpg";
-            break;
-        case 9:
-            image.src = "../projet/image/Obstacle.png";
-            break;
-        case 10:
-            image.src = "../projet/image/Water.jpg";
-            break;
-        case 11:
-            image.src = "../projet/image/obstacleUnmovable.png";
-            break;
-        case 12:
-            image.src = "../projet/image/WaterWalkable.png";
-            break;
-    }
-    return image;
-};
-*/
-
 factoryImage = new FactoryImage();
 
 
@@ -274,13 +170,11 @@ function GridGraphic(){
 }
 
 GridGraphic.prototype.drawGrid = function(){
-
     //Drawing line grid
     for(var i = 0 ; i <= this.nbTileX; i++){
         context.moveTo(0,i*this.yPerTile);
         context.lineTo(this.xPerTile*this.nbTileX, i*this.yPerTile);
     }
-
     //Drawing collumn grid
     for(var i = 0 ; i <= this.nbTileX; i++){
         context.moveTo(i*this.xPerTile,0);
@@ -290,9 +184,6 @@ GridGraphic.prototype.drawGrid = function(){
 
 
 GridGraphic.prototype.drawMap = function(){
-
-    console.log(imageTab);
-    //Building of basic Tiles
     for(var i = 0; i < this.nbTileX; i++){
         for(var j = 0; j < this.nbTileY; j++){
             var image = factoryImage.createImageFrom(map.map[j][i].typeId, i , j);

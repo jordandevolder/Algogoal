@@ -1270,3 +1270,28 @@
 #7 {main}</pre>
 
            <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 25, 2016 15:31PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[HY000] [1045] Access denied for user 'toto'@'localhost' (using password: YES)</p>
+
+           <p><strong>Code:</strong> 1045</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php</p>
+
+           <p><strong>Line:</strong> 22</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php(22): PDO->__construct('mysql:host=loca...', 'toto', '********', Array)
+#1 /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php(35): Helpers\DB\DBManager->__construct()
+#2 /Applications/MAMP/htdocs/projet/app/Helpers/DB/Query.php(43): Helpers\DB\DBManager::getInstance()
+#3 /Applications/MAMP/htdocs/projet/app/Controllers/Connexion.php(29): Helpers\DB\Query->__construct()
+#4 /Applications/MAMP/htdocs/projet/app/Core/Router.php(124): Controllers\Connexion->__construct(NULL)
+#5 /Applications/MAMP/htdocs/projet/app/Core/Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 /Applications/MAMP/htdocs/projet/app/Core/routes.php(35): Core\Router::dispatch()
+#7 /Applications/MAMP/htdocs/projet/index.php(81): require('/Applications/M...')
+#8 {main}</pre>
+
+           <hr />
