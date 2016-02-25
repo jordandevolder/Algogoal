@@ -47,6 +47,12 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
             return new Goal(posX, posY,8);
         case 9:
             return new Obstacle(posX, posY,9);
+        case 10:
+            return new River(posX, posY, 10); 
+        case 11:
+            return new ObstacleUnmovable(posX,posY,11);
+        case 12:
+            return new WaterWalkable(posX, posY, 12);
     }
 };
 
@@ -103,7 +109,9 @@ var EntityType = {
     ROCK: 7,
     GOAL: 8,
     OBSTACLE: 9,
-    RIVER: 10
+    RIVER: 10,
+    OBSTACLEUNMOVABLE: 11,
+    WATERWALKABLE: 12
 };
 
 var OrientationType = {
@@ -209,6 +217,12 @@ function River(x,y, typeId){
 
 /* End River */
 
+/* WaterWalkable */
+function WaterWalkable(x,y,typeId){
+    Entity.call(this,x,y,true, false,false,typeId);
+}
+/* End WaterWalkable */
+
 /* Goal*/
 
 function Goal(x,y, typeId){
@@ -220,6 +234,11 @@ function Goal(x,y, typeId){
 /* Obstacle */
 function Obstacle(x,y, typeId){
     Entity.call(this,x,y, false, false,false,typeId);
+}
+
+/* Obstacle unmovable */
+function ObstacleUnmovable(x,y,typeId){
+    Entity.call(this,x,y,false, false, false, typeId);
 }
 
 /* End Obstacle*/
@@ -394,7 +413,16 @@ Player.prototype.push = function(){
     var x2 = player.x+(2*player.dx);
     var y2 = player.y+(2*player.dy);
 
-    map.map[x2][y2] = map.map[x1][y1];
+    if(map.map[x2][y2].typeId == EntityType.ROAD){
+        map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLE,x1,y1);
+    }
+    else if(map.map[x2][y2].typeId == EntityType.RIVER){
+        map.map[x2][y2] = factoryTile.constructTile(EntityType.WATERWALKABLE,x1,y1);
+    }
+    else{
+        map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLEUNMOVABLE,x1,y1);
+    }
+
     map.map[x1][y1] = factoryTile.constructTile(EntityType.ROAD,x1,y1);
 
     this.move(map);
@@ -428,6 +456,8 @@ Player.prototype.lookAt = function(map){
             return "goal";
         case EntityType.ROCK:
             return "rock";
+        case EntityType.OBSTACLEUNMOVABLE:
+            return "obstacleunmovable";
     }
 }
 
@@ -707,8 +737,50 @@ Affichage.prototype.execute = function(){
     game.executeNextInstruction();
 }
 
+/***********************/
+/*                     */
+/*         Map         */
+/*                     */
+/***********************/
 
+var mapLevel1 = [
+    [7,7,7,7,7,7,7,0,7,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [6,6,6,6,6,6,6,6,6,8],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,7,7,7,7,7,7,7,7,7]
+];
 
+var mapLevel2 = [
+    [7,7,7,7,7,7,7,0,7,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,9,6,6,6,6,8],
+    [7,0,0,0,6,0,0,0,0,7],
+    [6,6,6,6,6,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,7,7,7,7,7,7,7,7,7]
+];
+
+var mapLevel3 = [
+    [7,7,7,7,7,7,7,0,7,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,0,0,0,9,6,6,6,6,8],
+    [7,0,0,0,6,0,0,0,0,7],
+    [6,6,9,10,6,0,0,0,0,7],
+    [7,0,0,0,6,0,0,0,0,7],
+    [7,0,0,0,6,6,6,6,2,7],
+    [7,0,0,0,0,0,0,0,0,7],
+    [7,7,7,7,7,7,7,7,7,7]
+];
 
 /***********************/
 /*                     */
@@ -724,15 +796,18 @@ var mapFile = [
     [7,4,6,9,6,6,9,0,0,7],
     [7,0,0,6,0,0,6,0,0,7],
     [7,0,0,0,0,0,6,0,0,7],
-    [6,6,6,6,6,6,6,9,0,7],
-    [7,0,0,0,0,0,0,6,6,7],
+    [6,6,9,10,6,6,6,9,0,7],
+    [7,0,0,0,0,0,0,6,1,7],
     [7,7,7,7,7,7,7,7,7,7]
 ];
 
-player = new Player(7,0,OrientationType.RIGHT,10);
+
+
+
+player = new Player(5,0,OrientationType.RIGHT,10);
 player.updateSpeedDirection();
 
-map = new Map(10,10, mapFile);
+map = new Map(10,10, mapLevel3);
 
 game = new GameExecution();
 
@@ -754,11 +829,19 @@ canJump = false;
 canCollect = false;
 canPush = false;
 
+isWin = false;
+isLoose = false;
+isPlaying = true;
+
 function updateGameState(){
     canMove = physic.willCollided(map,player,1);
     canJump = physic.willCollided(map,player,2);
     canCollect = physic.ableToGather(map,player);
     canPush = physic.ableToPush(map,player);
+}
+
+function hasWin(){
+    isWin = (map.map[player.x][player.y].idType == EntityType.GOAL);
 }
 
 /*****************/

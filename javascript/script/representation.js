@@ -54,6 +54,18 @@ window.onload = function()
         grid.drawPlayer();
     });
 
+    var jump = document.getElementById('jump');
+
+        jump.addEventListener('click', function() {
+        player.jump();
+        context.clearRect(0, 0, canvas.width, canvas.height);
+        grid.drawMap();
+        grid.drawGrid();
+        grid.drawPlayer();
+    });
+
+
+
 
     canvas = document.getElementById('mon_canvas');
     if(!canvas)
@@ -84,6 +96,7 @@ window.onload = function()
     grid.drawGrid();
     grid.drawPlayer();
     
+    context.stroke();
     context.closePath();
 }
 
@@ -100,7 +113,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             break;
         case 1:
             if(!hasCollectWeapon && map.map[posY][posX].typeId == EntityType.WEAPON){
-                image.src = "../image/Weapon.png";
+                image.src = "../image/Bow.png";
             }
             else{
                 image.src = "../image/DirtRoad.jpg";
@@ -140,11 +153,19 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             image.src = "../image/Stone.jpg";
             break;
         case 8:
-            //image.src = "../image/goal.jpg";
-            image.src = "../image/grass.jpg";
+            image.src = "../image/Goal.jpg";
             break;
         case 9:
             image.src = "../image/Obstacle.png";
+            break;
+        case 10:
+            image.src = "../image/Water.jpg";
+            break;
+        case 11:
+            image.src = "../image/obstacleUnmovable.png";
+            break;
+        case 12:
+            image.src = "../image/WaterWalkable.png";
             break;
     }
     return image;
