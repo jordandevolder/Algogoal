@@ -6,6 +6,7 @@
 use Helpers\Assets;
 use Helpers\Url;
 use Helpers\Hooks;
+use Helpers\Session;
 
 //initialise hooks
 $hooks = Hooks::get();
