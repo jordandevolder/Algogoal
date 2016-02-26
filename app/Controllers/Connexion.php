@@ -40,37 +40,30 @@ class Connexion extends Controller
         View::renderTemplate('footer', $data);
     }
 
-    public function connexion()
-    {
-        //Sanitize Data using Gump helper
-        $_POST = Gump::sanitize($_POST);
+
+    public function connexion() {
+
+        $data['title'] = 'Projet tutoré semeste 4';
 
         if (isset($_POST['login'])) {
-            //Validate data using Gump
-            $is_valid = Gump::is_valid($_POST, array(
-                'login' => 'required',
-                'password' => 'required' //|max_len,18|min_len,6
-            ));
-
             // If input is valid then check for username and password matching
-            if ($is_valid === true) {
-                $user = $this->userSQL->prepareFindByLogin($_POST['login']);
 
+                $user = $this->userSQL->prepareFindByLogin($_POST['login']);
                 if ($user == false || Password::verify($_POST['password'], $user->password) == false)
                     $error[] = 'Mauvaises données';
-            } else {
+            else {
                 // $is_valid holds an array for the errors.
-                $error = $is_valid;
+                $error = false;
             }
             if (!$error) {
-
+                $error[] = "je suis rentré";
                 Session::set('loggedin', true);
                 Session::set('id', $user->getId());
                 Session::set('login', $user->login);
                 if (isset($_POST['remember'])) {
                     $user->cookie = $this->randomkey(64);
                     $this->entityManager->save($user);
-                    setcookie("remember", $user->cookie, time() + 3600 * 31 * 24, DIR);
+                    setcookie("remember", $user->cookie, time() + 3600 * 31 * 24,DIR);
                 }
                 Session::set('message', "Bienvenu $user->login");
                 Session::set('message_type', 'alert-success');
@@ -79,7 +72,12 @@ class Connexion extends Controller
             }
         }
 
+        View::rendertemplate('header', $data);
+        View::render('welcome/welcome', $data, $error);
+        View::rendertemplate('footer', $data);
     }
+
+
 
     public function indexInscription()
     {
