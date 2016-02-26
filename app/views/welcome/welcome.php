@@ -19,15 +19,59 @@ use Core\Language;
 <p>Bonjour, ceci est la vue principale "welcome". Le jeu sera présent ici</p>
 <p>Sur la navbar sont présents les intitulés des différentes vues qui seront présentes sur le site</p>
 
-<canvas id="mon_canvas" width="800" height="650"></canvas>
-</br>
-<button id="avancer"> Avancer</button>
-<button id="pousser"> Pousser</button>
-<button id="rotateL"> Rotate Left</button>
-<button id="rotateR"> Rotate right</button>
-<button id="collect"> Collect </button>
-<button id="jump"> Jump </button>
 
-</br>
+<div class = "container">
 
-<canvas id="mon_canvas_2" width="800" height="200"></canvas>
+	<!-- Game board and instruction list  -->
+	<div class="row">
+		<div class="col-lg-7"> <div id="board"><canvas id="mon_canvas" width="640" height="640"></canvas></div> </div>
+		<div class="col-lg-5"> <div id="instructionList"></div> </div>
+	</div>
+
+	</br>
+	</br>
+	</br>
+	<!-- instruction and button  -->
+
+	<div class="row">
+		<div class="col-lg-3">
+			<p> Instruction button</p>
+			<div class="instructionButtonBloc">
+				<button id="move"> move</button>
+				<button id="push"> push</button>
+				<button id="rotateL"> rotateLeft</button>
+				<button id="rotateR"> rotateRight</button>
+				<button id="collect"> collect </button>
+				<button id="jump"> jump </button>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<p> Control button</p>
+			<div class="instructionButtonBloc">
+				<button id="while"> while</button>
+				<button id="endWhile"> endWhile</button>
+				<button id="if"> if</button>
+				<button id="endIf"> endIf</button>
+				<button id="break"> break </button>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<p> Condition button</p>
+			<div class="instructionButtonBloc">
+				<button id="and"> && </button>
+				<button id="or"> || </button>
+				<button id="not"> ! </button>
+				<button id="canMove"> canMove</button>
+				<button id="canJump"> canJump </button>
+				<button id="canCollect"> canCollect </button>
+				<button id="canPush"> canPush </button>
+			</div>
+		</div>
+		<div class="col-lg-3">
+			<p> Other category</p>
+			<div class="instructionButtonBloc">
+			</div>
+		</div>
+	</div>
+</div>
+
