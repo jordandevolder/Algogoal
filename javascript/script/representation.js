@@ -226,8 +226,17 @@ function InstructionListManager(){
 
     this.currentX = this.startingXPosition;
     this.currentY = this.startingYPosition;
+
+    this.iterateurExecution = 0;
 }
 
+InstructionListManager.prototype.execute = function(){
+
+    game.createInstructionsFromArray();
+    for(var i = 0; i < 10; i++){
+    game.executeNextInstruction();
+    }
+};
 
 /*
  IMPORTANT
@@ -237,10 +246,12 @@ function InstructionListManager(){
 
  */
 
+
+
 InstructionListManager.prototype.addInstruction = function(string){
 
     //Les structures qui ont besoin de perdre une indentation et d'update donc la position tout de suite
-
+    tokens.push(string);
     if(string == "endWhile" || string == "endIf"){
         this.nbImbrication--;
         if (this.nbImbrication < 0) {

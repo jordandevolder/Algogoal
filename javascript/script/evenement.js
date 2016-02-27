@@ -3,7 +3,8 @@ function loadEvent(){
     /* Instruction event */
     var move = document.getElementById('move');
     move.addEventListener('click', function() {
-        player.move();
+        //player.move();
+        listManager.addInstruction("move");
         draw();
     });
 
@@ -17,14 +18,14 @@ function loadEvent(){
     var rotateL = document.getElementById('rotateL');
     rotateL.addEventListener('click', function() {
         //player.leftRotate();
-        listManager.addInstruction("leftRotate");
+        listManager.addInstruction("rotateLeft");
         draw();
     });
 
     var rotateR = document.getElementById('rotateR');
     rotateR.addEventListener('click', function() {
         //player.rightRotate();
-        listManager.addInstruction("rightRotate");
+        listManager.addInstruction("rotateRight");
         draw();
     });
 
@@ -119,6 +120,15 @@ function loadEvent(){
         draw();
     });
 
+    /* Execution */
 
+    var execute = document.getElementById("execute");
+    execute.addEventListener('click', function() {
+        //listManager.addInstruction("canCollect");
+        //draw();
+        //game.createInstructionsFromArray();
+        listManager.execute();
+        draw();
+    });
 
 }

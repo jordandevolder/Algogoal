@@ -553,33 +553,34 @@ GameExecution.prototype.addInstruction = function(instruction){
     this.listExecution.push(instruction);
 }
 
-GameExecution.prototype.createInstructionsFromArray = function(array){
-    //var positionWhile;
+GameExecution.prototype.createInstructionsFromArray = function(){
     var whilePosition = [];
     var ifPosition = [];
-    for(var i = 0; i < array.length; i++){
-        this.listExecution.push(factoryInstrution.constructInstruction(array[i]));
-        if(array[i] == "while"){
+    for(var i = 0; i < tokens.length; i++){
+        this.listExecution.push(factoryInstrution.constructInstruction(tokens[i]));
+        if(tokens[i] == "while"){
             whilePosition.push(i);
         }
 
-        if(array[i] == "if"){
+        if(tokens[i] == "if"){
             ifPosition.push(i);
         }
 
 
-        if(array[i] == "endif"){
+        if(tokens[i] == "endif"){
             this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
             ifPosition.pop();
         }
 
-        if(array[i] == "endWhile"){
+        if(tokens[i] == "endWhile"){
             this.listExecution[whilePosition[whilePosition.length-1]].positionEndWhile = i;
             this.listExecution[i].positionWhile = whilePosition[whilePosition.length-1];
             whilePosition.pop();
         }
     }
-}
+
+    console.log(this.listExecution);
+};
 
 GameExecution.prototype.lauchExecution = function(){
     this.listExecution[this.currentPosition++].execute();
@@ -629,7 +630,7 @@ function EndIfInstruction(){
 }
 
 EndIfInstruction.prototype.execute = function(){
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 
@@ -644,11 +645,11 @@ WhileInstruction.prototype.evaluateCondition = function(){
 
 WhileInstruction.prototype.execute = function(){
     if(this.condition){
-        game.executeNextInstruction();
+        return true;
     }
     else{ //Condition isn't valuate at true, we have to break the loop and go to the end while
         game.setCurrentPosition(this.positionEndWhile+1); //Ici on doit mettre à position end while + 1
-        game.executeNextInstruction();
+        return false;
     }
 }
 
@@ -660,7 +661,7 @@ function EndWhileInstruction(){
 EndWhileInstruction.prototype.execute = function(){
     //We have to back to the while start
     game.setCurrentPosition(this.positionWhile); //Ici la position doit être sur le while
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 
@@ -671,7 +672,7 @@ function BreakInstruction(){
 
 BreakInstruction.prototype.execute = function(){
     game.setCurrentPosition(0); //Ici on doit mettre la position au end while + 1
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function MoveInstruction(){
@@ -680,7 +681,7 @@ function MoveInstruction(){
 
 MoveInstruction.prototype.execute = function(){
     player.move(map);
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function JumpInstruction(){
@@ -689,7 +690,7 @@ function JumpInstruction(){
 
 JumpInstruction.prototype.execute = function(){
     player.jump(map);
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function CollectInstruction(){
@@ -698,7 +699,7 @@ function CollectInstruction(){
 
 CollectInstruction.prototype.execute = function(){
     player.collect(map);
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function PushInstruction(){
@@ -707,7 +708,7 @@ function PushInstruction(){
 
 PushInstruction.prototype.execute = function(){
     player.push(map);
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function RotateLeftInstruction(){
@@ -716,7 +717,7 @@ function RotateLeftInstruction(){
 
 RotateLeftInstruction.prototype.execute = function(){
     player.leftRotate();
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function RotateRightInstruction(){
@@ -725,7 +726,7 @@ function RotateRightInstruction(){
 
 RotateRightInstruction.prototype.execute = function(){
     player.rightRotate();
-    game.executeNextInstruction();
+    //game.executeNextInstruction();
 }
 
 function Affichage(){
@@ -824,6 +825,7 @@ map = new Map(10,10, mapLevel3);
 
 game = new GameExecution();
 
+tokens = [];
 
 
 /***********************/
