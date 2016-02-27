@@ -22,7 +22,6 @@ window.onload = function()
     loadEvent();
 
     grid = new GridGraphic();
-    instructionList = new InstructionGraphic();
 
     createImageTab();
     draw();
@@ -163,6 +162,11 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
 
 factoryImage = new FactoryImage();
 
+/**************************/
+/*                        */
+/*       GridGraphic      */
+/*                        */
+/**************************/
 
 function GridGraphic(){
     this.xPerTile = 64;
@@ -199,50 +203,97 @@ GridGraphic.prototype.drawPlayer = function(){
     context.drawImage(imagePlayer, player.y*this.xPerTile, player.x*this.yPerTile);
 };
 
-function InstructionGraphic(){
-    this.divContainer = document.getElementById("instructionList");
-    var rect = this.divContainer.getBoundingClientRect();
-    this.positionStartX = rect.left;
-    this.positionStartY = rect.top;
-    this.incrementSize = 30.0;
-    this.sizeY = 20;
+
+
+/**************************/
+/*                        */
+/* InstructionListManager */
+/*                        */
+/**************************/
+
+listManager = new InstructionListManager();
+
+function InstructionListManager(){
+    this.container = document.getElementById("instructionList");
+    this.instructionGraphicList = {};
     this.nbInstruction = 0;
-    this.nbIncrement = 0;
+    this.startingXPosition = 80;
+    this.startingYPosition = 50;
+
+    this.incrementY = 20;
+    this.incrementX = 40;
+    this.nbImbrication = 0;
+
+    this.currentX = this.startingXPosition;
+    this.currentY = this.startingYPosition;
 }
 
-InstructionGraphic.prototype.addElement = function(element){
-    var p = document.createElement('p');
-    var node = document.createTextNode(element);
-    p.style.position = "absolute";
-    p.style.fontSize = 20+'px';
-    p.style.top = (this.nbInstruction*this.sizeY)+'px';
 
-    if(this.nbIncrement > 0){
-        if (element == "endWhile"){
-            this.nbIncrement--;
+/*
+ IMPORTANT
+ NOTE POUR GERER LES BOOLEANS
+ ON FAIT UNE HASH MAP et on associe tableauBooleanEtatJeu["nomVariable"] et on y accéde facilement
+
+
+ */
+
+InstructionListManager.prototype.addInstruction = function(string){
+
+    //Les structures qui ont besoin de perdre une indentation et d'update donc la position tout de suite
+
+    if(string == "endWhile" || string == "endIf"){
+        this.nbImbrication--;
+        if (this.nbImbrication < 0) {
+            this.nbImbrication = 0;
         }
-        p.style.left = (this.incrementSize * this.nbIncrement)+'px';
-    }else{
-        p.style.left = 5+'px';
+        this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
+        this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
     }
 
-    if(element == "while"){
-        this.nbIncrement++;
-    }
+    this.instructionGraphicList["instruction"+this.nbInstruction] = new GraphicInstruction(this.currentX,this.currentY,this.nbInstruction,string);
+    this.container.appendChild(this.instructionGraphicList["instruction"+this.nbInstruction].elementHTML);
+    this.instructionGraphicList["instruction"+this.nbInstruction].moveInstruction(20,20);
 
-    p.appendChild(node);
-    this.divContainer.appendChild(p);
+
+    //Les structures qui vont engendrer une modification future de l'indentation
+    if(string == "while" || string == "if") {
+        this.nbImbrication++;
+    }
 
     this.nbInstruction++;
+    this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
+    this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
 };
 
-InstructionGraphic.prototype.clear = function(){
+
+/**************************/
+/*                        */
+/*   GraphicInstruction   */
+/*                        */
+/**************************/
+
+function GraphicInstruction(x,y,positionList,element){
+    var node = document.createTextNode(element);
+
+    this.posX = x;
+    this.posY = y;
+    this.elementHTML = document.createElement('p');
+    this.elementHTML.appendChild(node);
+    this.elementHTML.id = "instruction"+positionList;
+
+
+    this.elementHTML.style.position = "absolute";
+    this.elementHTML.style.left = this.posX+'px';
+    this.elementHTML.style.top = this.posY+'px';
+    this.elementHTML.style.fontSize = 20+'px';
+
+
+}
+
+GraphicInstruction.prototype.moveInstruction = function(posX, posY){
+    this.posX = posX;
+    this.posY = posY;
 
 };
 
-
-
-
-
-
-
+instructionGraphic = null;
