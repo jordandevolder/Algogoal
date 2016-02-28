@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c9ef5239-e468-4271-8040-91359a56e18e" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/views/welcome/welcome.php" afterPath="$PROJECT_DIR$/app/views/welcome/welcome.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/script/classesBases.js" afterPath="$PROJECT_DIR$/javascript/script/classesBases.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/script/evenement.js" afterPath="$PROJECT_DIR$/javascript/script/evenement.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/javascript/script/representation.js" afterPath="$PROJECT_DIR$/javascript/script/representation.js" />
@@ -27,11 +26,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="evenement.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="evenement.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/javascript/script/evenement.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.10330579">
-              <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
               <folding />
             </state>
           </provider>
@@ -41,18 +40,20 @@
         <entry file="file://$PROJECT_DIR$/javascript/script/representation.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="235" column="8" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="8" />
+              <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="classesBases.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="classesBases.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/javascript/script/classesBases.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="871" column="0" selection-start-line="871" selection-start-column="0" selection-end-line="871" selection-end-column="33" />
-              <folding />
+            <state vertical-scroll-proportion="0.6987088">
+              <caret line="589" column="25" selection-start-line="589" selection-start-column="25" selection-end-line="589" selection-end-column="25" />
+              <folding>
+                <element signature="n#!!doc" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -60,7 +61,7 @@
       <file leaf-file-name="footer.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/templates/default/footer.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
+            <state vertical-scroll-proportion="-14.375">
               <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
               <folding />
             </state>
@@ -70,7 +71,7 @@
       <file leaf-file-name="welcome.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/views/welcome/welcome.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-7.647059">
+            <state vertical-scroll-proportion="-11.041667">
               <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
               <folding />
             </state>
@@ -126,9 +127,9 @@
         <option value="$PROJECT_DIR$/app/templates/default/footer.php" />
         <option value="$PROJECT_DIR$/app/templates/default/css/style.css" />
         <option value="$PROJECT_DIR$/app/views/welcome/welcome.php" />
+        <option value="$PROJECT_DIR$/javascript/script/evenement.js" />
         <option value="$PROJECT_DIR$/javascript/script/classesBases.js" />
         <option value="$PROJECT_DIR$/javascript/script/representation.js" />
-        <option value="$PROJECT_DIR$/javascript/script/evenement.js" />
       </list>
     </option>
   </component>
@@ -142,9 +143,10 @@
   </component>
   <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
   <component name="ProjectFrameBounds">
-    <option name="y" value="23" />
+    <option name="x" value="221" />
+    <option name="y" value="25" />
     <option name="width" value="1440" />
-    <option name="height" value="823" />
+    <option name="height" value="821" />
   </component>
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
@@ -188,7 +190,6 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -329,6 +330,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -452,7 +454,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="23" width="1440" height="823" extended-state="6" />
+    <frame x="221" y="25" width="1440" height="821" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24861111" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -837,7 +839,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/templates/default/footer.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="-14.375">
           <caret line="27" column="2" selection-start-line="27" selection-start-column="2" selection-end-line="27" selection-end-column="2" />
           <folding />
         </state>
@@ -845,16 +847,16 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/welcome/welcome.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-7.647059">
+        <state vertical-scroll-proportion="-11.041667">
           <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/script/classesBases.js">
+    <entry file="file://$PROJECT_DIR$/javascript/script/evenement.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="871" column="0" selection-start-line="871" selection-start-column="0" selection-end-line="871" selection-end-column="33" />
+          <caret line="102" column="37" selection-start-line="102" selection-start-column="37" selection-end-line="102" selection-end-column="37" />
           <folding />
         </state>
       </provider>
@@ -862,16 +864,18 @@
     <entry file="file://$PROJECT_DIR$/javascript/script/representation.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="235" column="8" selection-start-line="235" selection-start-column="8" selection-end-line="235" selection-end-column="8" />
+          <caret line="239" column="0" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/javascript/script/evenement.js">
+    <entry file="file://$PROJECT_DIR$/javascript/script/classesBases.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.10330579">
-          <caret line="5" column="10" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-          <folding />
+        <state vertical-scroll-proportion="0.6987088">
+          <caret line="589" column="25" selection-start-line="589" selection-start-column="25" selection-end-line="589" selection-end-column="25" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

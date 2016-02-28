@@ -203,7 +203,13 @@ GridGraphic.prototype.drawPlayer = function(){
     context.drawImage(imagePlayer, player.y*this.xPerTile, player.x*this.yPerTile);
 };
 
+/**************************/
+/*                        */
+/*   Constante execution  */
+/*                        */
+/**************************/
 
+idProcessusExecution = 0;
 
 /**************************/
 /*                        */
@@ -228,15 +234,42 @@ function InstructionListManager(){
     this.currentY = this.startingYPosition;
 
     this.iterateurExecution = 0;
+
+    //this.idProcessusExecution;
 }
+
+
+InstructionListManager.prototype.buildLogicInstruction = function(){
+    game.createInstructionsFromArray();
+};
+
+InstructionListManager.prototype.lauchExecution = function(){
+    idProcessusExecution = setInterval(this.execute, 1000);
+};
 
 InstructionListManager.prototype.execute = function(){
 
-    game.createInstructionsFromArray();
-    for(var i = 0; i < 10; i++){
-    game.executeNextInstruction();
+    console.log("bite");
+    if(isPlaying){
+        game.executeNextInstruction();
+        draw();
+    }
+    else{
+        console.log("BOOM");
+        clearInterval(idProcessusExecution);
     }
 };
+
+function test(){
+    alert("con");
+}
+
+/*
+function sleep(seconds){
+    var waitUntil = new Date().getTime() + seconds*1000;
+    while(new Date().getTime() < waitUntil) true;
+}
+*/
 
 /*
  IMPORTANT

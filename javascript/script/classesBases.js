@@ -2,16 +2,6 @@
  * Created by nicolasserf on 03/02/2016.
  */
 
-
-function sleep(milliseconds) {
-    var start = new Date().getTime();
-    for (var i = 0; i < 1e7; i++) {
-        if ((new Date().getTime() - start) > milliseconds){
-            break;
-        }
-    }
-}
-
 /*                     *\
  //--------------------\\
  ||       Factory       ||
@@ -68,8 +58,8 @@ InstructionFactory.prototype.constructInstruction = function(string){
         case "endWhile":
             return new EndWhileInstruction();
         case "if":
-            return new IfInstruction(true);
-        case "endif":
+            return new IfInstruction(false);
+        case "endIf":
             return new EndIfInstruction();
         case "move":
             return new MoveInstruction();
@@ -350,7 +340,7 @@ Player.prototype.rightRotate = function(){
 
 Player.prototype.move = function(){
     if(!physic.willCollided(map,this,1)){
-        game.isWorking = false;
+        //game.isWorking = false;
         return;
     }
     this.x += this.dx;
@@ -360,7 +350,7 @@ Player.prototype.move = function(){
 
 Player.prototype.jump = function(){
     if(!physic.willCollided(map,this,2)){
-        game.isWorking = false;
+        //game.isWorking = false;
         return;
     }
     this.x += 2*this.dx;
@@ -567,7 +557,7 @@ GameExecution.prototype.createInstructionsFromArray = function(){
         }
 
 
-        if(tokens[i] == "endif"){
+        if(tokens[i] == "endIf"){
             this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
             ifPosition.pop();
         }
@@ -588,9 +578,11 @@ GameExecution.prototype.lauchExecution = function(){
 
 GameExecution.prototype.executeNextInstruction = function(){
     if(this.currentPosition >= this.listExecution.length || !this.isWorking){
-        return;
+        isPlaying = false;
     }
-    this.listExecution[this.currentPosition++].execute();
+    else{
+        this.listExecution[this.currentPosition++].execute();
+    }
 }
 
 /***********************/
@@ -622,7 +614,6 @@ IfInstruction.prototype.execute = function(){
     }
     else{ //Condition isn't valuate at true, we have to go after the end if
         game.setCurrentPosition(this.positionEndIf+1);
-        game.executeNextInstruction();
     }
 }
 
@@ -630,8 +621,8 @@ function EndIfInstruction(){
 }
 
 EndIfInstruction.prototype.execute = function(){
-    //game.executeNextInstruction();
-}
+
+};
 
 
 function WhileInstruction(condition){
@@ -641,7 +632,7 @@ function WhileInstruction(condition){
 
 WhileInstruction.prototype.evaluateCondition = function(){
 
-}
+};
 
 WhileInstruction.prototype.execute = function(){
     if(this.condition){
