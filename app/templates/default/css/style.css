@@ -55,4 +55,11 @@ button{
     border-radius: 5px;
 }
 
+#affichePseudo
+{
+    color: red;
+    font-style: italic;
+    font-size: 20px;
+}
+
 

@@ -12,6 +12,7 @@ namespace Controllers;
 
 use Core\View;
 use Core\Controller;
+use Helpers\Session;
 
 /**
  * Sample controller showing a construct and 2 methods and their typical usage.
@@ -36,11 +37,6 @@ class Welcome extends Controller
         $data['title'] = $this->language->get('welcome_text');
         $data['welcome_message'] = $this->language->get('welcome_message');
 
-        /*
-        * C'est ma bite
-        * C'est ma grosse bite
-        * C'est une très grosse bite !
-	*/
 
         View::renderTemplate('header', $data);
         View::render('welcome/welcome', $data);

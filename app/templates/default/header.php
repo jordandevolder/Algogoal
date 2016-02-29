@@ -46,6 +46,12 @@ $hooks = Hooks::get();
                     <li>
                         <a href="/projet/connexion/">Connexion</a>
                     </li>
+                    <li id="affichePseudo">
+                      <?php
+                            if(Session::get('loggedin') == true)
+                                echo Session::get('message')
+                      ?>
+                    </li>
                 </ul>
             </nav>
         </div>
