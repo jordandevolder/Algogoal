@@ -249,13 +249,11 @@ InstructionListManager.prototype.lauchExecution = function(){
 
 InstructionListManager.prototype.execute = function(){
 
-    console.log("bite");
     if(isPlaying){
         game.executeNextInstruction();
         draw();
     }
     else{
-        console.log("BOOM");
         clearInterval(idProcessusExecution);
     }
 };
@@ -326,6 +324,7 @@ function GraphicInstruction(x,y,positionList,element){
     this.elementHTML.id = "instruction"+positionList;
 
 
+    this.elementHTML.style.color = "lightpink";
     this.elementHTML.style.position = "absolute";
     this.elementHTML.style.left = this.posX+'px';
     this.elementHTML.style.top = this.posY+'px';

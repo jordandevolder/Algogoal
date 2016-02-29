@@ -28,9 +28,16 @@ $hooks->run('footer');
 ?>
 
 
-<script src="/projet/javascript/script/classesBases.js"></script>
-<script src="/projet/javascript/script/representation.js"></script>
-<script src="/projet/javascript/script/evenement.js"></script>
+<!-- Include moteur -->
+<script type="text/javascript" src = "/projet/javascript/script/engine/engineExecution.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/engine/engineFactory.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/engine/enginePhysics.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/engine/entities.js"></script>
+<!-- Include graphique -->
+<script type="text/javascript" src = "/projet/javascript/script/engine/globalEngineVariables.js"></script>
+<script type="text/javascript"src="/projet/javascript/script/representation.js"></script>
+<!-- Include evenement -->
+<script type="text/javascript"src="/projet/javascript/script/evenement.js"></script>
 
 </body>
 </html>
