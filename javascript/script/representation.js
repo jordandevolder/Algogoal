@@ -322,9 +322,24 @@ function GraphicInstruction(x,y,positionList,element){
     this.elementHTML = document.createElement('p');
     this.elementHTML.appendChild(node);
     this.elementHTML.id = "instruction"+positionList;
-
-
-    this.elementHTML.style.color = "lightpink";
+    switch(element)
+    {
+        case "while":
+            this.elementHTML.style.color = "red";
+            break;
+        case "if":
+            this.elementHTML.style.color = "blue";
+            break;
+        case "endWhile":
+            this.elementHTML.style.color = "red";
+            break;
+        case "endIf":
+            this.elementHTML.style.color = "blue";
+            break;
+        default:
+            this.elementHTML.style.color="black";
+            break;
+    }
     this.elementHTML.style.position = "absolute";
     this.elementHTML.style.left = this.posX+'px';
     this.elementHTML.style.top = this.posY+'px';

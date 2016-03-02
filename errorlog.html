@@ -1295,3 +1295,28 @@
 #8 {main}</pre>
 
            <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Feb 29, 2016 21:39PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S22]: Column not found: 1054 Champ 'mail' inconnu dans field list UPDATE personne SET pseudo = ?,motdepasse = ?,mail = ?,cookie = ?,id = ?WHERE id=?</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> F:\wamp\www\projet\app\Helpers\DB\DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 F:\wamp\www\projet\app\Helpers\DB\EntityManager.php(99): Helpers\DB\DBManager->execute(Array)
+#1 F:\wamp\www\projet\app\Helpers\DB\EntityManager.php(45): Helpers\DB\EntityManager->update(Object(Models\Tables\Personne))
+#2 F:\wamp\www\projet\app\Controllers\Connexion.php(66): Helpers\DB\EntityManager->save(Object(Models\Tables\Personne))
+#3 [internal function]: Controllers\Connexion->connexion()
+#4 F:\wamp\www\projet\app\Core\Router.php(126): call_user_func_array(Array, Array)
+#5 F:\wamp\www\projet\app\Core\Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 F:\wamp\www\projet\app\Core\routes.php(35): Core\Router::dispatch()
+#7 F:\wamp\www\projet\index.php(81): require('F:\\wamp\\www\\pro...')
+#8 {main}</pre>
+
+           <hr />

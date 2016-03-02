@@ -43,39 +43,34 @@ class Connexion extends Controller
 
     public function connexion() {
 
-        $data['title'] = 'Projet tutoré semeste 4';
-
-        if (isset($_POST['login'])) {
-            // If input is valid then check for username and password matching
-
-                $user = $this->userSQL->prepareFindByLogin($_POST['login']);
-                if ($user == false || Password::verify($_POST['password'], $user->password) == false)
-                    $error[] = 'Mauvaises données';
-            else {
-                // $is_valid holds an array for the errors.
-                $error = false;
-            }
-            if (!$error) {
-                $error[] = "je suis rentré";
-                Session::set('loggedin', true);
-                Session::set('id', $user->getId());
-                Session::set('login', $user->login);
-                if (isset($_POST['remember'])) {
-                    $user->cookie = $this->randomkey(64);
-                    $this->entityManager->save($user);
-                    setcookie("remember", $user->cookie, time() + 3600 * 31 * 24,DIR);
-                }
-                Session::set('message', "Bienvenu $user->login");
-                Session::set('message_type', 'alert-success');
-                Url::redirect();
-                exit();
-            }
+        $user = $this->userSQL->prepareFindByLogin($_POST['login']);
+        if ($user == false || Password::verify($_POST['password'], $user->motdepasse) == false){
+            // changer le render pour un url::redirect mais ajouter un message dans la session de mauvaise donnée
+            $data['erreurCo'] = "Mauvaise données";
+            $data['title'] = "Connexion";
+            View::renderTemplate('header', $data);
+            View::render('connexion/connexion', $data);
+            View::renderTemplate('footer', $data);
+            exit();
         }
+        else {
+            // $is_valid holds an array for the errors.
+            $error = false;
+        }
+        if (!$error) {
+            Session::set('loggedin', true);
+            Session::set('id', $user->getId());
+            Session::set('login', $user->pseudo);
 
-        View::rendertemplate('header', $data);
-        View::render('welcome/welcome', $data, $error);
-        View::rendertemplate('footer', $data);
+            $user->cookie = rand(0,64);
+            setcookie("remember", $user->cookie, time() + 3600 * 31 * 24, DIR);
+
+            Session::set('message', "Bienvenue $user->pseudo");
+            Session::set('message_type', 'alert-success');
+        }
+           Url::redirect();
     }
+
 
 
 

@@ -21,9 +21,9 @@
 ?>
 
 <form action="linscription" method="post">
-    Nom d'utilisateur: <input type="text" name="pseudo"><br/>
-    Mot de passe: <input type="password" name="password"><br/>
-    Mot de passe de nouveau: <input type="password" name="password-again"><br/>
+    Nom d'utilisateur: <input type="text" name="pseudo" required><br/>
+    Mot de passe: <input type="password" name="password" required><br/>
+    Mot de passe de nouveau: <input type="password" name="password-again" required><br/>
     Email: <input type="email" name="email""><br/>
     <input type="submit" name="inscription"">
 </form>
