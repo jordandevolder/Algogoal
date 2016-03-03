@@ -99,8 +99,14 @@ function loadEvent(){
 
     var execute = document.getElementById("execute");
     execute.addEventListener('click', function() {
-        listManager.buildLogicInstruction();
-        listManager.lauchExecution();
+        game.buildLogicInstruction();
+        launcher.launch();
     });
+
+    var clear = document.getElementById("clear");
+    clear.addEventListener('click',function(){
+        reinit();
+     });
+
 
 }

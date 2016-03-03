@@ -118,3 +118,10 @@ InstructionListManager.prototype.addInstruction = function(string){
     this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
     this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
 };
+
+InstructionListManager.prototype.clearList = function(){
+
+    while (this.container.firstChild) {
+        this.container.removeChild(this.container.firstChild);
+    }
+};

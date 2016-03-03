@@ -7,16 +7,19 @@
 function GameExecution(){
     this.listExecution = [];
     this.currentPosition = 0;
-    this.isWorking = true;
 }
+
+GameExecution.prototype.buildLogicInstruction = function() {
+    this.createInstructionsFromArray();
+};
 
 GameExecution.prototype.setCurrentPosition = function(index){
     this.currentPosition = index;
-}
+};
 
 GameExecution.prototype.addInstruction = function(instruction){
     this.listExecution.push(instruction);
-}
+};
 
 GameExecution.prototype.createInstructionsFromArray = function(){
     var whilePosition = [];
@@ -47,18 +50,36 @@ GameExecution.prototype.createInstructionsFromArray = function(){
     console.log(this.listExecution);
 };
 
-GameExecution.prototype.lauchExecution = function(){
-    this.listExecution[this.currentPosition++].execute();
-};
-
 GameExecution.prototype.executeNextInstruction = function(){
-    if(this.currentPosition >= this.listExecution.length || !this.isWorking){
+    if((this.currentPosition >= this.listExecution.length) || (!isPlaying)){
         isPlaying = false;
     }
-    else{
+    else {
         this.listExecution[this.currentPosition++].execute();
     }
 };
+
+function GameLauncher(){
+    idProcessusExecution = 0;
+    this.timeBetweenExecution = 500;
+}
+
+GameLauncher.prototype.launch = function(){
+    idProcessusExecution = setInterval(this.go, this.timeBetweenExecution);
+};
+
+GameLauncher.prototype.go = function(){
+    if(isPlaying){
+        game.executeNextInstruction();
+        draw();
+    }
+    else{
+        clearInterval(idProcessusExecution);
+    }
+};
+
+
+
 
 
 /***********************/
@@ -204,6 +225,7 @@ Affichage.prototype.execute = function(){
     console.log("Affichage test ");
     game.executeNextInstruction();
 };
+
 
 
 
