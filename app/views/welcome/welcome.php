@@ -29,7 +29,8 @@ use Helpers\Session;
 	<!-- Game board and instruction list  -->
 	<div class=\"row\">
 		<div class=\"col-lg-7\"> <div id=\"board\"><canvas id=\"mon_canvas\" width=\"640\" height=\"640\"></canvas></div> </div>
-		<div class=\"col-lg-5\"> <div id=\"instructionList\"></div> <button id=\"execute\">Executer</button></div>
+		<div class=\"col-lg-5\"> <div id=\"instructionList\"></div> <button id=\"execute\">Execute</button> <button id=\"refresh\">Refresh</button></div>
+
 	</div>
 
 	</br>

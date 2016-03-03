@@ -204,3 +204,13 @@ Affichage.prototype.execute = function(){
     console.log("Affichage test ");
     game.executeNextInstruction();
 };
+
+
+
+/*
+ IMPORTANT
+ NOTE POUR GERER LES BOOLEANS
+ ON FAIT UNE HASH MAP et on associe tableauBooleanEtatJeu["nomVariable"] et on y accéde facilement
+
+
+ */
