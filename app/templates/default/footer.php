@@ -33,10 +33,15 @@ $hooks->run('footer');
 <script type="text/javascript" src = "/projet/javascript/script/engine/engineFactory.js"></script>
 <script type="text/javascript" src = "/projet/javascript/script/engine/enginePhysics.js"></script>
 <script type="text/javascript" src = "/projet/javascript/script/engine/entities.js"></script>
-<!-- Include graphique -->
 <script type="text/javascript" src = "/projet/javascript/script/engine/globalEngineVariables.js"></script>
-<script type="text/javascript"src="/projet/javascript/script/representation.js"></script>
-<!-- Include evenement -->
+<!-- Include graphique -->
+<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicFactory.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicInstructions.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicMap.js"></script>
+<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicEntities.js"></script>
+
+
+<!-- Include evenement    <script type="text/javascript"src="/projet/javascript/script/representation.js"></script> -->
 <script type="text/javascript"src="/projet/javascript/script/evenement.js"></script>
 
 </body>
