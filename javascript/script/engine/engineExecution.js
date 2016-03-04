@@ -233,6 +233,70 @@ Affichage.prototype.execute = function(){
  IMPORTANT
  NOTE POUR GERER LES BOOLEANS
  ON FAIT UNE HASH MAP et on associe tableauBooleanEtatJeu["nomVariable"] et on y accéde facilement
-
-
  */
+
+/* Zone de test sur l'interpretation des booleans */
+
+function NotationPolonaiseInverse (){
+    this.pileOperateur = [];
+    this.output = [];
+
+    this.hasDetectOpen = false;
+    this.hasDetectClose = false;
+
+    this.priorityToken = {};
+    this.priorityToken["&&"] = 1;
+    this.priorityToken["||"] = 2;
+    this.priorityToken["!"] = 3;
+}
+
+NotationPolonaiseInverse.prototype.getPriority = function(elem1, elem2){
+    return this.priorityToken[elem1] > this.priorityToken[elem2];
+};
+
+NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
+
+    for(var i = 0; i < stringArray.length; i++){
+        if(stringArray[i] == "("){
+            this.pileOperateur.push("(");
+        }
+        else if(stringArray[i] == ")"){
+            while(this.pileOperateur[this.pileOperateur.length - 1] != "("){
+                this.output.push(this.pileOperateur[this.pileOperateur.length - 1]);
+                this.pileOperateur.pop();
+            }
+            this.pileOperateur.pop();
+        }
+        else if(stringArray[i] == "&&" || stringArray[i] == "||" || stringArray[i] == "!"){ //4)
+            if(this.pileOperateur.length == 0){ //5.1
+                this.pileOperateur.push(stringArray[i]);
+            }
+            else if(this.pileOperateur[this.pileOperateur.length - 1] == "("){ //5.2
+                this.pileOperateur.push(stringArray[i]);
+            }
+            else if(this.getPriority(stringArray[i],this.pileOperateur[this.pileOperateur.length - 1])){//5.3
+                this.pileOperateur.push(stringArray[i]);
+            }
+            else{ //5.4
+                this.output.push(this.pileOperateur[this.pileOperateur.length - 1]);
+                this.pileOperateur.pop();
+                this.pileOperateur.push(stringArray[i]);
+            }
+        }
+        else{ //2)
+            this.output.push(stringArray[i]);
+        }
+    }
+
+    //On vide le reste de la pile
+    for(var i = 0; i < this.pileOperateur.length; i++){
+        this.output.push(this.pileOperateur[i]);
+    }
+};
+
+tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
+//tableau = ["(","1","||","3",")", "&&","(","3","||","4",")"];
+console.log(tableau);
+notation = new NotationPolonaiseInverse();
+notation.createNotation(tableau);
+console.log(notation.output);
