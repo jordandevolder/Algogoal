@@ -110,6 +110,7 @@ player = new Player(5,0,OrientationType.RIGHT,10);
 player.updateSpeedDirection();
 map = new Map(10,10, mapLevel3);
 game = new GameExecution();
+launcher = new GameLauncher();
 tokens = [];
 
 
@@ -133,6 +134,8 @@ isWin = false;
 isLoose = false;
 isPlaying = true;
 
+idProcessusExecution = 0;
+
 
 /***********************/
 /*                     */
@@ -149,4 +152,28 @@ function updateGameState(){
 
 function hasWin(){
     isWin = (map.map[player.x][player.y].idType == EntityType.GOAL);
+}
+
+function reinit(){
+    listManager.clearList();
+
+    player = new Player(5,0,OrientationType.RIGHT,10);
+    player.updateSpeedDirection();
+    map = new Map(10,10, mapLevel3);
+    game = new GameExecution();
+    launcher = new GameLauncher();
+    tokens = [];
+    listManager = new InstructionListManager();
+    idProcessusExecution = 0;
+
+    canMove = false;
+    canJump = false;
+    canCollect = false;
+    canPush = false;
+
+    isWin = false;
+    isLoose = false;
+    isPlaying = true;
+
+    draw();
 }

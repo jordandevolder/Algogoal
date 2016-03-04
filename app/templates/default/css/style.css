@@ -56,6 +56,9 @@ button{
     border-radius: 5px;
 }
 
+
+
+/* Barre de menu */
 #affichePseudo
 {
     color: red;
@@ -63,4 +66,18 @@ button{
     font-size: 20px;
 }
 
+#titreRegleCentre{
+
+    text-align: center;
+    border: 2px solid #243640;
+    border-radius: 5px;
+    color:#243640;
+}
+
+#sousTitreRegleCentre{
+    text-align: center;
+    border: 2px solid #243640;;
+    border-radius: 5px;
+    color:#243640;
+}
 
