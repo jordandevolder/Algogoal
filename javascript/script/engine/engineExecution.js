@@ -246,8 +246,8 @@ function NotationPolonaiseInverse (){
     this.output = [];
 
     this.priorityToken = {};
-    this.priorityToken["&&"] = 1;
-    this.priorityToken["||"] = 2;
+    this.priorityToken["||"] = 1;
+    this.priorityToken["&&"] = 2;
     this.priorityToken["!"] = 3;
 }
 
@@ -272,7 +272,7 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
             if(this.pileOperateur.length == 0){ //5.1
                 this.pileOperateur.push(stringArray[i]);
             }
-            else if(this.pileOperateur[this.pileOperateur.length - 1] == "("){ //5.2
+            else if(this.pileOperateur[this.pileOperateur.length - 1] == "(") { //5.2
                 this.pileOperateur.push(stringArray[i]);
             }
             else if(this.getPriority(stringArray[i],this.pileOperateur[this.pileOperateur.length - 1])){//5.3
@@ -300,40 +300,52 @@ function BuildInterpreterCondition(expressionPolonaise){
 
     this.expression = expressionPolonaise;
     this.listOperande = [];
-    this.listOperateur = [];
-    this.resultat = false;
+    this.listOperator = [];
+    this.resultat = true
 }
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
+
+    //Let's dispatch operande and operator
     for(var i = 0; i < this.expression.length; i++){
         if(this.expression[i] == "&&" || this.expression[i] == "||" || this.expression[i] == "!"){
-            while(this.listOperande.length != 0){
-                if(this.expression[i] == "&&"){
-
-                    this.resultat = this.resultat && tableauEtat[this.listOperande[this.listOperande.length - 1]];
-                    this.listOperande.pop();
-                }
-                else if(this.expression[i] == "||"){
-                    this.resultat = this.resultat || tableauEtat[this.listOperande[this.listOperande.length - 1]];
-                }
-                else{
-                    console.log("bite");
-                }
-                this.listOperande.pop();
-            }
+            this.listOperator.push(this.expression[i]);
         }
-        else {
+        else{
             this.listOperande.push(this.expression[i]);
         }
     }
+
+
+    while(this.listOperator.length != 0){
+        var resultatTmp;
+        if(this.listOperator[0] == "&&"){
+            resultatTmp = tableauEtat[this.listOperande[this.listOperande.length -1]] && tableauEtat[this.listOperande[this.listOperande.length -2]];
+            this.listOperande.pop();
+            this.listOperande.pop();
+            this.listOperande.push(resultatTmp);
+        }
+        else if(this.listOperator[0] == "||"){
+            resultatTmp = tableauEtat[this.listOperande[this.listOperande.length -1]] || tableauEtat[this.listOperande[this.listOperande.length -2]];
+            this.listOperande.pop();
+            this.listOperande.pop();
+            this.listOperande.push(resultatTmp);
+        }
+        else{
+
+        }
+        this.listOperator.pop();
+    }
+
+    console.log(this.listOperande);
 };
 
 /* Etat game */
 
-canMoveOp = true;
-canJumpOp = true;
+canMoveOp = false;
+canJumpOp = false;
 canCollectOp = true;
-canPushOp = true;
+canPushOp = false;
 
 tableauEtat = {};
 
@@ -347,7 +359,9 @@ tableauEtat["canPush"] = canPushOp;
 //tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
 
 //tableau = ["(","canJump","&&","canCollect",")","||","canMove"];
-tableau = ["canMove","||","(","canJump","&&","canCollect",")"]; //Erreur avec celle ci
+//tableau = ["canMove","||","(","canJump","&&","canCollect",")"]; //Erreur avec celle ci
+//tableau = ["canMove","&&","(","canJump","||","canCollect","||","canPush",")"];
+tableau = ["(","canMove","||","canPush",")","&&","(","canCollect","||","canJump",")"];
 notation = new NotationPolonaiseInverse();
 notation.createNotation(tableau);
 console.log(notation.output);
@@ -355,4 +369,22 @@ console.log(notation.output);
 interpret = new BuildInterpreterCondition(notation.output);
 interpret.evaluateExpression();
 
-console.log(interpret.resultat);
+//console.log(interpret.resultat);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
