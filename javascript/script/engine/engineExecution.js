@@ -237,12 +237,13 @@ Affichage.prototype.execute = function(){
 
 /* Zone de test sur l'interpretation des booleans */
 
+
+
+
+
 function NotationPolonaiseInverse (){
     this.pileOperateur = [];
     this.output = [];
-
-    this.hasDetectOpen = false;
-    this.hasDetectClose = false;
 
     this.priorityToken = {};
     this.priorityToken["&&"] = 1;
@@ -294,9 +295,64 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
     }
 };
 
-tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
-//tableau = ["(","1","||","3",")", "&&","(","3","||","4",")"];
-console.log(tableau);
+
+function BuildInterpreterCondition(expressionPolonaise){
+
+    this.expression = expressionPolonaise;
+    this.listOperande = [];
+    this.listOperateur = [];
+    this.resultat = false;
+}
+
+BuildInterpreterCondition.prototype.evaluateExpression = function(){
+    for(var i = 0; i < this.expression.length; i++){
+        if(this.expression[i] == "&&" || this.expression[i] == "||" || this.expression[i] == "!"){
+            while(this.listOperande.length != 0){
+                if(this.expression[i] == "&&"){
+
+                    this.resultat = this.resultat && tableauEtat[this.listOperande[this.listOperande.length - 1]];
+                    this.listOperande.pop();
+                }
+                else if(this.expression[i] == "||"){
+                    this.resultat = this.resultat || tableauEtat[this.listOperande[this.listOperande.length - 1]];
+                }
+                else{
+                    console.log("bite");
+                }
+                this.listOperande.pop();
+            }
+        }
+        else {
+            this.listOperande.push(this.expression[i]);
+        }
+    }
+};
+
+/* Etat game */
+
+canMoveOp = true;
+canJumpOp = true;
+canCollectOp = true;
+canPushOp = true;
+
+tableauEtat = {};
+
+tableauEtat["canMove"] = canMoveOp;
+tableauEtat["canJump"] = canJumpOp;
+tableauEtat["canCollect"] = canCollectOp;
+tableauEtat["canPush"] = canPushOp;
+
+/* Zone variable test */
+
+//tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
+
+//tableau = ["(","canJump","&&","canCollect",")","||","canMove"];
+tableau = ["canMove","||","(","canJump","&&","canCollect",")"]; //Erreur avec celle ci
 notation = new NotationPolonaiseInverse();
 notation.createNotation(tableau);
 console.log(notation.output);
+
+interpret = new BuildInterpreterCondition(notation.output);
+interpret.evaluateExpression();
+
+console.log(interpret.resultat);
