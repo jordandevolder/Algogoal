@@ -32,7 +32,7 @@
     display:inline-block;
     width:100%;
     min-height: 650px;
-    overflow: scroll;
+    /*overflow: scroll;*/
 }
 
 /* Instruction button */

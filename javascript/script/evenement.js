@@ -95,6 +95,33 @@ function loadEvent(){
         listManager.addInstruction("canPush");
     });
 
+    var openPar = document.getElementById("openPar");
+    openPar.addEventListener('click', function() {
+        listManager.addInstruction("(");
+    });
+
+    var closePar = document.getElementById("closePar");
+    closePar.addEventListener('click', function() {
+        listManager.addInstruction(")");
+    });
+
+    var startCon = document.getElementById("startCon");
+    startCon.addEventListener('click', function() {
+        listManager.addInstruction("[");
+    });
+
+
+    var endCon = document.getElementById("endCon");
+    endCon.addEventListener('click', function() {
+        listManager.addInstruction("]");
+    });
+
+    var speedExec = document.getElementById("speedExec");
+    speedExec.addEventListener('click',function(){
+        launcher.changeInterval();
+    });
+
+
     /* Execution */
 
     var execute = document.getElementById("execute");
@@ -107,6 +134,4 @@ function loadEvent(){
     clear.addEventListener('click',function(){
         reinit();
      });
-
-
 }

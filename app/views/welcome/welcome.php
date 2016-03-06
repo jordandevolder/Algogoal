@@ -32,6 +32,7 @@ use Helpers\Session;
 		<div class=\"col-lg-5\"> <div id=\"instructionList\"></div>
 									<button id=\"execute\">Execute</button>
 									<button id=\"clear\">Clear</button>
+									<button id=\"speedExec\">* 1</button>
 								</div>
 
 	</div>
@@ -61,6 +62,9 @@ use Helpers\Session;
 				<button id=\"if\"> if</button>
 				<button id=\"endIf\"> endIf</button>
 				<button id=\"break\"> break </button>
+				<button id=\"startCon\"> [ </button>
+				<button id=\"endCon\"> ] </button>
+
 			</div>
 		</div>
 		<div class=\"col-lg-3\">
@@ -73,6 +77,8 @@ use Helpers\Session;
 				<button id=\"canJump\"> canJump </button>
 				<button id=\"canCollect\"> canCollect </button>
 				<button id=\"canPush\"> canPush </button>
+				<button id=\"openPar\"> ( </button>
+				<button id=\"closePar\"> ) </button>
 			</div>
 		</div>
 		<div class=\"col-lg-3\">

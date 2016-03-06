@@ -61,11 +61,25 @@ GameExecution.prototype.executeNextInstruction = function(){
 
 function GameLauncher(){
     idProcessusExecution = 0;
-    this.timeBetweenExecution = 500;
+    this.baseTimeBetween = 1500;
+    this.currentDiviser = 1;
+    this.currentTimeExecution = this.baseTimeBetween*this.currentDiviser;
 }
 
 GameLauncher.prototype.launch = function(){
-    idProcessusExecution = setInterval(this.go, this.timeBetweenExecution);
+    isPlaying = true;
+    idProcessusExecution = setInterval(this.go, this.currentTimeExecution);
+};
+
+GameLauncher.prototype.changeInterval = function(){
+    this.currentDiviser++;
+    if(this.currentDiviser > 3){
+        this.currentDiviser = 1;
+    }
+    document.getElementById("speedExec").innerText = "* "+this.currentDiviser;
+    clearInterval(idProcessusExecution);
+    this.currentTimeExecution = this.baseTimeBetween / this.currentDiviser;
+    this.launch();
 };
 
 GameLauncher.prototype.go = function(){
@@ -316,25 +330,29 @@ BuildInterpreterCondition.prototype.evaluateExpression = function(){
         }
     }
 
+    if(this.listOperator.length == 0){
+        this.listOperande = tableauEtat[this.listOperande[0]];
+    }
+    else {
+        while (this.listOperator.length != 0) {
+            var resultatTmp;
+            if (this.listOperator[0] == "&&") {
+                resultatTmp = tableauEtat[this.listOperande[this.listOperande.length - 1]] && tableauEtat[this.listOperande[this.listOperande.length - 2]];
+                this.listOperande.pop();
+                this.listOperande.pop();
+                this.listOperande.push(resultatTmp);
+            }
+            else if (this.listOperator[0] == "||") {
+                resultatTmp = tableauEtat[this.listOperande[this.listOperande.length - 1]] || tableauEtat[this.listOperande[this.listOperande.length - 2]];
+                this.listOperande.pop();
+                this.listOperande.pop();
+                this.listOperande.push(resultatTmp);
+            }
+            else {
 
-    while(this.listOperator.length != 0){
-        var resultatTmp;
-        if(this.listOperator[0] == "&&"){
-            resultatTmp = tableauEtat[this.listOperande[this.listOperande.length -1]] && tableauEtat[this.listOperande[this.listOperande.length -2]];
-            this.listOperande.pop();
-            this.listOperande.pop();
-            this.listOperande.push(resultatTmp);
+            }
+            this.listOperator.pop();
         }
-        else if(this.listOperator[0] == "||"){
-            resultatTmp = tableauEtat[this.listOperande[this.listOperande.length -1]] || tableauEtat[this.listOperande[this.listOperande.length -2]];
-            this.listOperande.pop();
-            this.listOperande.pop();
-            this.listOperande.push(resultatTmp);
-        }
-        else{
-
-        }
-        this.listOperator.pop();
     }
 
     console.log(this.listOperande);
@@ -342,7 +360,7 @@ BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
 /* Etat game */
 
-canMoveOp = false;
+canMoveOp = true;
 canJumpOp = false;
 canCollectOp = true;
 canPushOp = false;
@@ -361,7 +379,8 @@ tableauEtat["canPush"] = canPushOp;
 //tableau = ["(","canJump","&&","canCollect",")","||","canMove"];
 //tableau = ["canMove","||","(","canJump","&&","canCollect",")"]; //Erreur avec celle ci
 //tableau = ["canMove","&&","(","canJump","||","canCollect","||","canPush",")"];
-tableau = ["(","canMove","||","canPush",")","&&","(","canCollect","||","canJump",")"];
+//tableau = ["(","canMove","||","canPush",")","&&","(","canCollect","||","canJump",")"];
+tableau = ["canMove","||","canJump"];
 notation = new NotationPolonaiseInverse();
 notation.createNotation(tableau);
 console.log(notation.output);

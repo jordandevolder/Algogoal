@@ -66,30 +66,7 @@ function InstructionListManager(){
     this.currentX = this.startingXPosition;
     this.currentY = this.startingYPosition;
 
-    this.iterateurExecution = 0;
-
-    //this.idProcessusExecution;
 }
-
-
-InstructionListManager.prototype.buildLogicInstruction = function(){
-    game.createInstructionsFromArray();
-};
-
-InstructionListManager.prototype.lauchExecution = function(){
-    idProcessusExecution = setInterval(this.execute, 500);
-};
-
-InstructionListManager.prototype.execute = function(){
-
-    if(isPlaying){
-        game.executeNextInstruction();
-        draw();
-    }
-    else{
-        clearInterval(idProcessusExecution);
-    }
-};
 
 InstructionListManager.prototype.addInstruction = function(string){
 
@@ -117,6 +94,7 @@ InstructionListManager.prototype.addInstruction = function(string){
     this.nbInstruction++;
     this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
     this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
+
 };
 
 InstructionListManager.prototype.clearList = function(){
