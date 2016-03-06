@@ -24,6 +24,10 @@ GridMap.prototype.drawGrid = function(){
     }
 };
 
+function testtest(){
+
+}
+
 
 GridMap.prototype.drawMap = function(){
     for(var i = 0; i < this.nbTileX; i++){

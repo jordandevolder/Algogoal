@@ -148,10 +148,11 @@ function updateGameState(){
     canJump = physic.willCollided(map,player,2);
     canCollect = physic.ableToGather(map,player);
     canPush = physic.ableToPush(map,player);
+    isWin = (map.map[player.x][player.y].typeId == EntityType.GOAL);
 }
 
 function hasWin(){
-    isWin = (map.map[player.x][player.y].idType == EntityType.GOAL);
+    isWin = (map.map[player.x][player.y].typeId == EntityType.GOAL);
 }
 
 function reinit(){
@@ -165,6 +166,7 @@ function reinit(){
     tokens = [];
     listManager = new InstructionListManager();
     idProcessusExecution = 0;
+    document.getElementById("speedExec").innerText = "* "+1;
 
     canMove = false;
     canJump = false;

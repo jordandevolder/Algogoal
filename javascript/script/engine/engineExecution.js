@@ -83,12 +83,26 @@ GameLauncher.prototype.changeInterval = function(){
 };
 
 GameLauncher.prototype.go = function(){
+    updateGameState();
+
     if(isPlaying){
-        game.executeNextInstruction();
-        draw();
+        if(isWin){
+            alert("VICTORY");
+            clearInterval(idProcessusExecution);
+        }
+        else {
+            game.executeNextInstruction();
+            draw();
+        }
     }
     else{
         clearInterval(idProcessusExecution);
+        if(isWin){
+            alert("VICTORY");
+        }
+        else{
+            alert("LOSE");
+        }
     }
 };
 
@@ -163,7 +177,6 @@ function EndWhileInstruction(){
 EndWhileInstruction.prototype.execute = function(){
     //We have to back to the while start
     game.setCurrentPosition(this.positionWhile); //Ici la position doit être sur le while
-    //game.executeNextInstruction();
 };
 
 
@@ -174,7 +187,6 @@ function BreakInstruction(){
 
 BreakInstruction.prototype.execute = function(){
     game.setCurrentPosition(0); //Ici on doit mettre la position au end while + 1
-    //game.executeNextInstruction();
 };
 
 function MoveInstruction(){
@@ -183,7 +195,6 @@ function MoveInstruction(){
 
 MoveInstruction.prototype.execute = function(){
     player.move(map);
-    //game.executeNextInstruction();
 };
 
 function JumpInstruction(){
@@ -192,7 +203,6 @@ function JumpInstruction(){
 
 JumpInstruction.prototype.execute = function(){
     player.jump(map);
-    //game.executeNextInstruction();
 };
 
 function CollectInstruction(){
@@ -201,7 +211,6 @@ function CollectInstruction(){
 
 CollectInstruction.prototype.execute = function(){
     player.collect(map);
-    //game.executeNextInstruction();
 };
 
 function PushInstruction(){
@@ -210,7 +219,6 @@ function PushInstruction(){
 
 PushInstruction.prototype.execute = function(){
     player.push(map);
-    //game.executeNextInstruction();
 };
 
 function RotateLeftInstruction(){
@@ -219,7 +227,6 @@ function RotateLeftInstruction(){
 
 RotateLeftInstruction.prototype.execute = function(){
     player.leftRotate();
-    //game.executeNextInstruction();
 };
 
 function RotateRightInstruction(){
@@ -228,7 +235,6 @@ function RotateRightInstruction(){
 
 RotateRightInstruction.prototype.execute = function(){
     player.rightRotate();
-    //game.executeNextInstruction();
 };
 
 function Affichage(){
@@ -283,22 +289,22 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
             this.pileOperateur.pop();
         }
         else if(stringArray[i] == "&&" || stringArray[i] == "||" || stringArray[i] == "!"){ //4)
-            if(this.pileOperateur.length == 0){ //5.1
+            if(this.pileOperateur.length == 0){
                 this.pileOperateur.push(stringArray[i]);
             }
-            else if(this.pileOperateur[this.pileOperateur.length - 1] == "(") { //5.2
+            else if(this.pileOperateur[this.pileOperateur.length - 1] == "(") {
                 this.pileOperateur.push(stringArray[i]);
             }
             else if(this.getPriority(stringArray[i],this.pileOperateur[this.pileOperateur.length - 1])){//5.3
                 this.pileOperateur.push(stringArray[i]);
             }
-            else{ //5.4
+            else{
                 this.output.push(this.pileOperateur[this.pileOperateur.length - 1]);
                 this.pileOperateur.pop();
                 this.pileOperateur.push(stringArray[i]);
             }
         }
-        else{ //2)
+        else{
             this.output.push(stringArray[i]);
         }
     }
@@ -315,7 +321,6 @@ function BuildInterpreterCondition(expressionPolonaise){
     this.expression = expressionPolonaise;
     this.listOperande = [];
     this.listOperator = [];
-    this.resultat = true
 }
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){

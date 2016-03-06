@@ -20,6 +20,7 @@ window.onload = function()
         alert("Impossible de récupérer le context du canvas");
         return;
     }
+
     createImageTab();
     loadEvent();
     grid = new GridMap();

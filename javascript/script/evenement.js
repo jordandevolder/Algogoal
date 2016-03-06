@@ -125,7 +125,11 @@ function loadEvent(){
     /* Execution */
 
     var execute = document.getElementById("execute");
-    execute.addEventListener('click', function() {
+    execute.addEventListener('click', function(){
+        console.log(tokens);
+        player = new Player(5,0,OrientationType.RIGHT,10);
+        player.updateSpeedDirection();
+        draw();
         game.buildLogicInstruction();
         launcher.launch();
     });
