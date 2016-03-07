@@ -126,7 +126,6 @@ function loadEvent(){
 
     var execute = document.getElementById("execute");
     execute.addEventListener('click', function(){
-        console.log(tokens);
         player = new Player(5,0,OrientationType.RIGHT,10);
         player.updateSpeedDirection();
         draw();

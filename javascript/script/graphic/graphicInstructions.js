@@ -96,8 +96,6 @@ InstructionListManager.prototype.addInstruction = function(string){
     }
 
     if(string == "]"){
-        console.log(this.currentConditionBuilding);
-        console.log("fin");
         this.isWaitingForConditionEnd = false;
         tokens.push(this.currentConditionBuilding);
         this.nbImbrication++;
@@ -112,7 +110,7 @@ InstructionListManager.prototype.addInstruction = function(string){
 
         /* Fin partie Ajoute */
 
-        //Les structures qui ont besoin de perdre une indentation et d'update donc la position tout de suite
+        //Les structures qui ont besoin de perdre une indentation et donc d'update la position tout de suite
         tokens.push(string);
         if (string == "endWhile" || string == "endIf") {
             this.nbImbrication--;

@@ -42,18 +42,26 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
  * Factory used to create an instruction from a single string value
  */
 function InstructionFactory(){
-
+    this.regexW = new RegExp(/^while/);
+    this.regexI = new RegExp(/^if/);
 }
 
 InstructionFactory.prototype.constructInstruction = function(string){
+
+    /* On gere les cas particuliers que sont le while et le if */
+    if(string.search(this.regexW) >= 0){
+        return new WhileInstruction(string);
+
+    }
+    else if(string.search(this.regexI) >= 0){
+        return new IfInstruction(string);
+    }
+
+    /* On gere les autres cas basiques */
     switch(string)
     {
-        case "while":
-            return new WhileInstruction(true);
         case "endWhile":
             return new EndWhileInstruction();
-        case "if":
-            return new IfInstruction(false);
         case "endIf":
             return new EndIfInstruction();
         case "move":

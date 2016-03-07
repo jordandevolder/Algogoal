@@ -7,6 +7,10 @@
 function GameExecution(){
     this.listExecution = [];
     this.currentPosition = 0;
+
+    this.regexWhile = new RegExp(/^while/);
+    this.regexIf = new RegExp(/^if/);
+
 }
 
 GameExecution.prototype.buildLogicInstruction = function() {
@@ -22,32 +26,31 @@ GameExecution.prototype.addInstruction = function(instruction){
 };
 
 GameExecution.prototype.createInstructionsFromArray = function(){
+
     var whilePosition = [];
     var ifPosition = [];
     for(var i = 0; i < tokens.length; i++){
         this.listExecution.push(factoryInstrution.constructInstruction(tokens[i]));
-        if(tokens[i] == "while"){
+        if(tokens[i].search(this.regexWhile) >= 0){
             whilePosition.push(i);
         }
 
-        if(tokens[i] == "if"){
+        if(tokens[i].search(this.regexIf)){
             ifPosition.push(i);
-        }
+         }
 
 
         if(tokens[i] == "endIf"){
-            this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
-            ifPosition.pop();
+          this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
+          ifPosition.pop();
         }
 
         if(tokens[i] == "endWhile"){
-            this.listExecution[whilePosition[whilePosition.length-1]].positionEndWhile = i;
-            this.listExecution[i].positionWhile = whilePosition[whilePosition.length-1];
-            whilePosition.pop();
+           this.listExecution[whilePosition[whilePosition.length-1]].positionEndWhile = i;
+           this.listExecution[i].positionWhile = whilePosition[whilePosition.length-1];
+           whilePosition.pop();
         }
     }
-
-    console.log(this.listExecution);
 };
 
 GameExecution.prototype.executeNextInstruction = function(){
@@ -151,21 +154,33 @@ EndIfInstruction.prototype.execute = function(){
 
 
 function WhileInstruction(condition){
-    this.condition = condition;
+
     this.positionEndWhile = -1;
+    this.notationPolonaiseCondition = new NotationPolonaiseInverse();
+
+    var tableauCondition = condition.split(" ");
+    tableauCondition.splice(0,2);
+    tableauCondition.splice(tableauCondition.length-1, tableauCondition.length);
+
+    this.notationPolonaiseCondition.createNotation(tableauCondition);
+    this.evaluator = new BuildInterpreterCondition(this.notationPolonaiseCondition.output);
+
 }
 
 WhileInstruction.prototype.evaluateCondition = function(){
-
+    return this.evaluator.evaluateExpression();
 };
 
 WhileInstruction.prototype.execute = function(){
-    if(this.condition){
-        return true;
+    console.log("Passage");
+    if(this.evaluateCondition()){
+        this.evaluator.listOperande = [];
+        this.evaluator.listOperator = [];
     }
     else{ //Condition isn't valuate at true, we have to break the loop and go to the end while
+        this.evaluator.listOperande = [];
+        this.evaluator.listOperator = [];
         game.setCurrentPosition(this.positionEndWhile+1); //Ici on doit mettre à position end while + 1
-        return false;
     }
 };
 
@@ -247,15 +262,6 @@ Affichage.prototype.execute = function(){
 };
 
 
-
-
-/*
- IMPORTANT
- NOTE POUR GERER LES BOOLEANS
- ON FAIT UNE HASH MAP et on associe tableauBooleanEtatJeu["nomVariable"] et on y accéde facilement
- */
-
-/* Zone de test sur l'interpretation des booleans */
 
 
 
@@ -360,13 +366,13 @@ BuildInterpreterCondition.prototype.evaluateExpression = function(){
         }
     }
 
-    console.log(this.listOperande);
+    return this.listOperande[0];
 };
 
-/* Etat game */
+/* Etat game
 
 canMoveOp = true;
-canJumpOp = false;
+canJumpOp = true;
 canCollectOp = true;
 canPushOp = false;
 
@@ -377,7 +383,7 @@ tableauEtat["canJump"] = canJumpOp;
 tableauEtat["canCollect"] = canCollectOp;
 tableauEtat["canPush"] = canPushOp;
 
-/* Zone variable test */
+ Zone variable test
 
 //tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
 
@@ -393,9 +399,11 @@ console.log(notation.output);
 interpret = new BuildInterpreterCondition(notation.output);
 interpret.evaluateExpression();
 
+
+
 //console.log(interpret.resultat);
 
-
+*/
 
 
 

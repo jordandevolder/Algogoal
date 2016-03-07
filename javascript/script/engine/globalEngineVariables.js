@@ -125,10 +125,17 @@ hasCollectWeapon = false;
 hasCollectArrow = false;
 hasKillMonster = false;
 
-canMove = false;
-canJump = false;
-canCollect = false;
+canMove = true;
+canJump = true;
+canCollect = true;
 canPush = false;
+
+tableauEtat = {};
+
+tableauEtat["canMove"] = canMove;
+tableauEtat["canJump"] = canJump;
+tableauEtat["canCollect"] = canCollect;
+tableauEtat["canPush"] = canPush;
 
 isWin = false;
 isLoose = false;
