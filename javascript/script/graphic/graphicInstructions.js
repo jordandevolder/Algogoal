@@ -6,7 +6,6 @@
 
 function GraphicInstruction(x,y,id,element){
     var node = document.createTextNode(element);
-
     this.posX = x;
     this.posY = y;
     this.elementHTML = document.createElement('p');
@@ -30,7 +29,7 @@ function GraphicInstruction(x,y,id,element){
             this.elementHTML.style.color="black";
             break;
     }
-    this.elementHTML.style.position = "absolute";
+    this.elementHTML.style.position = "relative";
     this.elementHTML.style.left = this.posX+'px';
     this.elementHTML.style.top = this.posY+'px';
     this.elementHTML.style.fontSize = 20+'px';
@@ -59,7 +58,7 @@ function InstructionListManager(){
     this.startingXPosition = 40;
     this.startingYPosition = 50;
 
-    this.incrementY = 20;
+    this.incrementY = 0;
     this.incrementX = 40;
     this.nbImbrication = 0;
 
