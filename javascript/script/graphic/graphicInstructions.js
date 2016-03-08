@@ -79,7 +79,7 @@ InstructionListManager.prototype.addInstruction = function(string){
 
     /* Debut partie ajoute */
 
-    if(string == "while"){
+    if(string == "while" || string == "if"){
         this.idConditionBuilding = "instruction"+this.nbInstruction;
         this.isWaitingForConditionEnd = true;
         this.currentConditionBuilding += string;
@@ -98,6 +98,7 @@ InstructionListManager.prototype.addInstruction = function(string){
     if(string == "]"){
         this.isWaitingForConditionEnd = false;
         tokens.push(this.currentConditionBuilding);
+        this.currentConditionBuilding = "";
         this.nbImbrication++;
         this.nbInstruction++;
         this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);

@@ -24,9 +24,8 @@ GridMap.prototype.drawGrid = function(){
     }
 };
 
-function testtest(){
 
-}
+
 
 
 GridMap.prototype.drawMap = function(){

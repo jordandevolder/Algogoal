@@ -31,14 +31,14 @@ GameExecution.prototype.createInstructionsFromArray = function(){
     var ifPosition = [];
     for(var i = 0; i < tokens.length; i++){
         this.listExecution.push(factoryInstrution.constructInstruction(tokens[i]));
+        console.log(tokens[i]);
         if(tokens[i].search(this.regexWhile) >= 0){
             whilePosition.push(i);
         }
 
-        if(tokens[i].search(this.regexIf)){
+        if(tokens[i].search(this.regexIf) >= 0){
             ifPosition.push(i);
          }
-
 
         if(tokens[i] == "endIf"){
           this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
@@ -128,20 +128,31 @@ Instruction.prototype.execute = function(){
 };
 
 function IfInstruction(condition){
-    this.condition = condition;
+
     this.positionEndIf = -1;
+    this.notationPolonaiseCondition = new NotationPolonaiseInverse();
+
+    var tableauCondition = condition.split(" ");
+    tableauCondition.splice(0,2);
+    tableauCondition.splice(tableauCondition.length-1, tableauCondition.length);
+
+    this.notationPolonaiseCondition.createNotation(tableauCondition);
+    this.evaluator = new BuildInterpreterCondition(this.notationPolonaiseCondition.output);
 }
 
 IfInstruction.prototype.evaluateCondition = function(){
-
+    return this.evaluator.evaluateExpression();
 };
 
 IfInstruction.prototype.execute = function(){
-    if(this.condition){
-        game.executeNextInstruction();
+    if(this.evaluateCondition()){
+        this.evaluator.listOperande = [];
+        this.evaluator.listOperator = [];
     }
-    else{ //Condition isn't valuate at true, we have to go after the end if
-        game.setCurrentPosition(this.positionEndIf+1);
+    else{ //Condition isn't valuate at true, we have to break the loop and go to the end while
+        this.evaluator.listOperande = [];
+        this.evaluator.listOperator = [];
+        game.setCurrentPosition(this.positionEndIf+1); //Ici on doit mettre à position end while + 1
     }
 };
 
@@ -172,7 +183,7 @@ WhileInstruction.prototype.evaluateCondition = function(){
 };
 
 WhileInstruction.prototype.execute = function(){
-    console.log("Passage");
+
     if(this.evaluateCondition()){
         this.evaluator.listOperande = [];
         this.evaluator.listOperator = [];
