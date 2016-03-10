@@ -10,7 +10,7 @@ var mapLevel1 = [
     [7,0,0,0,0,0,0,0,0,7],
     [7,0,0,0,0,0,0,0,0,7],
     [7,0,0,0,0,0,0,0,0,7],
-    [6,6,6,6,6,6,6,6,6,8],
+    [6,6,6,6,6,9,6,6,6,8],
     [7,0,0,0,0,0,0,0,0,7],
     [7,0,0,0,0,0,0,0,0,7],
     [7,0,0,0,0,0,0,0,0,7],
@@ -125,21 +125,12 @@ hasCollectWeapon = false;
 hasCollectArrow = false;
 hasKillMonster = false;
 
-canMove = true;
-canJump = true;
-canCollect = true;
-canPush = false;
-
-tableauEtat = {};
-
-tableauEtat["canMove"] = canMove;
-tableauEtat["canJump"] = canJump;
-tableauEtat["canCollect"] = canCollect;
-tableauEtat["canPush"] = canPush;
 
 isWin = false;
 isLoose = false;
 isPlaying = true;
+
+updateGameState();
 
 idProcessusExecution = 0;
 
@@ -156,6 +147,11 @@ function updateGameState(){
     canCollect = physic.ableToGather(map,player);
     canPush = physic.ableToPush(map,player);
     isWin = (map.map[player.x][player.y].typeId == EntityType.GOAL);
+
+    tableauEtat["canMove"] = canMove;
+    tableauEtat["canJump"] = canJump;
+    tableauEtat["canCollect"] = canCollect;
+    tableauEtat["canPush"] = canPush;
 }
 
 function hasWin(){

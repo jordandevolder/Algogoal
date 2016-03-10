@@ -11,6 +11,8 @@ function GraphicInstruction(x,y,id,element){
     this.elementHTML = document.createElement('p');
     this.elementHTML.appendChild(node);
     this.elementHTML.id = id;
+
+    // couleur syntaxique
     switch(element)
     {
         case "while":

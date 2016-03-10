@@ -1,3 +1,15 @@
+canMove = true;
+canJump = true;
+canCollect = true;
+canPush = true;
+
+tableauEtat = {};
+
+tableauEtat["canMove"] = canMove;
+tableauEtat["canJump"] = canJump;
+tableauEtat["canCollect"] = canCollect;
+tableauEtat["canPush"] = canPush;
+
 /***********************/
 /*                     */
 /*    GameExecution    */
@@ -31,7 +43,6 @@ GameExecution.prototype.createInstructionsFromArray = function(){
     var ifPosition = [];
     for(var i = 0; i < tokens.length; i++){
         this.listExecution.push(factoryInstrution.constructInstruction(tokens[i]));
-        console.log(tokens[i]);
         if(tokens[i].search(this.regexWhile) >= 0){
             whilePosition.push(i);
         }
@@ -336,98 +347,31 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
 function BuildInterpreterCondition(expressionPolonaise){
 
     this.expression = expressionPolonaise;
-    this.listOperande = [];
-    this.listOperator = [];
 }
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
-    //Let's dispatch operande and operator
-    for(var i = 0; i < this.expression.length; i++){
-        if(this.expression[i] == "&&" || this.expression[i] == "||" || this.expression[i] == "!"){
-            this.listOperator.push(this.expression[i]);
+    console.log(this.expression);
+    var copieExpression = this.expression.slice(0);
+    var structPile = [];
+    while(copieExpression.length > 0){
+        if(copieExpression[0] == "&&"){
+            var resultat = structPile[structPile.length-1] && structPile[structPile.length-2];
+            structPile.pop();
+            structPile.pop();
+            structPile.push(resultat);
+        }
+        else if(copieExpression[0] == "||"){
+            var resultat = structPile[structPile.length-1] || structPile[structPile.length-2];
+            structPile.pop();
+            structPile.pop();
+            structPile.push(resultat);
         }
         else{
-            this.listOperande.push(this.expression[i]);
+            structPile.push(tableauEtat[copieExpression[0]]);
         }
+        copieExpression.shift();
     }
-
-    if(this.listOperator.length == 0){
-        this.listOperande = tableauEtat[this.listOperande[0]];
-    }
-    else {
-        while (this.listOperator.length != 0) {
-            var resultatTmp;
-            if (this.listOperator[0] == "&&") {
-                resultatTmp = tableauEtat[this.listOperande[this.listOperande.length - 1]] && tableauEtat[this.listOperande[this.listOperande.length - 2]];
-                this.listOperande.pop();
-                this.listOperande.pop();
-                this.listOperande.push(resultatTmp);
-            }
-            else if (this.listOperator[0] == "||") {
-                resultatTmp = tableauEtat[this.listOperande[this.listOperande.length - 1]] || tableauEtat[this.listOperande[this.listOperande.length - 2]];
-                this.listOperande.pop();
-                this.listOperande.pop();
-                this.listOperande.push(resultatTmp);
-            }
-            else {
-
-            }
-            this.listOperator.pop();
-        }
-    }
-
-    return this.listOperande[0];
+    console.log(structPile[0]);
+   return structPile[0];
 };
-
-/* Etat game
-
-canMoveOp = true;
-canJumpOp = true;
-canCollectOp = true;
-canPushOp = false;
-
-tableauEtat = {};
-
-tableauEtat["canMove"] = canMoveOp;
-tableauEtat["canJump"] = canJumpOp;
-tableauEtat["canCollect"] = canCollectOp;
-tableauEtat["canPush"] = canPushOp;
-
- Zone variable test
-
-//tableau = ["(","(","canMove","||","canJump",")","&&","canCollect",")","||","canPush"];
-
-//tableau = ["(","canJump","&&","canCollect",")","||","canMove"];
-//tableau = ["canMove","||","(","canJump","&&","canCollect",")"]; //Erreur avec celle ci
-//tableau = ["canMove","&&","(","canJump","||","canCollect","||","canPush",")"];
-//tableau = ["(","canMove","||","canPush",")","&&","(","canCollect","||","canJump",")"];
-tableau = ["canMove","||","canJump"];
-notation = new NotationPolonaiseInverse();
-notation.createNotation(tableau);
-console.log(notation.output);
-
-interpret = new BuildInterpreterCondition(notation.output);
-interpret.evaluateExpression();
-
-
-
-//console.log(interpret.resultat);
-
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

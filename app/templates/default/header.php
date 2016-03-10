@@ -49,7 +49,7 @@ $hooks = Hooks::get();
                     <li id="affichePseudo">
                       <?php
                             if(Session::get('loggedin') == true)
-                                echo Session::get('message')
+                                echo "<p style='color: whitesmoke';>".Session::get('message')."</p>";
                       ?>
                     </li>
                 </ul>
