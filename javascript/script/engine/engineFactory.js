@@ -80,3 +80,28 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new Affichage();
     }
 };
+
+EntityType = {
+    FREECELL : 0,
+    WEAPON: 1,
+    GOLD: 2,
+    PLAYER: 3,
+    MONSTER: 4,
+    AMMO: 5,
+    ROAD: 6,
+    ROCK: 7,
+    GOAL: 8,
+    OBSTACLE: 9,
+    RIVER: 10,
+    OBSTACLEUNMOVABLE: 11,
+    WATERWALKABLE: 12
+};
+
+OrientationType = {
+
+    UP : 0,
+    RIGHT : 1,
+    DOWN: 2,
+    LEFT: 3
+
+};
