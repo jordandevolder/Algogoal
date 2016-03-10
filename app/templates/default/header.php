@@ -43,15 +43,14 @@ $hooks = Hooks::get();
                     <li>
                         <a href="/projet/scores/">Tableau des scores</a>
                     </li>
-                    <li>
-                        <a href="/projet/connexion/">Connexion</a>
-                    </li>
-                    <li id="affichePseudo">
-                      <?php
-                            if(Session::get('loggedin') == true)
-                                echo Session::get('message')
-                      ?>
-                    </li>
+                    <?php
+                    if(Session::get('loggedin') == true) {
+                        echo "<li><a href='/projet/ladeconnexion/'>Deconnexion</a></li>";
+                        echo "<li style='color:whitesmoke';>".Session::get('message')."</li>";
+                    }
+                    else
+                        echo "<li><a href='/projet/connexion/'>Connexion</a></li>";
+                    ?>
                 </ul>
             </nav>
         </div>

@@ -20,6 +20,8 @@ Router::any('regles','Controllers\Regles@index');
 Router::any('scores','Controllers\Scores@index');
 Router::any('inscription','Controllers\Connexion@indexInscription');
 Router::any('linscription','Controllers\Connexion@inscription');
+Router::any('ladeconnexion','Controllers\Connexion@deconnexion');
+
 
 /** Module routes. */
 $hooks = Hooks::get();
