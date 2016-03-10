@@ -1,14 +1,10 @@
 canvas = null;
 context = null;
 grid = null;
-instructionList = null;
 imageTab = {};
 
 factoryImage = new FactoryImage();
 listManager = new InstructionListManager();
-
-/* idProcessusExecution is use to create a "thread" about the execution list */
-idProcessusExecution = 0;
 
 window.onload = function()
 {
@@ -25,11 +21,9 @@ window.onload = function()
         return;
     }
 
-    loadEvent();
-
-    grid = new GridMap();
-
     createImageTab();
+    loadEvent();
+    grid = new GridMap();
     draw();
 };
 

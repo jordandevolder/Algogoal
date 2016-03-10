@@ -95,12 +95,47 @@ function loadEvent(){
         listManager.addInstruction("canPush");
     });
 
+    var openPar = document.getElementById("openPar");
+    openPar.addEventListener('click', function() {
+        listManager.addInstruction("(");
+    });
+
+    var closePar = document.getElementById("closePar");
+    closePar.addEventListener('click', function() {
+        listManager.addInstruction(")");
+    });
+
+    var startCon = document.getElementById("startCon");
+    startCon.addEventListener('click', function() {
+        listManager.addInstruction("[");
+    });
+
+
+    var endCon = document.getElementById("endCon");
+    endCon.addEventListener('click', function() {
+        listManager.addInstruction("]");
+    });
+
+    var speedExec = document.getElementById("speedExec");
+    speedExec.addEventListener('click',function(){
+        launcher.changeInterval();
+    });
+
+
     /* Execution */
 
     var execute = document.getElementById("execute");
-    execute.addEventListener('click', function() {
-        listManager.buildLogicInstruction();
-        listManager.lauchExecution();
+    execute.addEventListener('click', function(){
+        player = new Player(5,0,OrientationType.RIGHT,10);
+        player.updateSpeedDirection();
+        updateGameState();
+        draw();
+        game.buildLogicInstruction();
+        launcher.launch();
     });
 
+    var clear = document.getElementById("clear");
+    clear.addEventListener('click',function(){
+        reinit();
+     });
 }

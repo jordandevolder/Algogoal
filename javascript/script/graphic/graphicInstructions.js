@@ -4,14 +4,15 @@
 /*                        */
 /**************************/
 
-function GraphicInstruction(x,y,positionList,element){
+function GraphicInstruction(x,y,id,element){
     var node = document.createTextNode(element);
-
     this.posX = x;
     this.posY = y;
     this.elementHTML = document.createElement('p');
     this.elementHTML.appendChild(node);
-    this.elementHTML.id = "instruction"+positionList;
+    this.elementHTML.id = id;
+
+    // couleur syntaxique
     switch(element)
     {
         case "while":
@@ -30,7 +31,7 @@ function GraphicInstruction(x,y,positionList,element){
             this.elementHTML.style.color="black";
             break;
     }
-    this.elementHTML.style.position = "absolute";
+    this.elementHTML.style.position = "relative";
     this.elementHTML.style.left = this.posX+'px';
     this.elementHTML.style.top = this.posY+'px';
     this.elementHTML.style.fontSize = 20+'px';
@@ -56,65 +57,93 @@ function InstructionListManager(){
     this.container = document.getElementById("instructionList");
     this.instructionGraphicList = {};
     this.nbInstruction = 0;
-    this.startingXPosition = 80;
+    this.startingXPosition = 40;
     this.startingYPosition = 50;
 
-    this.incrementY = 20;
+    this.incrementY = 0;
     this.incrementX = 40;
     this.nbImbrication = 0;
 
     this.currentX = this.startingXPosition;
     this.currentY = this.startingYPosition;
 
-    this.iterateurExecution = 0;
 
-    //this.idProcessusExecution;
+    /* Use to manage condition construction */
+
+    this.isWaitingForConditionEnd = false;
+    this.currentConditionBuilding = "";
+    this.idConditionBuilding = "";
+
 }
-
-
-InstructionListManager.prototype.buildLogicInstruction = function(){
-    game.createInstructionsFromArray();
-};
-
-InstructionListManager.prototype.lauchExecution = function(){
-    idProcessusExecution = setInterval(this.execute, 500);
-};
-
-InstructionListManager.prototype.execute = function(){
-
-    if(isPlaying){
-        game.executeNextInstruction();
-        draw();
-    }
-    else{
-        clearInterval(idProcessusExecution);
-    }
-};
 
 InstructionListManager.prototype.addInstruction = function(string){
 
-    //Les structures qui ont besoin de perdre une indentation et d'update donc la position tout de suite
-    tokens.push(string);
-    if(string == "endWhile" || string == "endIf"){
-        this.nbImbrication--;
-        if (this.nbImbrication < 0) {
-            this.nbImbrication = 0;
-        }
+    /* Debut partie ajoute */
+
+    if(string == "while" || string == "if"){
+        this.idConditionBuilding = "instruction"+this.nbInstruction;
+        this.isWaitingForConditionEnd = true;
+        this.currentConditionBuilding += string;
+
+
+        this.instructionGraphicList["instruction"+this.nbInstruction] = new GraphicInstruction(this.currentX,this.currentY,"instruction"+this.nbInstruction,string);
+        this.container.appendChild(this.instructionGraphicList["instruction"+this.nbInstruction].elementHTML);
+        this.instructionGraphicList["instruction"+this.nbInstruction].moveInstruction(20,20);
+    }
+
+    else if(this.isWaitingForConditionEnd){
+        document.getElementById(this.idConditionBuilding).textContent += " "+string;
+        this.currentConditionBuilding += " "+string;
+    }
+
+    if(string == "]"){
+        this.isWaitingForConditionEnd = false;
+        tokens.push(this.currentConditionBuilding);
+        this.currentConditionBuilding = "";
+        this.nbImbrication++;
+        this.nbInstruction++;
         this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
         this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
+        return;
     }
 
-    this.instructionGraphicList["instruction"+this.nbInstruction] = new GraphicInstruction(this.currentX,this.currentY,this.nbInstruction,string);
-    this.container.appendChild(this.instructionGraphicList["instruction"+this.nbInstruction].elementHTML);
-    this.instructionGraphicList["instruction"+this.nbInstruction].moveInstruction(20,20);
+
+    if(!this.isWaitingForConditionEnd) {
+
+        /* Fin partie Ajoute */
+
+        //Les structures qui ont besoin de perdre une indentation et donc d'update la position tout de suite
+        tokens.push(string);
+        if (string == "endWhile" || string == "endIf") {
+            this.nbImbrication--;
+            if (this.nbImbrication < 0) {
+                this.nbImbrication = 0;
+            }
+            this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
+            this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
+        }
+
+        this.instructionGraphicList["instruction" + this.nbInstruction] = new GraphicInstruction(this.currentX, this.currentY, "instruction" + this.nbInstruction, string);
+        this.container.appendChild(this.instructionGraphicList["instruction" + this.nbInstruction].elementHTML);
+        this.instructionGraphicList["instruction" + this.nbInstruction].moveInstruction(20, 20);
 
 
-    //Les structures qui vont engendrer une modification future de l'indentation
-    if(string == "while" || string == "if") {
-        this.nbImbrication++;
+        //Les structures qui vont engendrer une modification future de l'indentation
+        if (string == "while" || string == "if") {
+            this.nbImbrication++;
+        }
+
+        this.nbInstruction++;
+        this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
+        this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
+
     }
 
-    this.nbInstruction++;
-    this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
-    this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
+};
+
+InstructionListManager.prototype.clearList = function(){
+
+    while (this.container.firstChild) {
+        this.container.removeChild(this.container.firstChild);
+    }
 };

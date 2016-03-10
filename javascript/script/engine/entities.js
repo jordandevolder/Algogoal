@@ -198,7 +198,7 @@ Player.prototype.leftRotate = function (){
 Player.prototype.rightRotate = function(){
     this.orientation = (this.orientation+1)%4;
     this.updateSpeedDirection();
-}
+};
 
 Player.prototype.move = function(){
     if(!physic.willCollided(map,this,1)){
