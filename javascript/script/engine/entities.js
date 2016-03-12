@@ -201,7 +201,7 @@ Player.prototype.rightRotate = function(){
 };
 
 Player.prototype.move = function(){
-    if(!physic.willCollided(map,this,1)){
+    if(!physic.willCollided(engineGame.map,this,1)){
         //game.isWorking = false;
         return;
     }
@@ -211,7 +211,7 @@ Player.prototype.move = function(){
 
 
 Player.prototype.jump = function(){
-    if(!physic.willCollided(map,this,2)){
+    if(!physic.willCollided(engineGame.map,this,2)){
         //game.isWorking = false;
         return;
     }
@@ -220,25 +220,25 @@ Player.prototype.jump = function(){
 };
 
 Player.prototype.collect = function(){
-    if(!physic.ableToGather(map,this)){
+    if(!physic.ableToGather(engineGame.map,this)){
         return
     }
 
-    switch(map.map[player.x][player.y].typeId)
+    switch(engineGame.map.map[this.x][this.y].typeId)
     {
         case EntityType.AMMO:
             this.ammoQuantity+=3;
-            map.map[player.x][player.y] = factoryTile.constructTile(EntityType.ROAD, player.x, player.y);
-            hasCollectArrow = true;
+            engineGame.map.map[this.x][this.y] = factoryTile.constructTile(EntityType.ROAD, this.x, this.y);
+            engineGame.hasCollectArrow = true;
             break;
         case EntityType.GOLD:
-            hasCollectGold = true;
+            engineGame.hasCollectGold = true;
             break;
         case EntityType.WEAPON:
-            this.weapon = map.map[player.x][player.y];
+            this.weapon = engineGame.map.map[this.x][this.y];
             this.ammoQuantity++;
-            map.map[player.x][player.y] = factoryTile.constructTile(EntityType.ROAD,player.x, player.y);
-            hasCollectWeapon = true;
+            engineGame.map.map[this.x][this.y] = factoryTile.constructTile(EntityType.ROAD,this.x, this.y);
+            engineGame.hasCollectWeapon = true;
             break;
     }
 };
@@ -256,28 +256,28 @@ Player.prototype.showInformations = function(){
 };
 
 Player.prototype.push = function(){
-    if(!physic.ableToPush(map,this)) {
+    if(!physic.ableToPush(engineGame.map,this)) {
         return;
     }
 
-    var x1 = player.x+player.dx;
-    var y1 = player.y+player.dy;
-    var x2 = player.x+(2*player.dx);
-    var y2 = player.y+(2*player.dy);
+    var x1 = this.x+this.dx;
+    var y1 = this.y+this.dy;
+    var x2 = this.x+(2*this.dx);
+    var y2 = this.y+(2*this.dy);
 
-    if(map.map[x2][y2].typeId == EntityType.ROAD){
-        map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLE,x1,y1);
+    if(engineGame.map.map[x2][y2].typeId == EntityType.ROAD){
+        engineGame.map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLE,x1,y1);
     }
-    else if(map.map[x2][y2].typeId == EntityType.RIVER){
-        map.map[x2][y2] = factoryTile.constructTile(EntityType.WATERWALKABLE,x1,y1);
+    else if(engineGame.map.map[x2][y2].typeId == EntityType.RIVER){
+        engineGame.map.map[x2][y2] = factoryTile.constructTile(EntityType.WATERWALKABLE,x1,y1);
     }
     else{
-        map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLEUNMOVABLE,x1,y1);
+        engineGame.map.map[x2][y2] = factoryTile.constructTile(EntityType.OBSTACLEUNMOVABLE,x1,y1);
     }
 
-    map.map[x1][y1] = factoryTile.constructTile(EntityType.ROAD,x1,y1);
+    engineGame.map.map[x1][y1] = factoryTile.constructTile(EntityType.ROAD,x1,y1);
 
-    this.move(map);
+    this.move(engineGame.map);
 
 };
 
@@ -286,7 +286,7 @@ Player.prototype.lookAt = function(map){
         return;
     }
 
-    switch(map.map[this.x+this.dx][this.y+this.dy].typeId)
+    switch(engineGame.map.map[this.x+this.dx][this.y+this.dy].typeId)
     {
         case EntityType.WEAPON:
             return "weapon";

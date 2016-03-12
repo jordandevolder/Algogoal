@@ -1,15 +1,3 @@
-canMove = true;
-canJump = true;
-canCollect = true;
-canPush = true;
-
-tableauEtat = {};
-
-tableauEtat["canMove"] = canMove;
-tableauEtat["canJump"] = canJump;
-tableauEtat["canCollect"] = canCollect;
-tableauEtat["canPush"] = canPush;
-
 /***********************/
 /*                     */
 /*    GameExecution    */
@@ -41,22 +29,22 @@ GameExecution.prototype.createInstructionsFromArray = function(){
 
     var whilePosition = [];
     var ifPosition = [];
-    for(var i = 0; i < tokens.length; i++){
-        this.listExecution.push(factoryInstrution.constructInstruction(tokens[i]));
-        if(tokens[i].search(this.regexWhile) >= 0){
+    for(var i = 0; i < engineGame.tokens.length; i++){
+        this.listExecution.push(factoryInstrution.constructInstruction(engineGame.tokens[i]));
+        if(engineGame.tokens[i].search(this.regexWhile) >= 0){
             whilePosition.push(i);
         }
 
-        if(tokens[i].search(this.regexIf) >= 0){
+        if(engineGame.tokens[i].search(this.regexIf) >= 0){
             ifPosition.push(i);
          }
 
-        if(tokens[i] == "endIf"){
+        if(engineGame.tokens[i] == "endIf"){
           this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
           ifPosition.pop();
         }
 
-        if(tokens[i] == "endWhile"){
+        if(engineGame.tokens[i] == "endWhile"){
            this.listExecution[whilePosition[whilePosition.length-1]].positionEndWhile = i;
            this.listExecution[i].positionWhile = whilePosition[whilePosition.length-1];
            whilePosition.pop();
@@ -65,8 +53,8 @@ GameExecution.prototype.createInstructionsFromArray = function(){
 };
 
 GameExecution.prototype.executeNextInstruction = function(){
-    if((this.currentPosition >= this.listExecution.length) || (!isPlaying)){
-        isPlaying = false;
+    if((this.currentPosition >= this.listExecution.length) || !(engineGame.isPlaying)){
+        engineGame.isPlaying = false;
     }
     else {
         this.listExecution[this.currentPosition++].execute();
@@ -80,10 +68,6 @@ function GameLauncher(){
     this.currentTimeExecution = this.baseTimeBetween*this.currentDiviser;
 }
 
-GameLauncher.prototype.launch = function(){
-    isPlaying = true;
-    idProcessusExecution = setInterval(this.go, this.currentTimeExecution);
-};
 
 GameLauncher.prototype.changeInterval = function(){
     this.currentDiviser++;
@@ -96,26 +80,31 @@ GameLauncher.prototype.changeInterval = function(){
     this.launch();
 };
 
-GameLauncher.prototype.go = function(){
-    updateGameState();
+GameLauncher.prototype.launch = function(){
+    engineGame.isPlaying = true;
+    idProcessusExecution = setInterval(this.go, this.currentTimeExecution);
+};
 
-    if(isPlaying){
-        if(isWin){
-            alert("VICTORY");
+GameLauncher.prototype.go = function(){
+    engineGame.updateGameState();
+
+    if(engineGame.isPlaying){
+        if(engineGame.isWin){
+            console.log("VICTORY");
             clearInterval(idProcessusExecution);
         }
         else {
-            game.executeNextInstruction();
-            draw();
+            engineGame.executer.executeNextInstruction();
+            graphicGame.draw();
         }
     }
     else{
         clearInterval(idProcessusExecution);
-        if(isWin){
-            alert("VICTORY");
+        if(engineGame.isWin){
+            console.log("VICTORY");
         }
         else{
-            alert("LOSE");
+            console.log("LOSE");
         }
     }
 };
@@ -163,7 +152,7 @@ IfInstruction.prototype.execute = function(){
     else{ //Condition isn't valuate at true, we have to break the loop and go to the end while
         this.evaluator.listOperande = [];
         this.evaluator.listOperator = [];
-        game.setCurrentPosition(this.positionEndIf+1); //Ici on doit mettre à position end while + 1
+        engineGame.executer.setCurrentPosition(this.positionEndIf+1); //Ici on doit mettre à position end while + 1
     }
 };
 
@@ -202,7 +191,7 @@ WhileInstruction.prototype.execute = function(){
     else{ //Condition isn't valuate at true, we have to break the loop and go to the end while
         this.evaluator.listOperande = [];
         this.evaluator.listOperator = [];
-        game.setCurrentPosition(this.positionEndWhile+1); //Ici on doit mettre à position end while + 1
+        engineGame.executer.setCurrentPosition(this.positionEndWhile+1); //Ici on doit mettre à position end while + 1
     }
 };
 
@@ -213,7 +202,7 @@ function EndWhileInstruction(){
 
 EndWhileInstruction.prototype.execute = function(){
     //We have to back to the while start
-    game.setCurrentPosition(this.positionWhile); //Ici la position doit être sur le while
+    engineGame.executer.setCurrentPosition(this.positionWhile); //Ici la position doit être sur le while
 };
 
 
@@ -223,7 +212,7 @@ function BreakInstruction(){
 }
 
 BreakInstruction.prototype.execute = function(){
-    game.setCurrentPosition(0); //Ici on doit mettre la position au end while + 1
+    engineGame.executer.setCurrentPosition(0); //Ici on doit mettre la position au end while + 1
 };
 
 function MoveInstruction(){
@@ -231,7 +220,7 @@ function MoveInstruction(){
 }
 
 MoveInstruction.prototype.execute = function(){
-    player.move(map);
+    engineGame.player.move(engineGame.map);
 };
 
 function JumpInstruction(){
@@ -239,7 +228,7 @@ function JumpInstruction(){
 }
 
 JumpInstruction.prototype.execute = function(){
-    player.jump(map);
+    engineGame.player.jump(engineGame.map);
 };
 
 function CollectInstruction(){
@@ -247,7 +236,7 @@ function CollectInstruction(){
 }
 
 CollectInstruction.prototype.execute = function(){
-    player.collect(map);
+    engineGame.player.collect(engineGame.map);
 };
 
 function PushInstruction(){
@@ -255,7 +244,7 @@ function PushInstruction(){
 }
 
 PushInstruction.prototype.execute = function(){
-    player.push(map);
+    engineGame.player.push(engineGame.map);
 };
 
 function RotateLeftInstruction(){
@@ -263,7 +252,7 @@ function RotateLeftInstruction(){
 }
 
 RotateLeftInstruction.prototype.execute = function(){
-    player.leftRotate();
+    engineGame.player.leftRotate();
 };
 
 function RotateRightInstruction(){
@@ -271,14 +260,5 @@ function RotateRightInstruction(){
 }
 
 RotateRightInstruction.prototype.execute = function(){
-    player.rightRotate();
-};
-
-function Affichage(){
-
-}
-
-Affichage.prototype.execute = function(){
-    console.log("Affichage test ");
-    game.executeNextInstruction();
+    engineGame.player.rightRotate();
 };

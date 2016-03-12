@@ -74,7 +74,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             return imageTab["grass"];
             break;
         case 1:
-            if (!hasCollectWeapon && map.map[posY][posX].typeId == EntityType.WEAPON) {
+            if (!engineGame.hasCollectWeapon && engineGame.map.map[posY][posX].typeId == EntityType.WEAPON) {
                 return imageTab["weapon"];
             }
             else {
@@ -82,7 +82,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             }
             break;
         case 2:
-            if (!hasCollectGold && map.map[posY][posX].typeId == EntityType.GOLD) {
+            if (!engineGame.hasCollectGold && engineGame.map.map[posY][posX].typeId == EntityType.GOLD) {
                 return imageTab["gold"];
             }
             else {
@@ -93,7 +93,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             return imageTab["player"];
             break;
         case 4:
-            if (!hasKillMonster && map.map[posY][posX].typeId == EntityType.MONSTER) {
+            if (!engineGame.hasKillMonster && engineGame.map.map[posY][posX].typeId == EntityType.MONSTER) {
                 return imageTab["monster"];
             }
             else {
@@ -101,7 +101,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             }
             break;
         case 5:
-            if (!hasCollectArrow && map.map[posY][posX].typeId == EntityType.AMMO) {
+            if (!engineGame.hasCollectArrow && engineGame.map.map[posY][posX].typeId == EntityType.AMMO) {
                 return imageTab["arrow"];
             }
             else {

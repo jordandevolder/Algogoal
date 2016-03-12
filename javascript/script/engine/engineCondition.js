@@ -47,8 +47,8 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
     }
 
     //On vide le reste de la pile
-    for(var i = 0; i < this.pileOperateur.length; i++){
-        this.output.push(this.pileOperateur[i]);
+    for(var j = 0; j < this.pileOperateur.length; j++){
+        this.output.push(this.pileOperateur[j]);
     }
 };
 
@@ -60,27 +60,25 @@ function BuildInterpreterCondition(expressionPolonaise){
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
-    console.log(this.expression);
     var copieExpression = this.expression.slice(0);
     var structPile = [];
     while(copieExpression.length > 0){
         if(copieExpression[0] == "&&"){
-            var resultat = structPile[structPile.length-1] && structPile[structPile.length-2];
+            var resultatTmp1 = structPile[structPile.length-1] && structPile[structPile.length-2];
             structPile.pop();
             structPile.pop();
-            structPile.push(resultat);
+            structPile.push(resultatTmp1);
         }
         else if(copieExpression[0] == "||"){
-            var resultat = structPile[structPile.length-1] || structPile[structPile.length-2];
+            var resultatTmp2 = structPile[structPile.length-1] || structPile[structPile.length-2];
             structPile.pop();
             structPile.pop();
-            structPile.push(resultat);
+            structPile.push(resultatTmp2);
         }
         else{
-            structPile.push(tableauEtat[copieExpression[0]]);
+            structPile.push(engineGame.tableauEtat[copieExpression[0]]);
         }
         copieExpression.shift();
     }
-    console.log(structPile[0]);
     return structPile[0];
 };
