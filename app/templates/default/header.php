@@ -43,6 +43,16 @@ $hooks = Hooks::get();
                     <li>
                         <a href="/projet/scores/">Tableau des scores</a>
                     </li>
+<<<<<<< HEAD
+                    <?php
+                    if(Session::get('loggedin') == true) {
+                        echo "<li><a href='/projet/ladeconnexion/'>Deconnexion</a></li>";
+                        echo "<li style='color:whitesmoke';>".Session::get('message')."</li>";
+                    }
+                    else
+                        echo "<li><a href='/projet/connexion/'>Connexion</a></li>";
+                    ?>
+=======
                     <li>
                         <a href="/projet/connexion/">Connexion</a>
                     </li>
@@ -52,6 +62,7 @@ $hooks = Hooks::get();
                                 echo "<p style='color: whitesmoke';>".Session::get('message')."</p>";
                       ?>
                     </li>
+>>>>>>> d103d124415923eabbbb3bbd579a51c751bfc0eb
                 </ul>
             </nav>
         </div>

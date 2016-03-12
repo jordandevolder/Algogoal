@@ -71,7 +71,11 @@ class Connexion extends Controller
            Url::redirect();
     }
 
-
+    public function deconnexion()
+    {
+        Session::destroy('', false);
+        Url::redirect();
+    }
 
 
     public function indexInscription()
