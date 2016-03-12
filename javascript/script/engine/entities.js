@@ -331,6 +331,7 @@ Player.prototype.fire = function(){
 /***********************/
 
 function Map (nbLine, nbCollumn, map){
+
     this.line = nbLine;
     this.collumn = nbCollumn;
     this.map = [];

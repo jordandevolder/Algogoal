@@ -33,10 +33,14 @@ $hooks = Hooks::get();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="./" class="navbar-brand">Projet Semestre 4</a>
+                
+                <a href="<?php echo DIR?>" class="navbar-brand">Projet Semestre 4</a>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/projet/indexJouer">Jouer</a>
+                    </li>
                     <li>
                         <a href="/projet/regles/">Règles</a>
                     </li>
@@ -59,7 +63,7 @@ $hooks = Hooks::get();
 	<?php
 	Assets::css(array(
 		'//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
-		Url::templatePath() . 'css/style.css',
+		Url::templatePath() . 'css/style.css'
 	));
 
 	//hook for plugging in css

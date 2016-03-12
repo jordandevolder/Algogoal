@@ -21,7 +21,8 @@ Router::any('scores','Controllers\Scores@index');
 Router::any('inscription','Controllers\Connexion@indexInscription');
 Router::any('linscription','Controllers\Connexion@inscription');
 Router::any('ladeconnexion','Controllers\Connexion@deconnexion');
-
+Router::any('indexJouer','Controllers\Play@index');
+Router::get('play/(:any)','Controllers\Play@playLevel');
 
 /** Module routes. */
 $hooks = Hooks::get();

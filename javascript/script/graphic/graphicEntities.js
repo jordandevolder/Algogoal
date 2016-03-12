@@ -1,6 +1,8 @@
 canvas = null;
 context = null;
 imageTab = {};
+engineGame = null;
+engineGraphic = null;
 
 factoryImage = new FactoryImage();
 
@@ -18,6 +20,11 @@ window.onload = function()
         alert("Impossible de récupérer le context du canvas");
         return;
     }
+
+    var tableau = (window.location.href).split("/");
+
+    engineGame = new EngineGame("mapLevel"+tableau[tableau.length-1]);
+    graphicGame = new GraphicGame();
 
     createImageTab();
     loadEvent();

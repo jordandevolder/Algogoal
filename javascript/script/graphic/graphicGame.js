@@ -19,5 +19,3 @@ GraphicGame.prototype.draw = function(){
     context.stroke();
     context.closePath();
 };
-
-graphicGame = new GraphicGame();

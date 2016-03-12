@@ -4,19 +4,25 @@ function EngineGame(idMap){
 
     this.currentIdMap = idMap;
 
+    this.associativeMapLevel = {};
+    this.associativeMapLevel["mapLevel1"] = mapLevel1;
+    this.associativeMapLevel["mapLevel2"] = mapLevel2;
+    this.associativeMapLevel["mapLevel3"] = mapLevel3;
+    this.associativeMapLevel["mapLevel4"] = mapLevel4;
+
     this.player = new Player(5,0,OrientationType.RIGHT, 10);
     this.player.updateSpeedDirection();
-    this.map = new Map(10,10,idMap);
+    this.map = new Map(10,10,this.associativeMapLevel[this.currentIdMap]);
     this.executer = new GameExecution();
     this.launcher = new GameLauncher();
     this.tokens = [];
 
     /* Game State */
 
-    this.canMoveState = true;
-    this.canJumpState = true;
-    this.canCollectState = true;
-    this.canPushState = true;
+    this.canMove = true;
+    this.canJump = true;
+    this.canCollect = true;
+    this.canPush = true;
 
     this.tableauEtat = {};
     this.tableauEtat["canMove"] = this.canMove;
@@ -35,6 +41,24 @@ function EngineGame(idMap){
 
     /* End Game State */
 }
+
+EngineGame.prototype.getCorrespondantePositionPlayer = function(currentIdMap){
+
+};
+
+EngineGame.prototype.triggerGameWin = function(){
+    if(this.hasCollectGold){
+        console.log("Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !");
+        //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
+    }
+    else{
+        console.log("Felicitation, vous êtes arrivé au bout du chemin, malheureusement, sans trésor, vous n'avez pas d'or pour arriver au prochain niveau ! Retenter celui ci en ramassant l'or");
+    }
+};
+
+EngineGame.prototype.triggerGameLose = function(){
+    console.log("Vous avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver");
+};
 
 EngineGame.prototype.updateGameState = function(){
 
@@ -61,9 +85,12 @@ EngineGame.prototype.startExecutionListInstructions = function(){
 
 EngineGame.prototype.reInit = function(){
 
+    clearInterval(idProcessusExecution);
+    idProcessusExecution = 0;
+
     this.player = new Player(5,0,OrientationType.RIGHT, 10);
     this.player.updateSpeedDirection();
-    this.map = new Map(10,10,this.currentIdMap);
+    this.map = new Map(10,10,this.associativeMapLevel[this.currentIdMap]);
     this.executer = new GameExecution();
     this.launcher = new GameLauncher();
     this.listManager = new InstructionListManager();
@@ -96,4 +123,3 @@ EngineGame.prototype.reInit = function(){
     /* End Game State */
 };
 
-engineGame = new EngineGame(mapLevel1);

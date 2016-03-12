@@ -75,9 +75,11 @@ GameLauncher.prototype.changeInterval = function(){
         this.currentDiviser = 1;
     }
     document.getElementById("speedExec").innerText = "* "+this.currentDiviser;
-    clearInterval(idProcessusExecution);
     this.currentTimeExecution = this.baseTimeBetween / this.currentDiviser;
-    this.launch();
+    if(idProcessusExecution != 0){
+        clearInterval(idProcessusExecution);
+        this.launch();
+    }
 };
 
 GameLauncher.prototype.launch = function(){
@@ -90,8 +92,8 @@ GameLauncher.prototype.go = function(){
 
     if(engineGame.isPlaying){
         if(engineGame.isWin){
-            console.log("VICTORY");
             clearInterval(idProcessusExecution);
+            engineGame.triggerGameWin();
         }
         else {
             engineGame.executer.executeNextInstruction();
@@ -101,10 +103,10 @@ GameLauncher.prototype.go = function(){
     else{
         clearInterval(idProcessusExecution);
         if(engineGame.isWin){
-            console.log("VICTORY");
+            engineGame.triggerGameWin();
         }
         else{
-            console.log("LOSE");
+            engineGame.triggerGameLose();
         }
     }
 };

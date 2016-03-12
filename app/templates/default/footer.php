@@ -27,33 +27,5 @@ $hooks->run('js');
 $hooks->run('footer');
 ?>
 
-
-<!-- Include moteur -->
-
-<script type="text/javascript" src = "/projet/javascript/script/engine/engineMap.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/engineFactory.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/engineCondition.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/engineExecution.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/enginePhysics.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/entities.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/globalEngineVariables.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/engine/engineGame.js"></script>
-
-
-
-
-
-
-<!-- Include graphique -->
-<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicFactory.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicMap.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicInstructions.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicGame.js"></script>
-<script type="text/javascript" src = "/projet/javascript/script/graphic/graphicEntities.js"></script>
-
-
-<!-- Include evenement  -->
-<script type="text/javascript"src="/projet/javascript/script/evenement.js"></script>
-
 </body>
 </html>
