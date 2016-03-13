@@ -13,6 +13,8 @@ $hooks = Hooks::get();
 ?>
 <!DOCTYPE html>
 <html lang="<?php echo LANGUAGE_CODE; ?>">
+<script src="/sweetalert/dist/sweetalert2.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/sweetalert/dist/sweetalert2.css">
 <head>
 
 	<!-- Site meta -->
