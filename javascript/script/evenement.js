@@ -95,6 +95,16 @@ function loadEvent(){
         graphicGame.listManager.addInstruction("canPush");
     });
 
+    var true_ = document.getElementById("true");
+    true_.addEventListener('click', function() {
+        graphicGame.listManager.addInstruction("true");
+    });
+
+    var false_ = document.getElementById("false");
+    false_.addEventListener('click', function() {
+        graphicGame.listManager.addInstruction("false");
+    });
+
     var openPar = document.getElementById("openPar");
     openPar.addEventListener('click', function() {
         graphicGame.listManager.addInstruction("(");

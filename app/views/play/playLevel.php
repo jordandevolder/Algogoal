@@ -8,6 +8,7 @@
 </div>
 
 <a href="<?php echo DIR?>">Retourner à la page d'accueil</a>
+<br>
 <a href="/projet/indexJouer">Retour à l'index</a>
 
 <?php
@@ -66,6 +67,8 @@ if(Session::get('loggedin')==true)
 				<button id=\"canJump\"> canJump </button>
 				<button id=\"canCollect\"> canCollect </button>
 				<button id=\"canPush\"> canPush </button>
+				<button id=\"true\"> true </button>
+				<button id=\"false\"> false </button>
 				<button id=\"openPar\"> ( </button>
 				<button id=\"closePar\"> ) </button>
 			</div>
