@@ -29,6 +29,8 @@ function EngineGame(idMap){
     this.tableauEtat["canJump"] = this.canJump;
     this.tableauEtat["canCollect"] = this.canCollect;
     this.tableauEtat["canPush"] = this.canPush;
+    this.tableauEtat["true"] = true;
+    this.tableauEtat["false"] = false;
 
     this.hasCollectGold = false;
     this.hasCollectWeapon = false;
@@ -108,6 +110,8 @@ EngineGame.prototype.reInit = function(){
     this.tableauEtat["canJump"] = this.canJump;
     this.tableauEtat["canCollect"] = this.canCollect;
     this.tableauEtat["canPush"] = this.canPush;
+    this.tableauEtat["true"] = true;
+    this.tableauEtat["false"] = false;
 
     this.hasCollectGold = false;
     this.hasCollectWeapon = false;

@@ -60,6 +60,7 @@ function BuildInterpreterCondition(expressionPolonaise){
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
+    console.log(this.expression);
     var copieExpression = this.expression.slice(0);
     var structPile = [];
     while(copieExpression.length > 0){
@@ -74,6 +75,11 @@ BuildInterpreterCondition.prototype.evaluateExpression = function(){
             structPile.pop();
             structPile.pop();
             structPile.push(resultatTmp2);
+        }
+        else if(copieExpression[0] == "!"){
+            var resultatTmp = (structPile[structPile.length-1] == false);
+            structPile.pop();
+            structPile.push(resultatTmp);
         }
         else{
             structPile.push(engineGame.tableauEtat[copieExpression[0]]);
