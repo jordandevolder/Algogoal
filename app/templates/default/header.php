@@ -36,7 +36,7 @@ $hooks = Hooks::get();
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="<?php echo DIR?>" class="navbar-brand">Projet Semestre 4</a>
+                <a href="<?php echo DIR?>" class="navbar-brand">Algo Goal</a>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">

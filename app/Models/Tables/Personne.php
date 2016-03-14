@@ -17,6 +17,7 @@ class Personne extends Entity
     public $motdepasse;
     public $mail;
     public $cookie;
+    public $currentLvl;
 
     public function __construct($pseudo = "", $mail = "", $motpasse = "", $cookie = "", $id = false)
     {

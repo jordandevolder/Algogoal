@@ -7,9 +7,7 @@
     <h2><?php echo $data['level'] ?></h2>
 </div>
 
-<a href="<?php echo DIR?>">Retourner à la page d'accueil</a>
-<br>
-<a href="/projet/indexJouer">Retour à l'index</a>
+<a href="<?php echo DIR?>"><button class="btn btn-primary">Retourner à la page d'accueil</button></a><a href="/projet/indexJouer"><button class="btn btn-primary">Retour à l'index</button></a>
 
 <?php
 if(Session::get('loggedin')==true)
