@@ -185,7 +185,6 @@ Player.prototype.updateSpeedDirection = function(){
 
 Player.prototype.leftRotate = function (){
     if(this.orientation == OrientationType.UP){
-        console.log("block");
         this.orientation = 3;
         this.updateSpeedDirection();
     }

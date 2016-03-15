@@ -44,24 +44,17 @@ function EngineGame(idMap){
     /* End Game State */
 }
 
-EngineGame.prototype.getCorrespondantePositionPlayer = function(currentIdMap){
-
-};
-
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
-        console.log("Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !");
-        swal("Good job!", "You clicked the button!", "success");
+        swal("Good job!", "Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
     }
     else{
-        console.log("Lose 1");
         swal("Presque !", "Vous êtes arrivé au bout du chemin, malheureusement, sans trésor, vous n'avez pas d'or pour arriver au prochain niveau ! Retenter celui ci en ramassant l'or", "error");
     }
 };
 
 EngineGame.prototype.triggerGameLose = function(){
-    console.log("Lose 2");
     swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
 };
 
