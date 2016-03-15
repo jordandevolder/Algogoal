@@ -61,6 +61,7 @@ class Connexion extends Controller
             Session::set('loggedin', true);
             Session::set('id', $user->getId());
             Session::set('login', $user->pseudo);
+            Session::set('level', $user->currentLvl);
 
             $user->cookie = rand(0,64);
             setcookie("remember", $user->cookie, time() + 3600 * 31 * 24, DIR);
@@ -136,6 +137,7 @@ class Connexion extends Controller
                 $this->entityManager->save($user);
                 Session::set('id', $user->getId());
                 Session::set('pseudo', $user->login);
+                Session:set('level',$user->currentLvl);
                 Session::set('loggedin', true);
                 Url::redirect();
             }

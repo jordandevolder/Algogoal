@@ -4,13 +4,13 @@
 
 <div class="page-header">
     <h1><?php echo $data['title'] ?></h1>
-    <h2><?php echo $data['level'] ?></h2>
+    <h2><?php echo $data['level'] ?>
+        <a class="col-lg-offset-8" href="<?php echo DIR?>"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Accueil</button></a>
+        <a href="/projet/indexJouer"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Index des niveaux</button></a>
+    </h2>
 </div>
 
-<a href="<?php echo DIR?>">Retourner à la page d'accueil</a>
 <br>
-<a href="/projet/indexJouer">Retour à l'index</a>
-
 <?php
 if(Session::get('loggedin')==true)
 {
@@ -33,7 +33,7 @@ if(Session::get('loggedin')==true)
 	<!-- instruction and button  -->
 
 	<div class=\"row\">
-		<div class=\"col-lg-3\">
+		<div class=\"col-lg-4\">
 			<p> Instruction button</p>
 			<div class=\"instructionButtonBloc\">
 				<button id=\"move\"> move</button>
@@ -44,7 +44,7 @@ if(Session::get('loggedin')==true)
 				<button id=\"jump\"> jump </button>
 			</div>
 		</div>
-		<div class=\"col-lg-3\">
+		<div class=\"col-lg-4\">
 			<p> Control button</p>
 			<div class=\"instructionButtonBloc\">
 				<button id=\"while\"> while</button>
@@ -57,7 +57,7 @@ if(Session::get('loggedin')==true)
 
 			</div>
 		</div>
-		<div class=\"col-lg-3\">
+		<div class=\"col-lg-4\">
 			<p> Condition button</p>
 			<div class=\"instructionButtonBloc\">
 				<button id=\"and\"> && </button>
@@ -71,11 +71,6 @@ if(Session::get('loggedin')==true)
 				<button id=\"false\"> false </button>
 				<button id=\"openPar\"> ( </button>
 				<button id=\"closePar\"> ) </button>
-			</div>
-		</div>
-		<div class=\"col-lg-3\">
-			<p> Other category</p>
-			<div class=\"instructionButtonBloc\">
 			</div>
 		</div>
 	</div>
