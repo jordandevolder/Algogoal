@@ -21,6 +21,8 @@
 
 /* Game board and instruction list*/
 
+
+
 #board{
     border: 2px solid black;
     display:inline-block;
