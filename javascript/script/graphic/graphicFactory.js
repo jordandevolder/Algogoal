@@ -15,43 +15,43 @@ function createImageTab(){
         switch(i)
         {
             case 0:
-                imageTab[arrayString[i]].src = "../projet/image/grass.jpg";
+                imageTab[arrayString[i]].src = "../image/grass.jpg";
                 break;
             case 1:
-                imageTab[arrayString[i]].src = "../projet/image/Bow.png";
+                imageTab[arrayString[i]].src = "../image/Bow.png";
                 break;
             case 2:
-                imageTab[arrayString[i]].src = "../projet/image/Gold.png";
+                imageTab[arrayString[i]].src = "../image/Gold.png";
                 break;
             case 3:
-                imageTab[arrayString[i]].src = "../projet/image/Player.png";
+                imageTab[arrayString[i]].src = "../image/Player.png";
                 break;
             case 4:
-                imageTab[arrayString[i]].src = "../projet/image/Monster.png";
+                imageTab[arrayString[i]].src = "../image/Monster.png";
                 break;
             case 5:
-                imageTab[arrayString[i]].src = "../projet/image/Arrow.png";
+                imageTab[arrayString[i]].src = "../image/Arrow.png";
                 break;
             case 6:
-                imageTab[arrayString[i]].src = "../projet/image/DirtRoad.jpg";
+                imageTab[arrayString[i]].src = "../image/DirtRoad.jpg";
                 break;
             case 7:
-                imageTab[arrayString[i]].src = "../projet/image/Stone.jpg";
+                imageTab[arrayString[i]].src = "../image/Stone.jpg";
                 break;
             case 8:
-                imageTab[arrayString[i]].src = "../projet/image/Goal.jpg";
+                imageTab[arrayString[i]].src = "../image/Goal.jpg";
                 break;
             case 9:
-                imageTab[arrayString[i]].src = "../projet/image/Obstacle.png";
+                imageTab[arrayString[i]].src = "../image/Obstacle.png";
                 break;
             case 10:
-                imageTab[arrayString[i]].src = "../projet/image/Water.jpg";
+                imageTab[arrayString[i]].src = "../image/Water.jpg";
                 break;
             case 11:
-                imageTab[arrayString[i]].src = "../projet/image/obstacleUnmovable.png";
+                imageTab[arrayString[i]].src = "../image/obstacleUnmovable.png";
                 break;
             case 12:
-                imageTab[arrayString[i]].src = "../projet/image/WaterWalkable.png";
+                imageTab[arrayString[i]].src = "../image/WaterWalkable.png";
                 break;
         }
     }
@@ -74,7 +74,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             return imageTab["grass"];
             break;
         case 1:
-            if (!hasCollectWeapon && map.map[posY][posX].typeId == EntityType.WEAPON) {
+            if (!engineGame.hasCollectWeapon && engineGame.map.map[posY][posX].typeId == EntityType.WEAPON) {
                 return imageTab["weapon"];
             }
             else {
@@ -82,7 +82,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             }
             break;
         case 2:
-            if (!hasCollectGold && map.map[posY][posX].typeId == EntityType.GOLD) {
+            if (!engineGame.hasCollectGold && engineGame.map.map[posY][posX].typeId == EntityType.GOLD) {
                 return imageTab["gold"];
             }
             else {
@@ -93,7 +93,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             return imageTab["player"];
             break;
         case 4:
-            if (!hasKillMonster && map.map[posY][posX].typeId == EntityType.MONSTER) {
+            if (!engineGame.hasKillMonster && engineGame.map.map[posY][posX].typeId == EntityType.MONSTER) {
                 return imageTab["monster"];
             }
             else {
@@ -101,7 +101,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             }
             break;
         case 5:
-            if (!hasCollectArrow && map.map[posY][posX].typeId == EntityType.AMMO) {
+            if (!engineGame.hasCollectArrow && engineGame.map.map[posY][posX].typeId == EntityType.AMMO) {
                 return imageTab["arrow"];
             }
             else {

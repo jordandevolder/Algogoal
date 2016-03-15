@@ -11,8 +11,8 @@ Physics.prototype.willCollided = function(map,player,distance){
     var y1 = player.y + (player.dy * distance);
 
     return (
-        (map.map[x1][y1] !== undefined) &&
-        (map.map[x1][y1].reachable)
+        (engineGame.map.map[x1][y1] !== undefined) &&
+        (engineGame.map.map[x1][y1].reachable)
     )
 };
 
@@ -23,17 +23,17 @@ Physics.prototype.ableToPush = function(map,player){
     var y2 = player.y + (2*player.dy);
 
     return(
-        (map.map[x1][y1] !== undefined)&&
-        (map.map[x2][y2] !== undefined)&&
-        (map.map[x1][y1] instanceof Obstacle)&&
-        (map.map[x2][y2].isFreeCell)
+        (engineGame.map.map[x1][y1] !== undefined)&&
+        (engineGame.map.map[x2][y2] !== undefined)&&
+        (engineGame.map.map[x1][y1] instanceof Obstacle)&&
+        (engineGame.map.map[x2][y2].isFreeCell)
     )
 };
 
 Physics.prototype.ableToGather = function(map,player){
-    return (map.map[player.x][player.y].gatherable);
+    return (engineGame.map.map[player.x][player.y].gatherable);
 };
 
 Physics.prototype.ableToLook = function(map,player) {
-    return (map.map[player.x + player.dx][player.y + player.dy] !== undefined);
+    return (engineGame.map.map[player.x + player.dx][player.y + player.dy] !== undefined);
 };

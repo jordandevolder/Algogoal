@@ -33,36 +33,31 @@ $hooks = Hooks::get();
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="./" class="navbar-brand">Projet Semestre 4</a>
+
+                <a href="<?php echo DIR?>" class="navbar-brand">Algo Goal</a>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
+                    <li>
+                        <a href="/projet/indexJouer">Jouer</a>
+                    </li>
                     <li>
                         <a href="/projet/regles/">Règles</a>
                     </li>
                     <li>
                         <a href="/projet/scores/">Tableau des scores</a>
                     </li>
-<<<<<<< HEAD
+                    <li>
+                        <a href="#">L'équipe</a>
+                    </li>
                     <?php
                     if(Session::get('loggedin') == true) {
                         echo "<li><a href='/projet/ladeconnexion/'>Deconnexion</a></li>";
-                        echo "<li style='color:whitesmoke';>".Session::get('message')."</li>";
+                        echo "<li id='bonjourUser'>".Session::get('message')."</li>";
                     }
                     else
                         echo "<li><a href='/projet/connexion/'>Connexion</a></li>";
                     ?>
-=======
-                    <li>
-                        <a href="/projet/connexion/">Connexion</a>
-                    </li>
-                    <li id="affichePseudo">
-                      <?php
-                            if(Session::get('loggedin') == true)
-                                echo "<p style='color: whitesmoke';>".Session::get('message')."</p>";
-                      ?>
-                    </li>
->>>>>>> d103d124415923eabbbb3bbd579a51c751bfc0eb
                 </ul>
             </nav>
         </div>
@@ -72,6 +67,7 @@ $hooks = Hooks::get();
 	Assets::css(array(
 		'//maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css',
 		Url::templatePath() . 'css/style.css',
+        '/projet/sweetalert/dist/sweetalert2.css'
 	));
 
 	//hook for plugging in css

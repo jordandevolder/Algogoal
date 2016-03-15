@@ -1,10 +1,10 @@
 canvas = null;
 context = null;
-grid = null;
 imageTab = {};
+engineGame = null;
+engineGraphic = null;
 
 factoryImage = new FactoryImage();
-listManager = new InstructionListManager();
 
 window.onload = function()
 {
@@ -21,21 +21,15 @@ window.onload = function()
         return;
     }
 
+    var tableau = (window.location.href).split("/");
+
+    engineGame = new EngineGame("mapLevel"+tableau[tableau.length-1]);
+    graphicGame = new GraphicGame();
+
     createImageTab();
     loadEvent();
-    grid = new GridMap();
-    draw();
+    graphicGame.draw();
 };
-
-function draw(){
-    context.clearRect(0,0,canvas.width, canvas.height);
-    context.beginPath();
-    grid.drawMap();
-    grid.drawGrid();
-    grid.drawPlayer();
-    context.stroke();
-    context.closePath();
-}
 
 
 

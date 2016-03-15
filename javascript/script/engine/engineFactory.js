@@ -20,7 +20,7 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
         case 4:
             return new Monster(posX,posY, OrientationType.LEFT, 5, 4);
         case 5:
-            return new Ammo(posX, posY, 5)
+            return new Ammo(posX, posY, 5);
         case 6:
             return new Road(posX,posY,6);
         case 7:
@@ -76,8 +76,6 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new RotateRightInstruction();
         case "push":
             return new PushInstruction();
-        case "affichage":
-            return new Affichage();
     }
 };
 
