@@ -22,16 +22,15 @@
 /* Game board and instruction list*/
 
 #board{
-    border: 2px solid black;
     display:inline-block;
     margin-right: 85px;
 }
 
 #instructionList{
-    border: 2px solid black;
+    border: 1px solid black;
     display:inline-block;
     width:100%;
-    height: 400px;
+    height: 350px;
     overflow: scroll;
 }
 
@@ -47,7 +46,7 @@
     width: 940px;
 }
 
-button{
+.instructionButtonBloc button {
     margin:3px;
     color:white;
     width:90px;
@@ -56,7 +55,14 @@ button{
     border-radius: 5px;
 }
 
-
+#bonjourUser
+{
+    color: white;
+    position: relative;
+    margin-top: 7px;
+    margin-left: 300px;
+    font-size: 25px;
+}
 
 /* Barre de menu */
 #affichePseudo

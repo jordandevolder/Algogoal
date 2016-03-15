@@ -12,15 +12,16 @@ if(Session::get('loggedin') == true) {
         certains ne sont peut être pas visible car tu n'as simplement pas encore terminé les anciens, n'oublie pas que pour
         pouvoir avancer dans les niveaux, il faut avoir fini tout les précédents en ramassant le lingot d'or !!</p>
         <br> <p> Bonne chance !</p>";
+        echo "<ul>";
+        $lvl = -1;
+        while($lvl != Session::get('level')){
+            $link = "/projet/play/".($lvl+2);
+            echo "
+                <li><a href='".$link."'>Niveau ".($lvl+2)."</a></li>";
+            $lvl++;
+        }
+        echo "</ul>";
 
-        echo "
-        <ul>
-            <li><a href=\"/projet/play/1\">Niveau 1</a></li>
-            <li><a href=\"/projet/play/2\">Niveau 2</a></li>
-            <li><a href=\"/projet/play/3\">Niveau 3</a></li>
-            <li><a href=\"/projet/play/4\">Niveau 4</a></li>
-      </ul>
-       ";
 }
 else
     echo "<p>Si vous souhaitez jouer, vous devriez d'abord vous créez un compte ou vous connectez !</p>";

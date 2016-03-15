@@ -14,10 +14,9 @@
         <thead>
         <tr>
             <th>Pseudo</th>
-            <!-- <th>Score tableau 1</th>
-            <th>Score tableau 2</th>
-            à decommenter dès qu'on rajoute les scores
-            -->
+            <th>Nombre d'instructions</th>
+            <th>Nombre de lignes</th>
+            <th>Score</th>
         </tr>
         </thead>
         <tbody>

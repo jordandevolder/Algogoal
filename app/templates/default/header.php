@@ -50,7 +50,7 @@ $hooks = Hooks::get();
                     <?php
                     if(Session::get('loggedin') == true) {
                         echo "<li><a href='/projet/ladeconnexion/'>Deconnexion</a></li>";
-                        echo "<li style='color:whitesmoke';>".Session::get('message')."</li>";
+                        echo "<li id='bonjourUser'>".Session::get('message')."</li>";
                     }
                     else
                         echo "<li><a href='/projet/connexion/'>Connexion</a></li>";

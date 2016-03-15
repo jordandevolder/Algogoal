@@ -3,6 +3,8 @@ namespace Controllers;
 
 use Core\Controller;
 use Core\View;
+use Helpers\Session;
+use Helpers\Url;
 
 class Play extends Controller
 {
@@ -26,14 +28,18 @@ class Play extends Controller
     }
 
     public function playLevel($id){
-        $data['title'] = "Amusez vous bien sur cette map ! ";
-        $data['level'] = "Level: ".$id;
+        if(Session::get('level') >= ($id-1)){
+            $data['title'] = "Amusez vous bien sur cette map ! ";
+            $data['level'] = "Level: ".$id;
 
 
 
-        View::renderTemplate('header', $data);
-        View::render('play/playLevel', $data);
-        View::renderTemplate('footer', $data);
+            View::renderTemplate('header', $data);
+            View::render('play/playLevel', $data);
+            View::renderTemplate('footer', $data);
+        }
+        else
+            Url::redirect();
     }
 }
 ?>
