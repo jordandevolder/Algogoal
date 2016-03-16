@@ -139,9 +139,12 @@ function Monster(x,y,orientation,hp,typeId){
 }
 
 Monster.prototype.getDamaged = function(quantity){
+    console.log("AIE");
     this.hp = this.hp - quantity;
-    if(this.hp < 0){
+    if(this.hp <= 0){
+        console.log("Time to change");
         hp = 0;
+        engineGame.map.map[this.x][this.y] = factoryTile.constructTile(EntityType.ROAD,this.x,this.y);
     }
 };
 
@@ -312,14 +315,11 @@ Player.prototype.lookAt = function(map){
     }
 };
 
-/* Notice:  Les méthodes suivantes seront
- à implementer au fur et à mesure
- */
-
 Player.prototype.fire = function(){
-    if(this.ammoQuantity > 0){
-        //Faire un tire
+    if(physic.isHitingMonster(engineGame.map, engineGame.player)){
         this.ammoQuantity--;
+        var tab = engineGame.map.getMonsterPosition();
+        engineGame.map.map[tab[0]][tab[1]].getDamaged(this.weapon.damage);
     }
 };
 
@@ -344,6 +344,17 @@ function Map (nbLine, nbCollumn, map){
         }
     }
 }
+
+Map.prototype.getMonsterPosition = function(){
+    for(var i = 0; i < this.line; i++){
+        for(var j = 0; j < this.collumn; j++){
+            if(this.map[i][j] instanceof Monster){
+                return [i,j];
+            }
+        }
+    }
+    return [-1,-1];
+};
 
 Map.prototype.show = function(){
     var toReturn = "";
