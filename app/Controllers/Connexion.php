@@ -14,6 +14,7 @@ use Helpers\Gump;
 use Helpers\Password;
 use Helpers\Session;
 use Helpers\Url;
+use Helpers\AjaxHandler as Ajax;
 use Core\Controller;
 use Core\View;
 use Models\Tables\Personne;
@@ -38,6 +39,12 @@ class Connexion extends Controller
         View::renderTemplate('header', $data);
         View::render('connexion/connexion', $data);
         View::renderTemplate('footer', $data);
+    }
+
+    public function incrementMaxLevel(){
+
+        //Recuperation de la personne et incrementation de son currentLevelMax
+
     }
 
 

@@ -76,6 +76,8 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new RotateRightInstruction();
         case "push":
             return new PushInstruction();
+        case "fire":
+            return new FireInstruction();
     }
 };
 

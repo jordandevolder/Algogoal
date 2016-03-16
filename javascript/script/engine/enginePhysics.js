@@ -32,7 +32,6 @@ Physics.prototype.ableToPush = function(map,player){
 
 Physics.prototype.isHitingMonster = function(map,player){
     if(player.weapon === undefined){
-        //No weapon
         return false;
     }else if(player.ammoQuantity == 0){
         return false;

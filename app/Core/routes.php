@@ -23,6 +23,7 @@ Router::any('linscription','Controllers\Connexion@inscription');
 Router::any('ladeconnexion','Controllers\Connexion@deconnexion');
 Router::any('indexJouer','Controllers\Play@index');
 Router::get('play/(:any)','Controllers\Play@playLevel');
+Router::post('play/incrementLevel', 'Controllers\Connexion@incrementMaxLevel');
 
 /** Module routes. */
 $hooks = Hooks::get();

@@ -34,10 +34,12 @@ $hooks = Hooks::get();
                     <span class="icon-bar"></span>
                 </button>
 
-                <a href="<?php echo DIR?>" class="navbar-brand">Algo Goal</a>
             </div>
             <nav class="collapse navbar-collapse bs-navbar-collapse" role="navigation">
                 <ul class="nav navbar-nav">
+                    <li>
+                    <a href="<?php echo DIR?>" class="navbar-brand">Algo Goal</a>
+                    </li>
                     <li>
                         <a href="/projet/indexJouer">Jouer</a>
                     </li>
@@ -53,7 +55,7 @@ $hooks = Hooks::get();
                     <?php
                     if(Session::get('loggedin') == true) {
                         echo "<li><a href='/projet/ladeconnexion/'>Deconnexion</a></li>";
-                        echo "<li id='bonjourUser'>".Session::get('message')."</li>";
+                        echo "<li>".Session::get('message')."</li>";
                     }
                     else
                         echo "<li><a href='/projet/connexion/'>Connexion</a></li>";

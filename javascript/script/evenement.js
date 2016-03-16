@@ -31,6 +31,11 @@ function loadEvent(){
         graphicGame.listManager.addInstruction("jump");
     });
 
+    var fire = document.getElementById('fire');
+    fire.addEventListener('click', function() {
+        graphicGame.listManager.addInstruction("fire");
+    });
+
     /* Control event */
 
     var while_ = document.getElementById('while');
@@ -93,6 +98,11 @@ function loadEvent(){
     var canPush = document.getElementById("canPush");
     canPush.addEventListener('click', function() {
         graphicGame.listManager.addInstruction("canPush");
+    });
+
+    var canFire = document.getElementById("canFire");
+    canFire.addEventListener('click', function() {
+        graphicGame.listManager.addInstruction("canFire");
     });
 
     var true_ = document.getElementById("true");
