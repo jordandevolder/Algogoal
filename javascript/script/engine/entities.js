@@ -142,7 +142,7 @@ Monster.prototype.getDamaged = function(quantity){
     console.log("AIE");
     this.hp = this.hp - quantity;
     if(this.hp <= 0){
-        console.log("Time to change");
+        engineGame.hasKillMonster = true;
         hp = 0;
         engineGame.map.map[this.x][this.y] = factoryTile.constructTile(EntityType.ROAD,this.x,this.y);
     }
