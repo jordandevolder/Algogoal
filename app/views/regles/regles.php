@@ -14,13 +14,13 @@
 	<!-- DÉBUT DES INSTRUCTIONS  -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 id="titreRegleCentre">Instructions</h1></div>
+		<div class="col-lg-6"><h1 id="titreCentre">Instructions</h1></div>
 		<div class="col-lg-3"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Move</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Move</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -29,7 +29,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Push</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Push</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -38,7 +38,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Rotate</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Rotate</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -47,7 +47,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Collect</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Collect</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -56,7 +56,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Jump</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Jump</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -66,13 +66,13 @@
 	<!-- DÉBUT DES CONTROLES  -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 id="titreRegleCentre">Control</h1></div>
+		<div class="col-lg-6"><h1 id="titreCentre">Control</h1></div>
 		<div class="col-lg-3"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">While</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">While</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -81,7 +81,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">If</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">If</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -90,7 +90,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Break</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Break</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -100,13 +100,13 @@
 	<!-- DÉBUT DES CONDITIONS  -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 id="titreRegleCentre">Condition</h1></div>
+		<div class="col-lg-6"><h1 id="titreCentre">Condition</h1></div>
 		<div class="col-lg-3"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">&& (ET)</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">&& (ET)</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -115,7 +115,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">|| (OU)</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">|| (OU)</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -124,7 +124,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">! (NON)</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">! (NON)</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -133,7 +133,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">can{Action}</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">can{Action}</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -143,13 +143,13 @@
 	<!-- DÉBUT DES BOUTONS PRATIQUES -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 id="titreRegleCentre">Boutons pratiques</h1></div>
+		<div class="col-lg-6"><h1 id="titreCentre">Boutons pratiques</h1></div>
 		<div class="col-lg-3"></div>
 	</div>
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Execute</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Execute</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -158,7 +158,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">Clear</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">Clear</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">
@@ -167,7 +167,7 @@
 
 	<div class="row">
 		<div class="col-lg-4"></div>
-		<div class="col-lg-4"><h1 id="sousTitreRegleCentre">*3</h1></div>
+		<div class="col-lg-4"><h1 id="sousTitreCentre">*3</h1></div>
 		<div class="col-lg-4"></div>
 	</div>
 	<div class"row">

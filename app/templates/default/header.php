@@ -48,7 +48,7 @@ $hooks = Hooks::get();
                         <a href="/projet/scores/">Tableau des scores</a>
                     </li>
                     <li>
-                        <a href="#">L'équipe</a>
+                        <a href="/projet/equipe/">L'équipe</a>
                     </li>
                     <?php
                     if(Session::get('loggedin') == true) {
