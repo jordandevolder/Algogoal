@@ -43,7 +43,14 @@ class Connexion extends Controller
 
     public function incrementMaxLevel(){
 
-        //Recuperation de la personne et incrementation de son currentLevelMax
+        //Recuperation de la personne et incrementation de son currentLevelMax$
+        /* $p = new Personne();
+         * $this->entityManager->save($p);
+         *
+         *
+         *
+         */
+
 
     }
 
@@ -144,7 +151,7 @@ class Connexion extends Controller
                 $this->entityManager->save($user);
                 Session::set('id', $user->getId());
                 Session::set('pseudo', $user->login);
-                Session:set('level',$user->currentLvl);
+                Session::set('level',$user->currentLvl);
                 Session::set('loggedin', true);
                 Url::redirect();
             }
