@@ -57,7 +57,22 @@ GameExecution.prototype.executeNextInstruction = function(){
         engineGame.isPlaying = false;
     }
     else {
+        var oldExecution = this.currentPosition;
         this.listExecution[this.currentPosition++].execute();
+
+        //Add " <--- " to the currentAction
+        if(this.currentPosition < this.listExecution.length) {
+            var currentTexte = document.getElementById("instruction" + (this.currentPosition)).innerText;
+            document.getElementById("instruction" + (this.currentPosition)).innerHTML = currentTexte + " " + " " + "<---";
+        }
+
+        //Remove the old " <--- "
+        var string = document.getElementById("instruction" + (oldExecution)).innerText;
+        var indexOfSelected = string.indexOf("<---");
+        var toSet = string.substring(0, indexOfSelected);
+        console.log(toSet);
+
+        document.getElementById("instruction" + (oldExecution)).innerHTML = toSet;
     }
 };
 
@@ -82,7 +97,7 @@ GameLauncher.prototype.changeInterval = function(){
     }
 };
 
-GameLauncher.prototype.launch = function(){
+GameLauncher.prototype.launch = function() {
     engineGame.isPlaying = true;
     idProcessusExecution = setInterval(this.go, this.currentTimeExecution);
 };

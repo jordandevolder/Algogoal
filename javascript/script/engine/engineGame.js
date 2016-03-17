@@ -92,7 +92,13 @@ EngineGame.prototype.startExecutionListInstructions = function(){
     this.updateGameState();
     graphicGame.draw();
     this.executer.buildLogicInstruction();
+    if(this.executer.listExecution.length > 0) {
+        var currentTexte = document.getElementById("instruction" + 0).innerText;
+        document.getElementById("instruction" + 0).innerHTML = currentTexte + " " + " " + "<---";
+    }
     this.launcher.launch();
+
+
 };
 
 EngineGame.prototype.reInit = function(){
