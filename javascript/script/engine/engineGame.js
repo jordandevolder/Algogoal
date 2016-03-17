@@ -23,12 +23,14 @@ function EngineGame(idMap){
     this.canJump = true;
     this.canCollect = true;
     this.canPush = true;
+    this.canFire = true;
 
     this.tableauEtat = {};
     this.tableauEtat["canMove"] = this.canMove;
     this.tableauEtat["canJump"] = this.canJump;
     this.tableauEtat["canCollect"] = this.canCollect;
     this.tableauEtat["canPush"] = this.canPush;
+    this.tableauEtat["canFire"] = this.canFire;
     this.tableauEtat["true"] = true;
     this.tableauEtat["false"] = false;
 
@@ -48,6 +50,16 @@ EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
         swal("Good job!", "Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
+
+        $.ajax({
+
+            type : 'POST',
+            url : 'incrementLevel',
+            success : function() {
+                console.log("DES BITES");
+            }
+        });
+
     }
     else{
         swal("Presque !", "Vous êtes arrivé au bout du chemin, malheureusement, sans trésor, vous n'avez pas d'or pour arriver au prochain niveau ! Retenter celui ci en ramassant l'or", "error");
@@ -61,15 +73,17 @@ EngineGame.prototype.triggerGameLose = function(){
 EngineGame.prototype.updateGameState = function(){
 
     this.canMove = physic.willCollided(this.map,this.player,1);
-    this.canJump = physic.willCollided(this,this.player,2);
-    this.canCollect = physic.ableToGather(this,this.player);
-    this.canPush = physic.ableToPush(this,this.player);
+    this.canJump = physic.willCollided(this.map,this.player,2);
+    this.canCollect = physic.ableToGather(this.map,this.player);
+    this.canPush = physic.ableToPush(this.map,this.player);
+    this.canFire = physic.isHitingMonster(this.map,this.player);
     this.isWin = (this.map.map[this.player.x][this.player.y].typeId == EntityType.GOAL);
 
     this.tableauEtat["canMove"] = this.canMove;
     this.tableauEtat["canJump"] = this.canJump;
     this.tableauEtat["canCollect"] = this.canCollect;
     this.tableauEtat["canPush"] = this.canPush;
+    this.tableauEtat["canFire"] = this.canFire;
 };
 
 EngineGame.prototype.startExecutionListInstructions = function(){
@@ -100,12 +114,14 @@ EngineGame.prototype.reInit = function(){
     this.canJump = true;
     this.canCollect = true;
     this.canPush = true;
+    this.canFire = true;
 
     this.tableauEtat = {};
     this.tableauEtat["canMove"] = this.canMove;
     this.tableauEtat["canJump"] = this.canJump;
     this.tableauEtat["canCollect"] = this.canCollect;
     this.tableauEtat["canPush"] = this.canPush;
+    this.tableauEtat["canFire"] = this.canFire;
     this.tableauEtat["true"] = true;
     this.tableauEtat["false"] = false;
 

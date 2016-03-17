@@ -42,6 +42,7 @@ if(Session::get('loggedin')==true)
 				<button id=\"rotateR\"> rotateRight</button>
 				<button id=\"collect\"> collect </button>
 				<button id=\"jump\"> jump </button>
+				<button id=\"fire\"> fire </button>
 			</div>
 		</div>
 		<div class=\"col-lg-4\">
@@ -67,6 +68,7 @@ if(Session::get('loggedin')==true)
 				<button id=\"canJump\"> canJump </button>
 				<button id=\"canCollect\"> canCollect </button>
 				<button id=\"canPush\"> canPush </button>
+				<button id=\"canFire\"> canFire </button>
 				<button id=\"true\"> true </button>
 				<button id=\"false\"> false </button>
 				<button id=\"openPar\"> ( </button>

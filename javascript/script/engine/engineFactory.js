@@ -12,7 +12,7 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
         case 0:
             return new FreeCell(posX, posY,0);
         case 1:
-            return new Weapon(posX, posY, 10, 3, 1);
+            return new Weapon(posX, posY, 2, 3, 1);
         case 2:
             return new Gold(posX, posY, 2);
         case 3:
@@ -76,6 +76,8 @@ InstructionFactory.prototype.constructInstruction = function(string){
             return new RotateRightInstruction();
         case "push":
             return new PushInstruction();
+        case "fire":
+            return new FireInstruction();
     }
 };
 

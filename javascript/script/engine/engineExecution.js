@@ -263,3 +263,11 @@ function RotateRightInstruction(){
 RotateRightInstruction.prototype.execute = function(){
     engineGame.player.rightRotate();
 };
+
+function FireInstruction(){
+
+}
+
+FireInstruction.prototype.execute = function(){
+  engineGame.player.fire();
+};

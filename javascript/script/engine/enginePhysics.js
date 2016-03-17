@@ -30,6 +30,27 @@ Physics.prototype.ableToPush = function(map,player){
     )
 };
 
+Physics.prototype.isHitingMonster = function(map,player){
+    if(player.weapon === undefined){
+        return false;
+    }else if(player.ammoQuantity == 0){
+        return false;
+    }else{
+        var x1 = player.x;
+        var y1 = player.y;
+
+        for(var i = 1; i <= player.weapon.range; i++){
+            var x2 = x1 + (i*player.dx);
+            var y2 = y1 + (i*player.dy);
+            if(engineGame.map.map[x2][y2] !== undefined &&
+                engineGame.map.map[x2][y2] instanceof Monster){
+                return true;
+            }
+        }
+        return false;
+    }
+};
+
 Physics.prototype.ableToGather = function(map,player){
     return (engineGame.map.map[player.x][player.y].gatherable);
 };

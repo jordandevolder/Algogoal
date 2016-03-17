@@ -6,6 +6,8 @@ use Core\View;
 use Helpers\Session;
 use Helpers\Url;
 
+//use Helpers\AjaxHandler as Ajax;
+
 class Play extends Controller
 {
     /**
@@ -41,5 +43,12 @@ class Play extends Controller
         else
             Url::redirect();
     }
+
+    //public function ajaxIncrement(){
+
+
+
+   //}
+
 }
 ?>
