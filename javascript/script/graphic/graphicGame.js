@@ -12,10 +12,13 @@ GraphicGame.prototype.reInit = function(){
 
 GraphicGame.prototype.draw = function(){
     context.clearRect(0,0,canvas.width, canvas.height);
+
     context.beginPath();
     this.mapComponents.drawMap();
     this.mapComponents.drawGrid();
     this.mapComponents.drawPlayer();
-    context.stroke();
+    this.mapComponents.drawMonsterLife();
     context.closePath();
+
+    context.stroke();
 };

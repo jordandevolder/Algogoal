@@ -29,6 +29,7 @@ window.onload = function()
     createImageTab();
     loadEvent();
     graphicGame.draw();
+
 };
 
 
