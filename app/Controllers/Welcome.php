@@ -34,7 +34,7 @@ class Welcome extends Controller
      */
     public function index()
     {
-        $data['title'] = $this->language->get('welcome_text');
+        $data['title'] = "Bienvenue !";
         $data['welcome_message'] = $this->language->get('welcome_message');
 
 

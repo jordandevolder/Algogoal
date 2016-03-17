@@ -2,15 +2,19 @@
 use Helpers\Session;
 ?>
 
-<div class="page-header">
-    <h1><?php echo $data['title'] ?></h1>
-</div>
-
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6"><h1 class="grandTitrePage"><?php echo $data['title'] ?></h1></div>
+        <div class="col-lg-3"></div>
+    </div>
+<div>
+<div class = "page-header"></div>
 <?php
 if(Session::get('loggedin') == true) {
-    echo "<p>Heureux de te voir aventurier ! Prêt pour ton initiation à l'algorithmique ? Voici les différentes niveaux,
-        certains ne sont peut être pas visible car tu n'as simplement pas encore terminé les anciens, n'oublie pas que pour
-        pouvoir avancer dans les niveaux, il faut avoir fini tout les précédents en ramassant le lingot d'or !!</p>
+    echo "<p>Heureux de te voir aventurier ! Prêt pour ton initiation à l'algorithmique ? Voici les différents niveaux,
+        certains ne sont peut être pas visibles car tu n'as simplement pas encore terminé les anciens, n'oublie pas que pour
+        pouvoir avancer dans les niveaux, il faut avoir fini tous les précédents en ramassant le lingot d'or !!</p>
         <br> <p> Bonne chance !</p>";
         echo "<ul>";
         $lvl = -1;
@@ -24,5 +28,5 @@ if(Session::get('loggedin') == true) {
 
 }
 else
-    echo "<p>Si vous souhaitez jouer, vous devriez d'abord vous créez un compte ou vous connectez !</p>";
+    echo "<p>Si vous souhaitez jouer, vous devriez d'abord vous créer un compte ou vous connecter !</p>";
 ?>

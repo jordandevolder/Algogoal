@@ -3,7 +3,6 @@
 ?>
 
 <div class="page-header">
-    <h1><?php echo $data['title'] ?></h1>
     <h2><?php echo $data['level'] ?>
         <a class="col-lg-offset-8" href="<?php echo DIR?>"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-home"></span> Accueil</button></a>
         <a href="/projet/indexJouer"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-arrow-up"></span> Index des niveaux</button></a>

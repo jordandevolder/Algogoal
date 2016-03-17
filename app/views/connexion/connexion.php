@@ -9,9 +9,14 @@
 use Helpers\Form;
 ?>
 
-<div class="page-header">
-    <h1><?php echo $data['title'] ?></h1>
-</div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-3"></div>
+        <div class="col-lg-6"><h1 class="grandTitrePage"><?php echo $data['title'] ?></h1></div>
+        <div class="col-lg-3"></div>
+    </div>
+<div>
+<div class = "page-header"></div>
 <div class="alert-danger"><?php echo $data['erreurCo']; ?></div>
 
 <body>

@@ -74,7 +74,7 @@
     font-size: 20px;
 }
 
-#titreCentre{
+.titreCentre{
 
     text-align: center;
     border: 2px solid #243640;
@@ -82,11 +82,9 @@
     color:#243640;
 }
 
-#sousTitreCentre{
+.sousTitreCentre{
     text-align: center;
-    border: 2px solid #243640;
-    border-radius: 5px;
-    color:#243640;
+    text-decoration : underline;
 }
 
 #reg{
@@ -95,4 +93,11 @@
 
 #photo{
     float:left;
+}
+
+.grandTitrePage{
+    text-align:center;
+    border: 1px double #243640;
+    border-radius: 5px;
+    border-width:10px;
 }
