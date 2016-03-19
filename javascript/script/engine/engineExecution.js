@@ -57,6 +57,8 @@ GameExecution.prototype.executeNextInstruction = function(){
         engineGame.isPlaying = false;
     }
     else {
+        engineGame.nbInstructionExecuted++;
+
         var oldExecution = this.currentPosition;
         this.listExecution[this.currentPosition++].execute();
 
@@ -70,7 +72,6 @@ GameExecution.prototype.executeNextInstruction = function(){
         var string = document.getElementById("instruction" + (oldExecution)).innerText;
         var indexOfSelected = string.indexOf("<---");
         var toSet = string.substring(0, indexOfSelected);
-        console.log(toSet);
 
         document.getElementById("instruction" + (oldExecution)).innerHTML = toSet;
     }
