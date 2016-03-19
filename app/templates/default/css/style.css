@@ -101,3 +101,9 @@
     border-radius: 5px;
     border-width:10px;
 }
+
+.imgcarrousel{
+    margin:auto;
+    width:400px;
+    height:250px;
+}
