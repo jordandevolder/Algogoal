@@ -18,7 +18,7 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
         case 3:
             return new Player(posX, posY, OrientationType.LEFT, 5, 3);
         case 4:
-            return new Monster(posX,posY, OrientationType.LEFT, 5, 4);
+            return new Monster(posX,posY, OrientationType.LEFT, 4, 4);
         case 5:
             return new Ammo(posX, posY, 5);
         case 6:

@@ -17,6 +17,8 @@ function EngineGame(idMap){
     this.launcher = new GameLauncher();
     this.tokens = [];
 
+    this.nbInstructionExecuted = 0;
+
     /* Game State */
 
     this.canMove = true;
@@ -51,6 +53,11 @@ EngineGame.prototype.triggerGameWin = function(){
         swal("Good job!", "Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
 
+
+        //Data according to game state
+        console.log("Nombre d'instructions: "+ this.tokens.length);
+        console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
+        //
         $.ajax({
 
             type : 'POST',
@@ -67,6 +74,8 @@ EngineGame.prototype.triggerGameWin = function(){
 };
 
 EngineGame.prototype.triggerGameLose = function(){
+    console.log("Nombre d'instructions: "+ this.tokens.length);
+    console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
     swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
 };
 
@@ -92,7 +101,13 @@ EngineGame.prototype.startExecutionListInstructions = function(){
     this.updateGameState();
     graphicGame.draw();
     this.executer.buildLogicInstruction();
+    if(this.executer.listExecution.length > 0) {
+        var currentTexte = document.getElementById("instruction" + 0).innerText;
+        document.getElementById("instruction" + 0).innerHTML = currentTexte + " " + " " + "<---";
+    }
     this.launcher.launch();
+
+
 };
 
 EngineGame.prototype.reInit = function(){
@@ -107,6 +122,8 @@ EngineGame.prototype.reInit = function(){
     this.launcher = new GameLauncher();
     this.listManager = new InstructionListManager();
     this.tokens = [];
+
+    this.nbInstructionExecuted = 0;
 
     /* Game State */
 

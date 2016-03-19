@@ -60,7 +60,6 @@ function BuildInterpreterCondition(expressionPolonaise){
 
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
-    console.log(this.expression);
     var copieExpression = this.expression.slice(0);
     var structPile = [];
     while(copieExpression.length > 0){

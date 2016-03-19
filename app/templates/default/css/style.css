@@ -74,6 +74,11 @@
     font-size: 20px;
 }
 
+#formulaireConnexion
+{
+    background-color:#243640;
+    color: white;
+}
 .titreCentre{
 
     text-align: center;

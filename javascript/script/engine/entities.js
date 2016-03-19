@@ -319,7 +319,7 @@ Player.prototype.fire = function(){
     if(physic.isHitingMonster(engineGame.map, engineGame.player)){
         this.ammoQuantity--;
         var tab = engineGame.map.getMonsterPosition();
-        engineGame.map.map[tab[0]][tab[1]].getDamaged(this.weapon.damage);
+        engineGame.map.map[tab[1]][tab[0]].getDamaged(this.weapon.damage);
     }
 };
 
@@ -349,10 +349,11 @@ Map.prototype.getMonsterPosition = function(){
     for(var i = 0; i < this.line; i++){
         for(var j = 0; j < this.collumn; j++){
             if(this.map[i][j] instanceof Monster){
-                return [i,j];
+                return [j,i];
             }
         }
     }
+
     return [-1,-1];
 };
 
