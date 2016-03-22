@@ -1,16 +1,32 @@
+
 /**************************/
 /*                        */
 /*   GraphicInstruction   */
 /*                        */
 /**************************/
 
-function GraphicInstruction(x,y,id,element){
+function GraphicInstruction(x,y,id,element, typeElement){
     var node = document.createTextNode(element);
     this.posX = x;
     this.posY = y;
-    this.elementHTML = document.createElement('p');
+    this.id = id;
+    this.elementHTML = document.createElement(typeElement);
     this.elementHTML.appendChild(node);
-    this.elementHTML.id = id;
+    this.elementHTML.id = "instruction"+id;
+
+   /* this.elementHTML.addEventListener('click', function() {
+        if(!engineGame.isPlaying) {
+            graphicGame.listManager.container.removeChild(document.getElementById("instruction"+id));
+            engineGame.tokens.splice(id,1);
+
+            console.log(graphicGame.listManager.nbInstruction);
+            for(var i = id+1; i < graphicGame.listManager.nbInstruction; i++){
+                var toChange = graphicGame.listManager.instructionGraphicList["instruction"+i].id - 1;
+                console.log(toChange);
+                graphicGame.listManager.instructionGraphicList["instruction"+i].elementHTML.id = "instruction"+(toChange);
+            }
+        }
+    });*/
 
     // couleur syntaxique
     switch(element)
@@ -86,7 +102,7 @@ InstructionListManager.prototype.addInstruction = function(string){
         this.currentConditionBuilding += string;
 
 
-        this.instructionGraphicList["instruction"+this.nbInstruction] = new GraphicInstruction(this.currentX,this.currentY,"instruction"+this.nbInstruction,string);
+        this.instructionGraphicList["instruction"+this.nbInstruction] = new GraphicInstruction(this.currentX,this.currentY, this.nbInstruction,string,"p");
         this.container.appendChild(this.instructionGraphicList["instruction"+this.nbInstruction].elementHTML);
         this.instructionGraphicList["instruction"+this.nbInstruction].moveInstruction(20,20);
     }
@@ -123,8 +139,8 @@ InstructionListManager.prototype.addInstruction = function(string){
             this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
         }
 
-        this.instructionGraphicList["instruction" + this.nbInstruction] = new GraphicInstruction(this.currentX, this.currentY, "instruction" + this.nbInstruction, string);
-        this.container.appendChild(this.instructionGraphicList["instruction" + this.nbInstruction].elementHTML);
+        this.instructionGraphicList["instruction" + this.nbInstruction] = new GraphicInstruction(this.currentX, this.currentY, this.nbInstruction, string,"p");
+        this.container.appendChild(this.instructionGraphicList["instruction"+this.nbInstruction].elementHTML);
         this.instructionGraphicList["instruction" + this.nbInstruction].moveInstruction(20, 20);
 
 
@@ -136,9 +152,7 @@ InstructionListManager.prototype.addInstruction = function(string){
         this.nbInstruction++;
         this.currentX = this.startingXPosition + (this.nbImbrication * this.incrementX);
         this.currentY = this.startingYPosition + (this.nbInstruction * this.incrementY);
-
     }
-
 };
 
 InstructionListManager.prototype.clearList = function(){

@@ -43,7 +43,7 @@ function EngineGame(idMap){
 
     this.isWin = false;
     this.isLose = false;
-    this.isPlaying = true;
+    this.isPlaying = false;
 
     /* End Game State */
 }
@@ -99,6 +99,7 @@ EngineGame.prototype.startExecutionListInstructions = function(){
     this.player = new Player(5,0,OrientationType.RIGHT,10);
     this.player.updateSpeedDirection();
     this.updateGameState();
+    this.isPlaying = true;
     graphicGame.draw();
     this.executer.buildLogicInstruction();
     if(this.executer.listExecution.length > 0) {
@@ -149,7 +150,7 @@ EngineGame.prototype.reInit = function(){
 
     this.isWin = false;
     this.isLose = false;
-    this.isPlaying = true;
+    this.isPlaying = false;
 
     graphicGame.draw();
 
