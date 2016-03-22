@@ -13,10 +13,6 @@ function GameExecution(){
 
 }
 
-GameExecution.prototype.buildLogicInstruction = function() {
-    this.createInstructionsFromArray();
-};
-
 GameExecution.prototype.setCurrentPosition = function(index){
     this.currentPosition = index;
 };
@@ -87,7 +83,7 @@ function GameLauncher(){
 
 GameLauncher.prototype.changeInterval = function(){
     this.currentDiviser++;
-    if(this.currentDiviser > 3){
+    if(this.currentDiviser > 5){
         this.currentDiviser = 1;
     }
     document.getElementById("speedExec").innerText = "* "+this.currentDiviser;

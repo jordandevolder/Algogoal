@@ -148,13 +148,6 @@ function loadEvent(){
     execute.addEventListener('click', function(){
         engineGame.startExecutionListInstructions();
 
-        /*
-        player = new Player(5,0,OrientationType.RIGHT,10);
-        player.updateSpeedDirection();
-        updateGameState();
-        draw();
-        game.buildLogicInstruction();
-        launcher.launch(); */
     });
 
     var clear = document.getElementById("clear");

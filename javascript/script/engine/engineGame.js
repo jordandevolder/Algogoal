@@ -42,7 +42,6 @@ function EngineGame(idMap){
     this.hasKillMonster = false;
 
     this.isWin = false;
-    this.isLose = false;
     this.isPlaying = false;
 
     /* End Game State */
@@ -96,19 +95,22 @@ EngineGame.prototype.updateGameState = function(){
 };
 
 EngineGame.prototype.startExecutionListInstructions = function(){
-    this.player = new Player(5,0,OrientationType.RIGHT,10);
-    this.player.updateSpeedDirection();
-    this.updateGameState();
-    this.isPlaying = true;
-    graphicGame.draw();
-    this.executer.buildLogicInstruction();
-    if(this.executer.listExecution.length > 0) {
-        var currentTexte = document.getElementById("instruction" + 0).innerText;
-        document.getElementById("instruction" + 0).innerHTML = currentTexte + " " + " " + "<---";
+    if(!this.isPlaying) {
+        this.player = new Player(5, 0, OrientationType.RIGHT, 10);
+        this.player.updateSpeedDirection();
+        this.updateGameState();
+        this.isPlaying = true;
+        this.nbInstructionExecuted = 0;
+        this.isWin = false;
+        graphicGame.draw();
+        this.executer = new GameExecution();
+        this.executer.createInstructionsFromArray();
+        if (this.executer.listExecution.length > 0) {
+            var currentTexte = document.getElementById("instruction" + 0).innerText;
+            document.getElementById("instruction" + 0).innerHTML = currentTexte + " " + " " + "<---";
+        }
+        this.launcher.launch();
     }
-    this.launcher.launch();
-
-
 };
 
 EngineGame.prototype.reInit = function(){
@@ -149,7 +151,6 @@ EngineGame.prototype.reInit = function(){
     this.hasKillMonster = false;
 
     this.isWin = false;
-    this.isLose = false;
     this.isPlaying = false;
 
     graphicGame.draw();
