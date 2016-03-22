@@ -43,14 +43,11 @@ class Connexion extends Controller
 
     public function incrementMaxLevel(){
 
-        //Recuperation de la personne et incrementation de son currentLevelMax$
-        /* $p = new Personne();
-         * $this->entityManager->save($p);
-         *
-         *
-         *
-         */
-
+        /* Les donnees, t'as plus qu'a les utiliser */
+        $levelActuel = Ajax::get('levelActuel');
+        $nbInstruction = Ajax::get('tokensLength');
+        $nbInstructionExecuted = Ajax::get('nbInstructions');
+        $score = Ajax::get('score');
 
     }
 

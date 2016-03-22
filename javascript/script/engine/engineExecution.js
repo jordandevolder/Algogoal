@@ -105,7 +105,8 @@ GameLauncher.prototype.go = function(){
     if(engineGame.isPlaying){
         if(engineGame.isWin){
             clearInterval(idProcessusExecution);
-            engineGame.triggerGameWin();        }
+            engineGame.triggerGameWin();
+        }
         else {
             engineGame.executer.executeNextInstruction();
             graphicGame.draw();

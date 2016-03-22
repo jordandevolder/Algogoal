@@ -1,8 +1,9 @@
 idProcessusExecution = 0;
 
-function EngineGame(idMap){
+function EngineGame(idMap, levelActuel){
 
     this.currentIdMap = idMap;
+    this.levelActuel = levelActuel;
 
     this.associativeMapLevel = {};
     this.associativeMapLevel["mapLevel1"] = mapLevel1;
@@ -56,26 +57,39 @@ EngineGame.prototype.triggerGameWin = function(){
         //Data according to game state
         console.log("Nombre d'instructions: "+ this.tokens.length);
         console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
+        var score = 0;
+        if(this.hasCollectGold == true && this.hasKillMonster == true){
+            score = 3;
+        }
+        else{
+            score = 2;
+        }
         //
         $.ajax({
 
-            type : 'POST',
+            type: 'POST',
             url : 'incrementLevel',
-            success : function() {
-                console.log("DES BITES");
+            data: {levelActuel : this.levelActuel, tokensLength : this.tokens.length, nbInstructions : this.nbInstructionExecuted, score : score},
+            beforeSend:function(){ /* Il faut faire ici un wait ici */ },
+            success : function(){
+                console.log("DES CHATTES");
             }
+
         });
 
     }
     else{
         swal("Presque !", "Vous êtes arrivé au bout du chemin, malheureusement, sans trésor, vous n'avez pas d'or pour arriver au prochain niveau ! Retenter celui ci en ramassant l'or", "error");
     }
+
+    this.isPlaying = false;
 };
 
 EngineGame.prototype.triggerGameLose = function(){
     console.log("Nombre d'instructions: "+ this.tokens.length);
     console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
     swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
+    this.isPlaying = false;
 };
 
 EngineGame.prototype.updateGameState = function(){
@@ -95,9 +109,11 @@ EngineGame.prototype.updateGameState = function(){
 };
 
 EngineGame.prototype.startExecutionListInstructions = function(){
+    /* Probleme, quand on fait replay, les objets ne s'affiche plus */
     if(!this.isPlaying) {
         this.player = new Player(5, 0, OrientationType.RIGHT, 10);
         this.player.updateSpeedDirection();
+        this.map = new Map(10,10,this.associativeMapLevel[this.currentIdMap]);
         this.updateGameState();
         this.isPlaying = true;
         this.nbInstructionExecuted = 0;
