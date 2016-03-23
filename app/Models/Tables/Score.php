@@ -10,19 +10,20 @@ namespace Models\Tables;
 
 use Helpers\DB\Entity;
 
-class Score
+class Score extends Entity
 {
     public $idPlayer;
     public $idMap;
     public $nbInstructions;
     public $nbLignes;
 
-    public function __construct($idMap, $idPlayer, $nbInstructions, $nbLignes)
+   /* public function __construct($idMap, $idPlayer, $nbInstructions, $nbLignes)
     {
+        parent::__construct();
         $this->idMap=$idMap;
         $this->idPlayer=$idPlayer;
         $this->nbInstructions=$nbInstructions;
         $this->nbLignes=$nbLignes;
-    }
+    }*/
 
 }
