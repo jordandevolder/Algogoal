@@ -47,7 +47,7 @@ $hooks = Hooks::get();
                         <a href="/projet/regles/">Règles</a>
                     </li>
                     <li>
-                        <a href="/projet/scores/">Tableau des scores</a>
+                        <a href="/projet/indexScores/">Tableau des scores</a>
                     </li>
                     <li>
                         <a href="/projet/equipe/">L'équipe</a>

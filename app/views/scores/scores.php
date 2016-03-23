@@ -14,22 +14,36 @@
         <div class="col-lg-3"></div>
     </div>
 <div>
-<div class = "page-header"></div>
-<table class="table table-striped">
+
+<div class="page-header">
+    <a href="/projet/scores/1"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 1</button></a>
+    <a href="/projet/scores/2"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 2</button></a>
+    <a href="/projet/scores/3"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 3</button></a>
+    <a href="/projet/scores/4"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 4</button></a>
+
+</div>
+    <table class="table table-striped">
         <thead>
         <tr>
             <th>Pseudo</th>
-            <th>Nombre d'instructions</th>
+            <th>Nombre d'instructions executées</th>
             <th>Nombre de lignes</th>
             <th>Score</th>
         </tr>
         </thead>
+        <?php
+        for($i=0;$i<$data['taille'];$i++){
+        echo "<tr>
+            <td>".$data['scores']['pseudos'][$i]."</td>
+            <td>".$data['scores'][$i]->nbInstructions."</td>
+            <td>".$data['scores'][$i]->nbLignes."</td>
+            <td>".$data['scores'][$i]->nbEtoiles."</td>
+        </tr>";
+        }
+        ?>
         <tbody>
-            <?php
-            foreach($data['scores'] as $p)
-                echo "<tr>"."<td>".$p->pseudo."</td>"."</tr>";
-            ?>
+
         </tbody>
-</table>
+    </table>
 
 

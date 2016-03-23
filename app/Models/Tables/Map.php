@@ -10,13 +10,12 @@ namespace Models\Tables;
 
 use Helpers\DB\Entity;
 
-class Map
+class Map extends Entity
 {
-    public $id;
 
     public function __construct($id)
     {
-        $this->id = $id;
+        $this->id=$id;
 
     }
 

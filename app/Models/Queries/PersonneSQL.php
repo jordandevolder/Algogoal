@@ -17,4 +17,10 @@ class PersonneSQL extends Query
             return false;
         return $tmp[0];
     }
+
+    public function getPseudoById($id)
+    {
+        $personne = $this->findById($id);
+        return $personne->pseudo;
+    }
 }
