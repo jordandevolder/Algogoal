@@ -22,11 +22,10 @@ window.onload = function()
     }
 
     var tableau = (window.location.href).split("/");
-
+    createImageTab();
     engineGame = new EngineGame("mapLevel"+tableau[tableau.length-1], tableau[tableau.length-1]);
     graphicGame = new GraphicGame();
 
-    createImageTab();
     loadEvent();
     graphicGame.draw();
 

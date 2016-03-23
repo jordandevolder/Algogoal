@@ -1,1 +1,97 @@
-<p>Error on Mar 23, 2016 16:07PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'affichageScore' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Mar 23, 2016 16:10PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:11PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:11PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:12PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:14PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:14PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:17PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:17PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:39PM - require(F:\wamp\www\projet\app/views/scores/scores/(:num).php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p>
+<p>Error on Mar 23, 2016 16:07PM - call_user_func_array() expects parameter 1 to be a valid callback, class 'Controllers\Scores' does not have a method 'affichageScore' in F:\wamp\www\projet\app\Core\Router.php on line 126</p><p>Error on Mar 23, 2016 16:10PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:11PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:11PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:12PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:14PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:14PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:17PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:17PM - require(F:\wamp\www\projet\app/views/scores/indexScores.php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><p>Error on Mar 23, 2016 16:39PM - require(F:\wamp\www\projet\app/views/scores/scores/(:num).php): failed to open stream: No such file or directory in F:\wamp\www\projet\app\Core\View.php on line 34</p><h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Mar 23, 2016 18:18PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'projet.score' doesn't exist SELECT * FROM score WHERE idPlayer = 5 and idMap =2</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/projet/app/Helpers/DB/Query.php(62): Helpers\DB\DBManager->execute(false)
+#1 /Applications/MAMP/htdocs/projet/app/Controllers/Scores.php(58): Helpers\DB\Query->execute()
+#2 [internal function]: Controllers\Scores->affichageScore('2')
+#3 /Applications/MAMP/htdocs/projet/app/Core/Router.php(126): call_user_func_array(Array, Array)
+#4 /Applications/MAMP/htdocs/projet/app/Core/Router.php(254): Core\Router::invokeObject('Controllers\\Sco...', Array)
+#5 /Applications/MAMP/htdocs/projet/app/Core/routes.php(41): Core\Router::dispatch()
+#6 /Applications/MAMP/htdocs/projet/index.php(81): require('/Applications/M...')
+#7 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Mar 23, 2016 18:23PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'projet.score' doesn't exist SELECT * FROM score WHERE idPlayer = 5 and idMap =1</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/projet/app/Helpers/DB/Query.php(62): Helpers\DB\DBManager->execute(false)
+#1 /Applications/MAMP/htdocs/projet/app/Controllers/Scores.php(58): Helpers\DB\Query->execute()
+#2 [internal function]: Controllers\Scores->affichageScore('1')
+#3 /Applications/MAMP/htdocs/projet/app/Core/Router.php(126): call_user_func_array(Array, Array)
+#4 /Applications/MAMP/htdocs/projet/app/Core/Router.php(254): Core\Router::invokeObject('Controllers\\Sco...', Array)
+#5 /Applications/MAMP/htdocs/projet/app/Core/routes.php(41): Core\Router::dispatch()
+#6 /Applications/MAMP/htdocs/projet/index.php(81): require('/Applications/M...')
+#7 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Mar 23, 2016 18:24PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[42S02]: Base table or view not found: 1146 Table 'projet.score' doesn't exist SELECT * FROM score WHERE idPlayer = 5 and idMap =3</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/projet/app/Helpers/DB/Query.php(62): Helpers\DB\DBManager->execute(false)
+#1 /Applications/MAMP/htdocs/projet/app/Controllers/Scores.php(58): Helpers\DB\Query->execute()
+#2 [internal function]: Controllers\Scores->affichageScore('3')
+#3 /Applications/MAMP/htdocs/projet/app/Core/Router.php(126): call_user_func_array(Array, Array)
+#4 /Applications/MAMP/htdocs/projet/app/Core/Router.php(254): Core\Router::invokeObject('Controllers\\Sco...', Array)
+#5 /Applications/MAMP/htdocs/projet/app/Core/routes.php(41): Core\Router::dispatch()
+#6 /Applications/MAMP/htdocs/projet/index.php(81): require('/Applications/M...')
+#7 {main}</pre>
+
+           <hr />
+<h3>Exception information:</h3>
+
+           <p><strong>Date:</strong> Mar 23, 2016 18:47PM</p>
+
+           <p><strong>Message:</strong> SQLSTATE[21S01]: Insert value list does not match column list: 1136 Column count doesn't match value count at row 1 INSERT INTO personne VALUES(?,?,?,?,?,?)</p>
+
+           <p><strong>Code:</strong> 0</p>
+
+           <p><strong>File:</strong> /Applications/MAMP/htdocs/projet/app/Helpers/DB/DBManager.php</p>
+
+           <p><strong>Line:</strong> 59</p>
+
+           <h3>Stack trace:</h3>
+
+           <pre>#0 /Applications/MAMP/htdocs/projet/app/Helpers/DB/EntityManager.php(73): Helpers\DB\DBManager->execute(Array)
+#1 /Applications/MAMP/htdocs/projet/app/Helpers/DB/EntityManager.php(43): Helpers\DB\EntityManager->insert(Object(Models\Tables\Personne))
+#2 /Applications/MAMP/htdocs/projet/app/Controllers/Connexion.php(148): Helpers\DB\EntityManager->save(Object(Models\Tables\Personne))
+#3 [internal function]: Controllers\Connexion->inscription()
+#4 /Applications/MAMP/htdocs/projet/app/Core/Router.php(126): call_user_func_array(Array, Array)
+#5 /Applications/MAMP/htdocs/projet/app/Core/Router.php(217): Core\Router::invokeObject('Controllers\\Con...')
+#6 /Applications/MAMP/htdocs/projet/app/Core/routes.php(41): Core\Router::dispatch()
+#7 /Applications/MAMP/htdocs/projet/index.php(81): require('/Applications/M...')
+#8 {main}</pre>
+
+           <hr />
