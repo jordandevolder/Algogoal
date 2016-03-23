@@ -139,7 +139,6 @@ function Monster(x,y,orientation,hp,typeId){
 }
 
 Monster.prototype.getDamaged = function(quantity){
-    console.log("AIE");
     this.hp = this.hp - quantity;
     if(this.hp <= 0){
         engineGame.hasKillMonster = true;
