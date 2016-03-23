@@ -21,8 +21,6 @@
 
 /* Game board and instruction list*/
 
-
-
 #board{
     display:inline-block;
     margin-right: 85px;
@@ -92,10 +90,6 @@
     text-decoration : underline;
 }
 
-#reg{
-    text-align:center;
-}
-
 #photo{
     float:left;
 }
@@ -111,4 +105,8 @@
     margin:auto;
     width:auto;
     height:auto;
+}
+
+p{
+    text-align:justify;
 }
