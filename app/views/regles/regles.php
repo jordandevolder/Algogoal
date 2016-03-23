@@ -89,7 +89,7 @@
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">True/False</h1>
-			<p id="reg">???????</p>
+			<p>Dans ce jeu, <b>true</b> permet de créer une boucle infinie, de cette manière : <b>while(true)</b>. Ainsi, le code contenu dans le while s'exécutera à l'infini (jusqu'à un éventuel <b>break</b>). <b>False</b> n'a donc dans ce jeu aucune utilité, mais il est tout de même présent pour que vous ne perdiez pas à l'esprit son utilité.</p>
 		</div>
 	</div>
 
@@ -104,12 +104,12 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">&& (ET)</h1>
-			<p id="reg"><b>&&</b> vaudra vrai si les deux clauses testées sont vraies, sinon il vaudra faux.<br>Syntaxe possible : <b>if[clause1 && clause2]</b></p>
+			<p><b>&&</b> vaudra vrai si les deux clauses testées sont vraies, sinon il vaudra faux.<br>Syntaxe possible : <b>if[clause1 && clause2]</b></p>
 		</div>
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">|| (OU)</h1>
-			<p id="reg"><b>||</b> vaudra vrai si au moins une des deux conditions testées est vraie, sinon il vaudra faux.<br>Syntaxe possible : <b>if[clause1 || clause2]</b></p>
+			<p><b>||</b> vaudra vrai si au moins une des deux conditions testées est vraie, sinon il vaudra faux.<br>Syntaxe possible : <b>if[clause1 || clause2]</b></p>
 		</div>
 	</div>
 
@@ -117,12 +117,12 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">! (NON)</h1>
-			<p id="reg"><b>!</b> vaudra vrai si la clause testée est fausse.<br>Syntaxe possible : <b>if[!clause1 && clause2]</b></p>
+			<p><b>!</b> vaudra vrai si la clause testée est fausse.<br>Syntaxe possible : <b>if[!clause1 && clause2]</b></p>
 		</div>
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4">
 		<h1 class="sousTitreCentre">can{Action}</h1>
-			<p id="reg"> <b>can{Action}</b> est booléen permettant de tester si le joueur peut effecteur une certaine action :<br>Par exemple, canCollect vaudra vrai si un objet est présent sur la case du joueur.<br>Syntaxe possible : <b>if[canCollect]</b></p>
+			<p> <b>can{Action}</b> est booléen permettant de tester si le joueur peut effecteur une certaine action :<br>Par exemple, canCollect vaudra vrai si un objet est présent sur la case du joueur.<br>Syntaxe possible : <b>if[canCollect]</b></p>
 		</div>
 	</div>
 
@@ -138,12 +138,12 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">Execute</h1>
-			<p id="reg"><b>Execute</b> permet simplement d'exécuter le code présent dans la console.</p>
+			<p><b>Execute</b> permet simplement d'exécuter le code présent dans la console.</p>
 		</div>
 		<div class="col-lg-2"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">Clear</h1>
-			<p id="reg"><b>Clear</b> efface le contenu de la console, le code présent dedans est donc supprimé. Le plateau de jeu est également réinitialisé.</p>
+			<p><b>Clear</b> efface le contenu de la console, le code présent dedans est donc supprimé. Le plateau de jeu est également réinitialisé.</p>
 		</div>
 	</div>
 
@@ -151,7 +151,7 @@
 		<div class="col-lg-1"></div>
 		<div class="col-lg-4">
 			<h1 class="sousTitreCentre">*1</h1>
-			<p id="reg"><b>*1</b> augmente la vitesse d'exécution des commandes (par exemple, déplacer un joueur se fera plus rapidement).</p>
+			<p><b>*1</b> augmente la vitesse d'exécution des commandes (par exemple, déplacer un joueur se fera plus rapidement).</p>
 		</div>
 	</div>
 

@@ -90,10 +90,6 @@
     text-decoration : underline;
 }
 
-#reg{
-    text-align:center;
-}
-
 #photo{
     float:left;
 }
@@ -109,4 +105,8 @@
     margin:auto;
     width:auto;
     height:auto;
+}
+
+p{
+    text-align:justify;
 }
