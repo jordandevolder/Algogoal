@@ -92,6 +92,7 @@
 
 #photo{
     float:left;
+    border-radius: 50px;
 }
 
 .grandTitrePage{
