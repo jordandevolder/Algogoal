@@ -18,6 +18,7 @@ use Helpers\AjaxHandler as Ajax;
 use Core\Controller;
 use Core\View;
 use Models\Tables\Personne;
+use Models\Tables\Score;
 use Models\Queries\PersonneSQL;
 
 class Connexion extends Controller
@@ -41,14 +42,35 @@ class Connexion extends Controller
         View::renderTemplate('footer', $data);
     }
 
-    public function incrementMaxLevel(){
+    public function incrementLevel(){
 
-        /* Les donnees, t'as plus qu'a les utiliser */
         $levelActuel = Ajax::get('levelActuel');
         $nbInstruction = Ajax::get('tokensLength');
         $nbInstructionExecuted = Ajax::get('nbInstructions');
         $score = Ajax::get('score');
+        echo "bonjour la vie";
+        $idJoueur = Session::get('id');
+        $score = new Score($idJoueur,$levelActuel,$nbInstructionExecuted,$nbInstruction,$score);
+        if($levelActuel == Session::get('currentLvl')){
+            $this->entityManager->save($score);
+            $sql = "update personne set currentLvl = ".($levelActuel++)." where id= ".$idJoueur;
+            $instanceofdb = $this->entityManager = DBManager::getInstance();
+            $instanceofdb->prepare($sql);
+            $instanceofdb->execute();
+            //currentLvl ++
+        }
+        else{
+            //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
+            $user = $this->userSQL->findById(Session::get('id'));
+            if($user->score < $score){
+                $sql = "update personne set score = ".$score.", nbInstruction= ".$nbInstructionExecuted.", nbLignes= ".$nbInstruction." where id= ".$idJoueur;
+                $instanceofdb = $this->entityManager = DBManager::getInstance();
+                $instanceofdb->prepare($sql);
+                $instanceofdb->execute();
+            }
 
+
+        }
     }
 
 
@@ -71,6 +93,7 @@ class Connexion extends Controller
         if (!$error) {
             Session::set('loggedin', true);
             Session::set('id', $user->getId());
+            Session::set('mail',$user->email);
             Session::set('login', $user->pseudo);
             Session::set('level', $user->currentLvl);
 
