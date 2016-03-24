@@ -42,13 +42,13 @@ class Connexion extends Controller
         View::renderTemplate('footer', $data);
     }
 
-    public function incrementMaxLevel(){
+    public function incrementLevel(){
 
-        /* Les donnees, t'as plus qu'a les utiliser */
         $levelActuel = Ajax::get('levelActuel');
         $nbInstruction = Ajax::get('tokensLength');
         $nbInstructionExecuted = Ajax::get('nbInstructions');
         $score = Ajax::get('score');
+        echo "bonjour la vie";
         $idJoueur = Session::get('id');
         $score = new Score($idJoueur,$levelActuel,$nbInstructionExecuted,$nbInstruction,$score);
         if($levelActuel == Session::get('currentLvl')){
