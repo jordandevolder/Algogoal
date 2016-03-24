@@ -18,6 +18,7 @@ use Helpers\AjaxHandler as Ajax;
 use Core\Controller;
 use Core\View;
 use Models\Tables\Personne;
+use Models\Tables\Score;
 use Models\Queries\PersonneSQL;
 
 class Connexion extends Controller
@@ -48,7 +49,17 @@ class Connexion extends Controller
         $nbInstruction = Ajax::get('tokensLength');
         $nbInstructionExecuted = Ajax::get('nbInstructions');
         $score = Ajax::get('score');
+        $idJoueur = Session::get('id');
+        $score = new Score($idJoueur,$levelActuel,$nbInstructionExecuted,$nbInstruction,$score);
+        if($levelActuel == Session::get('currentLvl')){
+            $this->entityManager->save($score);
+            $sql = "update personne set currentLvl = ".($levelActuel++)." where id= ".$idJoueur;
+            //currentLvl ++
+        }
+        else{
+            //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
 
+        }
     }
 
 
@@ -71,6 +82,7 @@ class Connexion extends Controller
         if (!$error) {
             Session::set('loggedin', true);
             Session::set('id', $user->getId());
+            Session::set('mail',$user->email);
             Session::set('login', $user->pseudo);
             Session::set('level', $user->currentLvl);
 
