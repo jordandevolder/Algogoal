@@ -237,7 +237,6 @@ Player.prototype.collect = function(){
             break;
         case EntityType.WEAPON:
             this.weapon = engineGame.map.map[this.x][this.y];
-            this.ammoQuantity++;
             engineGame.map.map[this.x][this.y] = factoryTile.constructTile(EntityType.ROAD,this.x, this.y);
             engineGame.hasCollectWeapon = true;
             break;

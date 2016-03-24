@@ -28,7 +28,6 @@ window.onload = function()
 
     loadEvent();
     graphicGame.draw();
-
 };
 
 
