@@ -54,10 +54,21 @@ class Connexion extends Controller
         if($levelActuel == Session::get('currentLvl')){
             $this->entityManager->save($score);
             $sql = "update personne set currentLvl = ".($levelActuel++)." where id= ".$idJoueur;
+            $instanceofdb = $this->entityManager = DBManager::getInstance();
+            $instanceofdb->prepare($sql);
+            $instanceofdb->execute();
             //currentLvl ++
         }
         else{
             //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
+            $user = $this->userSQL->findById(Session::get('id'));
+            if($user->score < $score){
+                $sql = "update personne set score = ".$score.", nbInstruction= ".$nbInstructionExecuted.", nbLignes= ".$nbInstruction." where id= ".$idJoueur;
+                $instanceofdb = $this->entityManager = DBManager::getInstance();
+                $instanceofdb->prepare($sql);
+                $instanceofdb->execute();
+            }
+
 
         }
     }
