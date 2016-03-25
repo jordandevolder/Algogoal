@@ -78,7 +78,7 @@ class EntityManager {
     /**
      * UPDATE ...
      */
-    private function update($instance) {
+    public function update($instance) {
         $tableName = $instance->getTableName();
         $sql = "UPDATE $tableName SET ";
         $vars = get_class_vars(get_class($instance));

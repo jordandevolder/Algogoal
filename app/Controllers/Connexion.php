@@ -47,23 +47,28 @@ class Connexion extends Controller
         $levelActuel = Ajax::get('levelActuel');
         $nbInstruction = Ajax::get('tokensLength');
         $nbInstructionExecuted = Ajax::get('nbInstructions');
-        $score = Ajax::get('score');
-        echo "bonjour la vie";
+        $scoreValue = Ajax::get('score');
         $idJoueur = Session::get('id');
-        $score = new Score($idJoueur,$levelActuel,$nbInstructionExecuted,$nbInstruction,$score);
-        if($levelActuel == Session::get('currentLvl')){
-            $this->entityManager->save($score);
-            $sql = "update personne set currentLvl = ".($levelActuel++)." where id= ".$idJoueur;
+        $lvlJoueur = Session::get('level');
+        echo "Nous sommes au level ".$levelActuel." le joueur est au level ".$lvlJoueur;
+        if(($levelActuel-1) == $lvlJoueur){
+            $sql = "insert into score values (".Session::get('id').",".$levelActuel.",".$nbInstructionExecuted.",".$nbInstruction.",".$scoreValue.");";
+            $sql2 = "update personne set currentLvl = ".($levelActuel)." where id= ".$idJoueur.";";
+            echo $sql;
+            echo $sql2;
             $instanceofdb = $this->entityManager = DBManager::getInstance();
             $instanceofdb->prepare($sql);
             $instanceofdb->execute();
+            $instanceofdb->prepare($sql2);
+            $instanceofdb->execute();
+
             //currentLvl ++
         }
         else{
             //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
             $user = $this->userSQL->findById(Session::get('id'));
-            if($user->score < $score){
-                $sql = "update personne set score = ".$score.", nbInstruction= ".$nbInstructionExecuted.", nbLignes= ".$nbInstruction." where id= ".$idJoueur;
+            if($user->score < $scoreValue){
+                $sql = "update score set score = ".$scoreValue.", nbInstructions= ".$nbInstructionExecuted.", nbLignes= ".$nbInstruction." where idPlayer= ".$idJoueur.";";
                 $instanceofdb = $this->entityManager = DBManager::getInstance();
                 $instanceofdb->prepare($sql);
                 $instanceofdb->execute();
