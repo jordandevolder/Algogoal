@@ -46,7 +46,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3"></div>
-            <div class="col-lg-6"><h1 class = "titreCentre">Équipe Moteur</h1></div>
+            <div class="col-lg-6"><h1 class = "titreCentre">Équipe Graphique</h1></div>
             <div class="col-lg-3"></div>
         </div>
         <div class="row">
