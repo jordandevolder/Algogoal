@@ -63,6 +63,7 @@ class Connexion extends Controller
             $instanceofdb->execute();
 
             //currentLvl ++
+            Session::set('level', $levelActuel);
         }
         else{
             //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
@@ -76,7 +77,6 @@ class Connexion extends Controller
 
 
         }
-        Session::set('level', $levelActuel);
     }
 
 
