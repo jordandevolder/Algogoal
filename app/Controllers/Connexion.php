@@ -76,6 +76,7 @@ class Connexion extends Controller
 
 
         }
+        Session::set('level', $levelActuel);
     }
 
 
