@@ -68,11 +68,13 @@ EngineGame.prototype.triggerGameWin = function(){
         $.ajax({
 
             type: 'POST',
-            url : 'incrementLevel',
+            url : '/projet/play/incrementLevel',
             data: {levelActuel : this.levelActuel, tokensLength : this.tokens.length, nbInstructions : this.nbInstructionExecuted, score : score},
+            dataType : 'text',
             beforeSend:function(){ /* Il faut faire ici un wait ici */ },
-            success : function(){
-                console.log("DES CHATTES");
+            success : function(code){
+                console.log("Oh1");
+                console.log(code);
             }
 
         });

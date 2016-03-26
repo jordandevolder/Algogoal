@@ -18,6 +18,7 @@ use Helpers\AjaxHandler as Ajax;
 use Core\Controller;
 use Core\View;
 use Models\Tables\Personne;
+use Models\Tables\Score;
 use Models\Queries\PersonneSQL;
 
 class Connexion extends Controller
@@ -41,14 +42,41 @@ class Connexion extends Controller
         View::renderTemplate('footer', $data);
     }
 
-    public function incrementMaxLevel(){
+    public function incrementLevel(){
 
-        /* Les donnees, t'as plus qu'a les utiliser */
         $levelActuel = Ajax::get('levelActuel');
         $nbInstruction = Ajax::get('tokensLength');
         $nbInstructionExecuted = Ajax::get('nbInstructions');
-        $score = Ajax::get('score');
+        $scoreValue = Ajax::get('score');
+        $idJoueur = Session::get('id');
+        $lvlJoueur = Session::get('level');
+        echo "Nous sommes au level ".$levelActuel." le joueur est au level ".$lvlJoueur;
+        if(($levelActuel-1) == $lvlJoueur){
+            $sql = "insert into score values (".Session::get('id').",".$levelActuel.",".$nbInstructionExecuted.",".$nbInstruction.",".$scoreValue.");";
+            $sql2 = "update personne set currentLvl = ".($levelActuel)." where id= ".$idJoueur.";";
+            echo $sql;
+            echo $sql2;
+            $instanceofdb = $this->entityManager = DBManager::getInstance();
+            $instanceofdb->prepare($sql);
+            $instanceofdb->execute();
+            $instanceofdb->prepare($sql2);
+            $instanceofdb->execute();
 
+            //currentLvl ++
+            Session::set('level', $levelActuel);
+        }
+        else{
+            //si le niveau du jeu est inférieur à celui du joueur, on update son score s'il est meilleur
+            $user = $this->userSQL->findById(Session::get('id'));
+            if($user->score < $scoreValue){
+                $sql = "update score set score = ".$scoreValue.", nbInstructions= ".$nbInstructionExecuted.", nbLignes= ".$nbInstruction." where idPlayer= ".$idJoueur.";";
+                $instanceofdb = $this->entityManager = DBManager::getInstance();
+                $instanceofdb->prepare($sql);
+                $instanceofdb->execute();
+            }
+
+
+        }
     }
 
 
@@ -71,6 +99,7 @@ class Connexion extends Controller
         if (!$error) {
             Session::set('loggedin', true);
             Session::set('id', $user->getId());
+            Session::set('mail',$user->email);
             Session::set('login', $user->pseudo);
             Session::set('level', $user->currentLvl);
 

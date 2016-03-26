@@ -37,7 +37,7 @@
             <td>".$data['scores']['pseudos'][$i]."</td>
             <td>".$data['scores'][$i]->nbInstructions."</td>
             <td>".$data['scores'][$i]->nbLignes."</td>
-            <td>".$data['scores'][$i]->nbEtoiles."</td>
+            <td>".$data['scores'][$i]->score."</td>
         </tr>";
         }
         ?>

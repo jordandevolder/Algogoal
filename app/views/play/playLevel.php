@@ -22,59 +22,64 @@ if(Session::get('loggedin')==true)
 									<button id=\"execute\">Execute</button>
 									<button id=\"clear\">Clear</button>
 									<button id=\"speedExec\">* 1</button>
-								</div>
 
+                                    <br><br>
+
+                                    <!-- Instructions -->
+
+
+                                    <div class=\"dropdown\">
+                                        <button class=\"dropbtn\">Instructions</button>
+                                        <div class=\"dropdown-content\">
+                                            <a id =\"move\">move</a>
+                                            <a id =\"push\">push</a>
+                                            <a id =\"rotateL\">rotateLeft</a>
+                                            <a id =\"rotateR\">rotateRight</a>
+                                            <a id =\"collect\">collect</a>
+                                            <a id =\"jump\">jump</a>
+                                            <a id =\"fire\">fire</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Structures -->
+
+
+                                    <div class=\"dropdown\">
+                                        <button class=\"dropbtn\">Structures</button>
+                                        <div class=\"dropdown-content\">
+                                            <a id =\"while\">while</a>
+                                            <a id =\"endWhile\">endWhile</a>
+                                            <a id =\"if\">if</a>
+                                            <a id =\"endIf\">endIf</a>
+                                            <a id =\"break\">break</a>
+                                            <a id =\"startCon\">[</a>
+                                            <a id =\"endCon\">]</a>
+                                        </div>
+                                    </div>
+
+                                    <!-- Conditions -->
+
+                                    <div class=\"dropdown\">
+                                        <button class=\"dropbtn\">Conditions</button>
+                                        <div class=\"dropdown-content\">
+                                            <a id=\"and\"> && </a>
+                                            <a id=\"or\"> || </a>
+                                            <a id=\"not\"> ! </a>
+                                            <a id=\"canMove\"> canMove</a>
+                                            <a id=\"canJump\"> canJump </a>
+                                            <a id=\"canCollect\"> canCollect </a>
+                                            <a id=\"canPush\"> canPush </a>
+                                            <a id=\"canFire\"> canFire </a>
+                                            <a id=\"true\"> true </a>
+                                            <a id=\"false\"> false </a>
+                                            <a id=\"openPar\"> ( </a>
+                                            <a id=\"closePar\"> ) </a>
+                                        </div>
+                                    </div>
+		</div>
 	</div>
 
-	</br>
-	</br>
-	</br>
-	<!-- instruction and button  -->
 
-	<div class=\"row\">
-		<div class=\"col-lg-4\">
-			<p> Instruction button</p>
-			<div class=\"instructionButtonBloc\">
-				<button id=\"move\"> move</button>
-				<button id=\"push\"> push</button>
-				<button id=\"rotateL\"> rotateLeft</button>
-				<button id=\"rotateR\"> rotateRight</button>
-				<button id=\"collect\"> collect </button>
-				<button id=\"jump\"> jump </button>
-				<button id=\"fire\"> fire </button>
-			</div>
-		</div>
-		<div class=\"col-lg-4\">
-			<p> Control button</p>
-			<div class=\"instructionButtonBloc\">
-				<button id=\"while\"> while</button>
-				<button id=\"endWhile\"> endWhile</button>
-				<button id=\"if\"> if</button>
-				<button id=\"endIf\"> endIf</button>
-				<button id=\"break\"> break </button>
-				<button id=\"startCon\"> [ </button>
-				<button id=\"endCon\"> ] </button>
-
-			</div>
-		</div>
-		<div class=\"col-lg-4\">
-			<p> Condition button</p>
-			<div class=\"instructionButtonBloc\">
-				<button id=\"and\"> && </button>
-				<button id=\"or\"> || </button>
-				<button id=\"not\"> ! </button>
-				<button id=\"canMove\"> canMove</button>
-				<button id=\"canJump\"> canJump </button>
-				<button id=\"canCollect\"> canCollect </button>
-				<button id=\"canPush\"> canPush </button>
-				<button id=\"canFire\"> canFire </button>
-				<button id=\"true\"> true </button>
-				<button id=\"false\"> false </button>
-				<button id=\"openPar\"> ( </button>
-				<button id=\"closePar\"> ) </button>
-			</div>
-		</div>
-	</div>
 </div>";
 }
 ?>
