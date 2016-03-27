@@ -25,6 +25,7 @@ GridMap.prototype.drawGrid = function(){
         context.lineTo(j * this.xPerTile, this.yPerTile * this.nbTileY);
     }
     context.stroke();
+    context.closePath();
 };
 
 /**
