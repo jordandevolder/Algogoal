@@ -113,6 +113,9 @@ GameLauncher.prototype.go = function(){
                 graphicGame.draw();
             }catch(err){
                 console.log("nique ta mere");
+                clearInterval(idProcessusExecution);
+                engineGame.triggerGameLose();
+                return;
             }
         }
     }

@@ -147,6 +147,8 @@ EngineGame.prototype.startExecutionListInstructions = function(){
             this.executer.createInstructionsFromArray();
         }catch(err){
             console.log('Nique ta mere errreur');
+            this.triggerGameLose();
+            return;
         }
 
 
