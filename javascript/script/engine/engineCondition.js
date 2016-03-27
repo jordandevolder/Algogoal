@@ -1,3 +1,9 @@
+/**
+ *
+ * @constructor
+ * This constructor initialize variables needed to make a RPN from a basic
+ *
+ */
 function NotationPolonaiseInverse (){
     this.pileOperateur = [];
     this.output = [];
@@ -8,10 +14,23 @@ function NotationPolonaiseInverse (){
     this.priorityToken["!"] = 3;
 }
 
+/**
+ *
+ * @param elem1 first element is type is an binary operator
+ * @param elem2 second element is type is binary operator
+ * @returns {boolean} first element has priority on the second element
+ */
 NotationPolonaiseInverse.prototype.getPriority = function(elem1, elem2){
     return this.priorityToken[elem1] > this.priorityToken[elem2];
 };
 
+/**
+ *
+ * @param stringArray an array of string representing the "standard" condition writing with "( )"
+ *
+ * this function store in the output little to little the result of the RPN, finally, at the end
+ * of the function, the output contained an RPN
+ */
 NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
 
     for(var i = 0; i < stringArray.length; i++){
@@ -53,14 +72,26 @@ NotationPolonaiseInverse.prototype.createNotation = function(stringArray){
 };
 
 
+/**
+ *
+ * @param expressionPolonaise this parameter is a RPN
+ * @constructor
+ *
+ * make an instance variable of the RPN
+ */
 function BuildInterpreterCondition(expressionPolonaise){
 
     this.expression = expressionPolonaise;
 }
 
+/**
+ *
+ * @returns this function start from the RPN, copy it, and finally after traitment, return true or false
+ * according with the condition
+ */
 BuildInterpreterCondition.prototype.evaluateExpression = function(){
 
-    var copieExpression = this.expression.slice(0);
+    var copieExpression = this.expression.slice(0); //copy
     var structPile = [];
     while(copieExpression.length > 0){
         if(copieExpression[0] == "&&"){

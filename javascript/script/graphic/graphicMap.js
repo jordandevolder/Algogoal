@@ -1,9 +1,7 @@
-/**************************/
-/*                        */
-/*         GridMap        */
-/*                        */
-/**************************/
-
+/**
+ *
+ * @constructor GridMap is the graphic contents in the canvas
+ */
 function GridMap(){
     this.xPerTile = 64;
     this.yPerTile = 64;
@@ -11,6 +9,9 @@ function GridMap(){
     this.nbTileY = engineGame.map.collumn;
 }
 
+/**
+ * Draw a grid on the canvas
+ */
 GridMap.prototype.drawGrid = function(){
     context.beginPath();
     //Drawing line grid
@@ -26,6 +27,9 @@ GridMap.prototype.drawGrid = function(){
     context.stroke();
 };
 
+/**
+ * Draw the map using image
+ */
 GridMap.prototype.drawMap = function(){
     for(var i = 0; i < this.nbTileX; i++){
         for(var j = 0; j < this.nbTileY; j++){
@@ -33,13 +37,21 @@ GridMap.prototype.drawMap = function(){
             context.drawImage(image,i*this.xPerTile, j*this.yPerTile);
         }
     }
+    context.stroke();
 };
 
+/**
+ * Draw the character
+ */
 GridMap.prototype.drawPlayer = function(){
     var imagePlayer = factoryImage.createImageFrom(EntityType.PLAYER,0,0);
     context.drawImage(imagePlayer, engineGame.player.y*this.xPerTile, engineGame.player.x*this.yPerTile);
+    context.stroke();
 };
 
+/**
+ * Draw the monster life, according to his current life
+ */
 GridMap.prototype.drawMonsterLife = function() {
 
     if (engineGame.map.getMonsterPosition()[0] != -1 && engineGame.map.getMonsterPosition()[1] != -1) {

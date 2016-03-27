@@ -1,5 +1,10 @@
 idProcessusExecution = 0;
-
+/**
+ *
+ * @param idMap the idMap use to know which level user has select
+ * @param levelActuel int value that represented the level (0,1,2,3,...) use to update data base
+ * @constructor
+ */
 function EngineGame(idMap, levelActuel){
 
     this.currentIdMap = idMap;
@@ -48,6 +53,9 @@ function EngineGame(idMap, levelActuel){
     /* End Game State */
 }
 
+/**
+ * this function is call when player has win the game, that mean has reach the goal Tile
+ */
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
         swal("Good job!", "Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
@@ -87,6 +95,9 @@ EngineGame.prototype.triggerGameWin = function(){
     this.isPlaying = false;
 };
 
+/**
+ * this functions is call when player has lose the game, that mean a code crash or instruction ending without reaching goal Tile
+ */
 EngineGame.prototype.triggerGameLose = function(){
     console.log("Nombre d'instructions: "+ this.tokens.length);
     console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
@@ -94,6 +105,10 @@ EngineGame.prototype.triggerGameLose = function(){
     this.isPlaying = false;
 };
 
+
+/**
+ * Function call to updateGameState during the game, call each time that something change in the map
+ */
 EngineGame.prototype.updateGameState = function(){
 
     this.canMove = physic.willCollided(this.map,this.player,1);
@@ -110,6 +125,9 @@ EngineGame.prototype.updateGameState = function(){
     this.tableauEtat["canFire"] = this.canFire;
 };
 
+/**
+ * This function is call when the user click on "execute" button
+ */
 EngineGame.prototype.startExecutionListInstructions = function(){
     /* Probleme, quand on fait replay, les objets ne s'affiche plus */
     if(!this.isPlaying) {
@@ -120,6 +138,7 @@ EngineGame.prototype.startExecutionListInstructions = function(){
         this.isPlaying = true;
         this.nbInstructionExecuted = 0;
         this.isWin = false;
+        graphicGame.reInitMap();
         graphicGame.draw();
         this.executer = new GameExecution();
         this.executer.createInstructionsFromArray();
@@ -131,6 +150,9 @@ EngineGame.prototype.startExecutionListInstructions = function(){
     }
 };
 
+/**
+ * This function is used to reinit all the game for example when used click on clear
+ */
 EngineGame.prototype.reInit = function(){
 
     clearInterval(idProcessusExecution);
@@ -170,6 +192,7 @@ EngineGame.prototype.reInit = function(){
 
     this.isWin = false;
     this.isPlaying = false;
+
 
     graphicGame.draw();
 

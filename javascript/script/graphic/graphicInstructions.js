@@ -1,10 +1,12 @@
-
-/**************************/
-/*                        */
-/*   GraphicInstruction   */
-/*                        */
-/**************************/
-
+/**
+ *
+ * @param x position x of the graphic instruction
+ * @param y position y of the graphic instruction
+ * @param id the specific id, needed to recognize the html element
+ * @param element type string, is the texte that we want to set
+ * @param typeElement elementType like button, p, etc..
+ * @constructor Construction a graphic instruction which is in reality an html element
+ */
 function GraphicInstruction(x,y,id,element, typeElement){
     var node = document.createTextNode(element);
     this.posX = x;
@@ -55,20 +57,22 @@ function GraphicInstruction(x,y,id,element, typeElement){
 
 }
 
+/**
+ *
+ * @param posX x position
+ * @param posY y position
+ * Function use to recenter an instruction
+ */
 GraphicInstruction.prototype.moveInstruction = function(posX, posY){
     this.posX = posX;
     this.posY = posY;
 
 };
 
-
-/**************************/
-/*                        */
-/* InstructionListManager */
-/*                        */
-/**************************/
-
-
+/**
+ *
+ * @constructor InstructionListManager, this class is used to manage all agencing of adding html element graphically in the list
+ */
 function InstructionListManager(){
     this.container = document.getElementById("instructionList");
     this.instructionGraphicList = {};
@@ -92,6 +96,10 @@ function InstructionListManager(){
 
 }
 
+/**
+ *
+ * @param string the instruction that we want to add
+ */
 InstructionListManager.prototype.addInstruction = function(string){
 
     /* Debut partie ajoute */
@@ -155,6 +163,9 @@ InstructionListManager.prototype.addInstruction = function(string){
     }
 };
 
+/**
+ * Clear the list by erasing all html element
+ */
 InstructionListManager.prototype.clearList = function(){
 
     while (this.container.firstChild) {
