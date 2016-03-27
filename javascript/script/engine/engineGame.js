@@ -141,7 +141,15 @@ EngineGame.prototype.startExecutionListInstructions = function(){
         graphicGame.reInitMap();
         graphicGame.draw();
         this.executer = new GameExecution();
-        this.executer.createInstructionsFromArray();
+
+        //On analyse déjà la construction
+        try {
+            this.executer.createInstructionsFromArray();
+        }catch(err){
+            console.log('Nique ta mere errreur');
+        }
+
+
         if (this.executer.listExecution.length > 0) {
             var currentTexte = document.getElementById("instruction" + 0).innerText;
             document.getElementById("instruction" + 0).innerHTML = currentTexte + " " + " " + "<---";

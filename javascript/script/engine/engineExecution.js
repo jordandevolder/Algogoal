@@ -108,8 +108,12 @@ GameLauncher.prototype.go = function(){
             engineGame.triggerGameWin();
         }
         else {
-            engineGame.executer.executeNextInstruction();
-            graphicGame.draw();
+            try {
+                engineGame.executer.executeNextInstruction();
+                graphicGame.draw();
+            }catch(err){
+                console.log("nique ta mere");
+            }
         }
     }
     else{
