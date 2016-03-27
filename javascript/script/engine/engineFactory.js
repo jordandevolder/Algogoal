@@ -1,13 +1,20 @@
-
-/*
- * Factory used to create a specific Tile from a simple int value
+/**
+ *
+ * @constructor Factory used to create a specific Tile from a simple int value
  */
 function TileFactory(){
 
 }
 
-TileFactory.prototype.constructTile = function(valeur, posX, posY){
-    switch(valeur)
+/**
+ *
+ * @param value value int (EntityType) use to switch and create the ObjectTile
+ * @param posX the currentPosition in X where we need to create the tile
+ * @param posY the currentPosition in Y where we need to create the tile
+ * @returns {*} Return the ObjectTile
+ */
+TileFactory.prototype.constructTile = function(value, posX, posY){
+    switch(value)
     {
         case 0:
             return new FreeCell(posX, posY,0);
@@ -38,14 +45,21 @@ TileFactory.prototype.constructTile = function(valeur, posX, posY){
     }
 };
 
-/*
- * Factory used to create an instruction from a single string value
+/**
+ *
+ * @constructor Factory used to create an instruction from a single string value
+ * Creating two regex to recognize two specials tokens that are while and if
  */
 function InstructionFactory(){
     this.regexW = new RegExp(/^while/);
     this.regexI = new RegExp(/^if/);
 }
 
+/**
+ *
+ * @param string string tokens according to the adding from user
+ * @returns {*} here, return an InstructionObject that will have an execute method
+ */
 InstructionFactory.prototype.constructInstruction = function(string){
 
     /* On gere les cas particuliers que sont le while et le if */

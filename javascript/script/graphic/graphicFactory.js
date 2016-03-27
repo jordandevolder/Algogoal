@@ -1,9 +1,6 @@
-/**************************/
-/*                        */
-/*      image loading     */
-/*                        */
-/**************************/
-
+/**
+ * Global function which is use to create an instance of each image used in game.
+ */
 function createImageTab(){
 
 
@@ -57,12 +54,11 @@ function createImageTab(){
     }
 }
 
-/**************************/
-/*                        */
-/*      ImageFactory      */
-/*                        */
-/**************************/
 
+/**
+ *
+ * @constructor FactoryImage use to get the reference of an image from a typeTile
+ */
 function FactoryImage(){
 
 }
