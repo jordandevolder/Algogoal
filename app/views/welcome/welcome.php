@@ -25,15 +25,15 @@ use Helpers\Session;
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img class = "imgcarrousel" src="image/elephant.jpg" alt="elephant">
+                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="elephant">
                     </div>
 
                     <div class="item">
-                        <img class = "imgcarrousel" src="image/zebra.jpg" alt="zebra">
+                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="zebra">
                     </div>
 
                     <div class="item">
-                        <img class = "imgcarrousel" src="image/lion.jpg" alt="lion">
+                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="lion">
                     </div>
                 </div>
 
@@ -65,7 +65,7 @@ use Helpers\Session;
         </div>
         <div class = "col-lg-1"></div>
         <div class = "col-lg-4">
-            <p>Ce projet a donc pour but de valider les compétences enseignées à l'IUT lors de ces deux années de DUT. Sa réalisation s'est effectuée du 25/01/2016 au 28/04/2016.</p>
+            <p>Ce projet a donc pour but de valider les compétences enseignées à l'IUT lors de ces deux années de DUT. Sa réalisation s'est effectuée du 25/02/2016 au 28/04/2016.</p>
         </div>
     </div>
     <h1 class="sousTitreCentre">L'algo c'est facile !</h1>
@@ -73,11 +73,11 @@ use Helpers\Session;
     <div class = "row">
         <div class = "col-lg-1"></div>
         <div class = "col-lg-4">
-            <p>L'objectif de ce projet est d'aider ludiquement les personnes souhaitant apprendre l'algorithme. Vous trouverez donc sur ce site un jeu dans lequel vous devrez faire avancer un personnage dans un labyrinthe classique. Pour cela il faudra utiliser les commandes mises à votre disposition ce qui vous permettra d'apprendre le fonctionnement de chaque algorithme.</p>
+            <p>L'objectif de ce projet est d'aider ludiquement les personnes souhaitant apprendre l'algorithmique. Vous trouverez donc sur ce site un jeu dans lequel vous devrez faire avancer un personnage dans un labyrinthe classique. Pour cela il faudra utiliser les commandes mises à votre disposition ce qui vous permettra d'apprendre le fonctionnement de l'algorithmique.</p>
         </div>
         <div class = "col-lg-1"></div>
         <div class = "col-lg-4">
-            <p>A chaque partie correspond un score, c'est pourquoi ce site vous propose une page des scores afin de savoir qui a le meilleur score. Si vous ne connaissez rien à l'algorithme, n'ayez pas peur, une page d'aide est présente afin d'expliquer le fonctionnement de chaque bouton. Enfin, ce site comporte une page présentant notre équipe.</p>
+            <p>A chaque partie correspond un score, c'est pourquoi ce site vous propose une page des scores afin de savoir qui a le meilleur score. Si vous ne connaissez rien à l'algorithmique, n'ayez pas peur, une page d'aide est présente afin d'expliquer le fonctionnement de chaque bouton. Enfin, ce site comporte une page présentant notre équipe.</p>
         </div>
     </div>
     <h1 class="sousTitreCentre">Informations complémentaires</h1>
@@ -95,7 +95,7 @@ use Helpers\Session;
                 <li>JavaScript</li>
                 <li>HTTP</li>
                 <li>CSS</li>
-                <li>MVC (Modèle Vue Controlleur)</li>
+                <li>Framework SimpleMVC (Modèle Vue Controlleur)</li>
             </ul>
         </div>
     </div>
