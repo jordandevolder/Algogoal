@@ -18,7 +18,6 @@ GraphicGame.prototype.draw = function(){
     this.mapComponents.drawGrid();
     this.mapComponents.drawPlayer();
     this.mapComponents.drawMonsterLife();
-    context.closePath();
-
     context.stroke();
+    context.closePath();
 };

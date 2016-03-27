@@ -50,7 +50,7 @@ function EngineGame(idMap, levelActuel){
 
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
-        swal("Good job!", "Felicitation, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
+        swal("Good job!", "Félicitations, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
 
 

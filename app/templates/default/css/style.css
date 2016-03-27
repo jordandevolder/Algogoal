@@ -26,6 +26,7 @@ body{background-color:cornsilk;}
 #board{
     display:inline-block;
     margin-right: 85px;
+    margin-left: 50px;
 }
 
 #instructionList{
@@ -101,6 +102,17 @@ body{background-color:cornsilk;}
     height:40px;
     background-color:black;
     border-radius: 5px;
+}
+
+.tutoButtonBloc button {
+    margin:15px;
+    color:white;
+    width:250px;
+    height:100px;
+    background-color:black;
+    border-radius: 5px;
+    font-size : 30px;
+    margin-top: 50px;
 }
 
 #bonjourUser

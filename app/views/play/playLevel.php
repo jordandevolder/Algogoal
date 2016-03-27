@@ -1,5 +1,5 @@
 <?php
-    use Helpers\Session;
+use Helpers\Session;
 ?>
 
 <div class="page-header">
@@ -14,20 +14,16 @@
 if(Session::get('loggedin')==true)
 {
     echo " <div class = \"container\">
-
 	<!-- Game board and instruction list  -->
 	<div class=\"row\">
 		<div class=\"col-lg-7\"> <div id=\"board\"><canvas id=\"mon_canvas\" width=\"640\" height=\"640\"></canvas></div> </div>
-		<div class=\"col-lg-5\"> <div id=\"instructionList\"></div>
+		<div class=\"col-lg-1\"></div>
+		<div class=\"col-lg-4\"> <div id=\"instructionList\"></div>
 									<button id=\"execute\">Execute</button>
 									<button id=\"clear\">Clear</button>
 									<button id=\"speedExec\">* 1</button>
-
                                     <br><br>
-
                                     <!-- Instructions -->
-
-
                                     <div class=\"dropdown\">
                                         <button class=\"dropbtn\">Instructions</button>
                                         <div class=\"dropdown-content\">
@@ -40,10 +36,7 @@ if(Session::get('loggedin')==true)
                                             <a id =\"fire\">fire</a>
                                         </div>
                                     </div>
-
                                     <!-- Structures -->
-
-
                                     <div class=\"dropdown\">
                                         <button class=\"dropbtn\">Structures</button>
                                         <div class=\"dropdown-content\">
@@ -56,9 +49,7 @@ if(Session::get('loggedin')==true)
                                             <a id =\"endCon\">]</a>
                                         </div>
                                     </div>
-
                                     <!-- Conditions -->
-
                                     <div class=\"dropdown\">
                                         <button class=\"dropbtn\">Conditions</button>
                                         <div class=\"dropdown-content\">
@@ -78,8 +69,6 @@ if(Session::get('loggedin')==true)
                                     </div>
 		</div>
 	</div>
-
-
 </div>";
 }
 ?>
