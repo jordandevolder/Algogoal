@@ -1,59 +1,3 @@
-/**
- * Global function which is use to create an instance of each image used in game.
- */
-function createImageTab(){
-
-
-    var arrayString =   ["grass","weapon","gold","player","monster","arrow", "road",
-        "stone","goal","obstacle","water","obstacleUnmovable","waterWalkable"];
-
-    for(var i = 0; i < arrayString.length; i++){
-        imageTab[arrayString[i]] = new Image();
-        switch(i)
-        {
-            case 0:
-                imageTab[arrayString[i]].src = "../image/grass.jpg";
-                break;
-            case 1:
-                imageTab[arrayString[i]].src = "../image/Bow.png";
-                break;
-            case 2:
-                imageTab[arrayString[i]].src = "../image/Gold.png";
-                break;
-            case 3:
-                imageTab[arrayString[i]].src = "../image/Player.png";
-                break;
-            case 4:
-                imageTab[arrayString[i]].src = "../image/Monster.png";
-                break;
-            case 5:
-                imageTab[arrayString[i]].src = "../image/Arrow.png";
-                break;
-            case 6:
-                imageTab[arrayString[i]].src = "../image/DirtRoad.jpg";
-                break;
-            case 7:
-                imageTab[arrayString[i]].src = "../image/Stone.jpg";
-                break;
-            case 8:
-                imageTab[arrayString[i]].src = "../image/Goal.jpg";
-                break;
-            case 9:
-                imageTab[arrayString[i]].src = "../image/Obstacle.png";
-                break;
-            case 10:
-                imageTab[arrayString[i]].src = "../image/Water.jpg";
-                break;
-            case 11:
-                imageTab[arrayString[i]].src = "../image/obstacleUnmovable.png";
-                break;
-            case 12:
-                imageTab[arrayString[i]].src = "../image/WaterWalkable.png";
-                break;
-        }
-    }
-}
-
 
 /**
  *
@@ -126,4 +70,31 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
             return imageTab["waterWalkable"];
             break;
     }
+};
+
+function ImagePreloader(){
+    this.asFinishLoading = false;
+    this.srcArray = ["grass","weapon","gold","player","monster","arrow", "road",
+        "stone","goal","obstacle","water","obstacleUnmovable","waterWalkable"];
+    this.totalImageToLoad = this.srcArray.length;
+    this.totalImageLoaded = 0;
+
+}
+
+ImagePreloader.prototype.createImage = function(){
+    for(var i = 0 ; i < this.srcArray.length; i++){
+        imageTab[this.srcArray[i]] = new Image();
+        imageTab[this.srcArray[i]].onload = function(){
+            this.totalImageLoaded++; if(this.totalImageLoaded == this.totalImageToLoad) this.end();
+        }.bind(this);
+        imageTab[this.srcArray[i]].src = "../image/"+this.srcArray[i]+".png";
+    }
+};
+
+ImagePreloader.prototype.end = function(){
+    this.asFinishLoading = true;
+};
+
+ImagePreloader.prototype.allImageLoaded = function(){
+    return this.totalImageLoaded == this.totalImageToLoad;
 };

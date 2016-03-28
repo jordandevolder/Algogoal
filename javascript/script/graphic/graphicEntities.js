@@ -6,6 +6,11 @@ engineGraphic = null;
 
 factoryImage = new FactoryImage();
 
+/* Prechargement des images */
+var preloader = new ImagePreloader();
+preloader.createImage();
+/* Fin prechargement */
+
 window.onload = function()
 {
     canvas = document.getElementById('mon_canvas');
@@ -22,13 +27,11 @@ window.onload = function()
     }
 
     var tableau = (window.location.href).split("/");
-    createImageTab();
+
     engineGame = new EngineGame("mapLevel"+tableau[tableau.length-1], tableau[tableau.length-1]);
     graphicGame = new GraphicGame();
-
     loadEvent();
     graphicGame.draw();
+
 };
-
-
 

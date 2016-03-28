@@ -29,11 +29,8 @@ GraphicGame.prototype.reInitMap = function(){
 GraphicGame.prototype.draw = function(){
     context.clearRect(0,0,canvas.width, canvas.height);
 
-    context.beginPath();
     this.mapComponents.drawMap();
     this.mapComponents.drawGrid();
     this.mapComponents.drawPlayer();
     this.mapComponents.drawMonsterLife();
-    context.stroke();
-    context.closePath();
 };

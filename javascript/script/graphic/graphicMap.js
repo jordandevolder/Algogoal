@@ -38,16 +38,17 @@ GridMap.prototype.drawMap = function(){
             context.drawImage(image,i*this.xPerTile, j*this.yPerTile);
         }
     }
-    context.stroke();
 };
 
 /**
  * Draw the character
  */
 GridMap.prototype.drawPlayer = function(){
-    var imagePlayer = factoryImage.createImageFrom(EntityType.PLAYER,0,0);
-    context.drawImage(imagePlayer, engineGame.player.y*this.xPerTile, engineGame.player.x*this.yPerTile);
-    context.stroke();
+    var imgPlayer = new Image();
+    imgPlayer.onload = function() {
+        context.drawImage(this, engineGame.player.y * 64, engineGame.player.x * 64);
+    };
+    imgPlayer.src = "../image/Player.png";
 };
 
 /**
@@ -71,5 +72,6 @@ GridMap.prototype.drawMonsterLife = function() {
         context.fillStyle = "#FF0000";
         context.fillRect((posX * 64) + 13, (posY * 64) - 10, engineGame.map.map[x][y].hp * 10, 10);
         context.stroke();
+        context.closePath();
     }
 };

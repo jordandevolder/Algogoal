@@ -134,6 +134,10 @@ EngineGame.prototype.startExecutionListInstructions = function(){
         this.player = new Player(5, 0, OrientationType.RIGHT, 10);
         this.player.updateSpeedDirection();
         this.map = new Map(10,10,this.associativeMapLevel[this.currentIdMap]);
+        this.hasCollectGold = false;
+        this.hasCollectWeapon = false;
+        this.hasCollectArrow = false;
+        this.hasKillMonster = false;
         this.updateGameState();
         this.isPlaying = true;
         this.nbInstructionExecuted = 0;
