@@ -14,7 +14,7 @@
         <div class="col-lg-3"></div>
     </div>
     <div class = "page-header"></div>
-    <h2>Cliquez sur un bouton puis sur exécuter pour voir son effet !</h2>
+    <h2>Cliquez sur un bouton puis sur tester pour voir son effet !</h2>
     <div class = "tutoButtonBloc">
         <div class="row">
             <div class="col-lg-4">

@@ -141,6 +141,12 @@ function loadEvent(){
         engineGame.launcher.changeInterval();
     });
 
+    var gridButton = document.getElementById("gridActive");
+    gridButton.addEventListener('click',function(){
+        gridActive = !gridActive;
+        graphicGame.draw();
+    });
+
 
     /* Execution */
 

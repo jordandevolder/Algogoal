@@ -48,7 +48,21 @@ GridMap.prototype.drawPlayer = function(){
     imgPlayer.onload = function() {
         context.drawImage(this, engineGame.player.y * 64, engineGame.player.x * 64);
     };
-    imgPlayer.src = "../image/Player.png";
+
+    switch(engineGame.player.orientation){
+        case OrientationType.UP:
+            imgPlayer.src = "../image/player_top.png";
+            break;
+        case OrientationType.DOWN:
+            imgPlayer.src = "../image/player_bot.png";
+            break;
+        case OrientationType.RIGHT:
+            imgPlayer.src = "../image/player_right.png";
+            break;
+        case OrientationType.LEFT:
+            imgPlayer.src = "../image/player_left.png";
+            break;
+    }
 };
 
 /**

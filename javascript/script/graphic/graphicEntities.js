@@ -3,6 +3,7 @@ context = null;
 imageTab = {};
 engineGame = null;
 engineGraphic = null;
+gridActive = true;
 
 factoryImage = new FactoryImage();
 

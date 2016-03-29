@@ -22,6 +22,7 @@ if(Session::get('loggedin')==true)
 									<button id=\"execute\">Execute</button>
 									<button id=\"clear\">Clear</button>
 									<button id=\"speedExec\">* 1</button>
+									<button id=\"gridActive\"> Activer/desactiver grille </button>
                                     <br><br>
                                     <!-- Instructions -->
                                     <div class=\"dropdown\">

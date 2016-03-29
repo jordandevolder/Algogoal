@@ -30,7 +30,9 @@ GraphicGame.prototype.draw = function(){
     context.clearRect(0,0,canvas.width, canvas.height);
 
     this.mapComponents.drawMap();
-    this.mapComponents.drawGrid();
+    if(gridActive) {
+        this.mapComponents.drawGrid();
+    }
     this.mapComponents.drawPlayer();
     this.mapComponents.drawMonsterLife();
 };
