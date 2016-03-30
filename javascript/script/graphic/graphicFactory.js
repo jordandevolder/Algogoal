@@ -74,7 +74,7 @@ FactoryImage.prototype.createImageFrom = function(typeTile, posX, posY){
 
 function ImagePreloader(){
     this.asFinishLoading = false;
-    this.srcArray = ["grass","weapon","gold","player","monster","arrow", "road",
+    this.srcArray = ["grass","weapon","gold","monster","arrow", "road",
         "stone","goal","obstacle","water","obstacleUnmovable","waterWalkable"];
     this.totalImageToLoad = this.srcArray.length;
     this.totalImageLoaded = 0;
