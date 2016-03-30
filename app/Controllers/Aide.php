@@ -10,7 +10,7 @@ namespace Controllers;
 
 use Core\Controller;
 use Core\View;
-class Regles extends Controller
+class Aide extends Controller
 {
 
     /**
@@ -25,12 +25,12 @@ class Regles extends Controller
 
     public function index()
     {
-        $data['title'] = "Les règles";
-        $data['regles'] = "Voici ici la vue des règles du jeu, qui comportera aussi quelques explications sur instructions en programmation";
+        $data['title'] = "L'aide du jeu";
+        $data['aide'] = "Voici ici la vue des règles du jeu, qui comportera aussi quelques explications sur instructions en programmation";
 
 
         View::renderTemplate('header', $data);
-        View::render('regles/regles', $data);
+        View::render('aide/aide', $data);
         View::renderTemplate('footer', $data);
     }
 }

@@ -16,7 +16,7 @@ Router::any('', 'Controllers\Welcome@index');
 Router::any('subpage', 'Controllers\Welcome@subPage');
 Router::any('laconnexion','Controllers\Connexion@connexion');
 Router::any('connexion','Controllers\Connexion@index');
-Router::any('regles','Controllers\Regles@index');
+Router::any('aide','Controllers\Aide@index');
 Router::any('tutorial','Controllers\Tutorial@index');
 Router::any('equipe','Controllers\Equipe@index');
 Router::any('indexScores','Controllers\Scores@index');

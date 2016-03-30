@@ -7,7 +7,6 @@
  */
 ?>
 
-</div>
 <div class="container">
 	<div class="row">
 		<div class="col-lg-3"></div>
@@ -15,10 +14,34 @@
 		<div class="col-lg-3"></div>
 	</div>
 	<div class = "page-header"></div>
+	<!-- DÉBUT DES BASES  -->
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6"><h3 class="grandTitrePage">Règles du jeu</h3>
+			<br>
+			<p>Dans AlgoGoal, votre but est de réussir à traverser un plateau représentant un labyrinthe. Pour cela, vous devrez utilisez les fonctions à votre disposition pour faire avancer votre joueur, en utilisant la bonne syntaxe. Le socre est définit selon plusieurs critères :
+			<ol>
+				<li>Le nombre d'instructions</li>
+				<li>Le monstre a été tué</li>
+				<li>Le lingot d'or a été ramassé</li>
+			</ol>
+			</p>
+		</div>
+		<div class="col-lg-3"></div>
+	</div>
+</div>
+
+	<!-- DÉBUT DES COMMANDES  -->
+<div class="container">
+	<div class="row">
+		<div class="col-lg-3"></div>
+		<div class="col-lg-6"><h3 class="grandTitrePage">Commandes</h3></div>
+		<div class="col-lg-3"></div>
+	</div>
 	<!-- DÉBUT DES INSTRUCTIONS  -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 class="titreCentre">Instructions</h1></div>
+		<div class="col-lg-6"><h4 class="titreCentre">Instructions</h4></div>
 		<div class="col-lg-3"></div>
 	</div>
 	<br>
@@ -64,7 +87,7 @@
 	<br>
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 class="titreCentre">Control</h1></div>
+		<div class="col-lg-6"><h4 class="titreCentre">Control</h4></div>
 		<div class="col-lg-3"></div>
 	</div>
 
@@ -96,7 +119,7 @@
 	<!-- DÉBUT DES CONDITIONS  -->
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 class="titreCentre">Condition</h1></div>
+		<div class="col-lg-6"><h4 class="titreCentre">Condition</h4></div>
 		<div class="col-lg-3"></div>
 	</div>
 
@@ -130,7 +153,7 @@
 
 	<div class="row">
 		<div class="col-lg-3"></div>
-		<div class="col-lg-6"><h1 class="titreCentre">Boutons pratiques</h1></div>
+		<div class="col-lg-6"><h4 class="titreCentre">Boutons pratiques</h4></div>
 		<div class="col-lg-3"></div>
 	</div>
 

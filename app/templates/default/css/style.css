@@ -19,10 +19,12 @@
 .navbar-inverse .navbar-nav>.dropdown>a .caret { border-bottom-color: #999999}
 .navbar-inverse .navbar-nav>.dropdown>a:hover .caret { border-bottom-color: #FFFFFF}
 
+
+body{
+    background-color:cornsilk;
+}
+
 /* Game board and instruction list*/
-
-
-body{background-color:cornsilk;}
 #board{
     display:inline-block;
     margin-right: 85px;
@@ -155,6 +157,7 @@ body{background-color:cornsilk;}
 #photo{
     float:left;
     border-radius: 50px;
+    height: 300px;
 }
 
 .grandTitrePage{
