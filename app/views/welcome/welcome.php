@@ -25,15 +25,15 @@ use Helpers\Session;
 
                 <div class="carousel-inner" role="listbox">
                     <div class="item active">
-                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="elephant">
+                        <img class = "imgcarrousel" src="image/carrousel3.jpg" alt="elephant">
                     </div>
 
                     <div class="item">
-                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="zebra">
+                        <img class = "imgcarrousel" src="image/carrousel2.png" alt="zebra">
                     </div>
 
                     <div class="item">
-                        <img class = "imgcarrousel" src="image/jordan.jpg" alt="lion">
+                        <img class = "imgcarrousel" src="image/carrousel1.jpg" alt="lion">
                     </div>
                 </div>
 
