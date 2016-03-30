@@ -19,12 +19,12 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6"><h3 class="grandTitrePage">Règles du jeu</h3>
 			<br>
-			<p>Dans AlgoGoal, votre but est de réussir à traverser un plateau représentant un labyrinthe. Pour cela, vous devrez utilisez les fonctions à votre disposition pour faire avancer votre joueur, en utilisant la bonne syntaxe. Le socre est définit selon plusieurs critères :
+			<p>Dans AlgoGoal, votre but est de réussir à traverser un plateau représentant un labyrinthe, en atteignant le carré jaune de l'autre côté du niveau. Pour cela, vous devrez utiliser les fonctions à votre disposition pour faire avancer votre joueur, en utilisant la bonne syntaxe. Le score est défini selon plusieurs critères :
 			<ol>
-				<li>Le nombre d'instructions</li>
 				<li>Le monstre a été tué</li>
 				<li>Le lingot d'or a été ramassé</li>
 			</ol>
+			Ramasser le lingot d'or est obligatoire pour finir le niveau, mais tuer le monstre ne l'est pas. N'oubliez pas également d'essayer d'utiliser le moins d'instructions possible.
 			</p>
 		</div>
 		<div class="col-lg-3"></div>

@@ -173,6 +173,31 @@ body{
     height:auto;
 }
 
+.arrowTuto{
+    height:75px;
+    width:75px;
+    display: block;
+}
+
+.imgIndex{
+    height:200px;
+    width:200px;
+}
+
+.levelList{
+    text-align:center;
+    border: 1px #243640;
+    border-bottom-style: solid;
+    border-top-style: solid;
+    border-radius: 10px;
+    border-width:5px;
+    width:100px;
+}
+
+#executeTuto{
+    background-color : firebrick;
+}
+
 p{
     text-align:justify;
 }

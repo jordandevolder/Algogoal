@@ -58,7 +58,7 @@ function EngineGame(idMap, levelActuel){
  */
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
-        swal("Good job!", "Félicitations, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
+        swal("Good job!", "Félicitations, vous avez réussi le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
 
 
@@ -89,7 +89,7 @@ EngineGame.prototype.triggerGameWin = function(){
 
     }
     else{
-        swal("Presque !", "Vous êtes arrivé au bout du chemin, malheureusement, sans trésor, vous n'avez pas d'or pour arriver au prochain niveau ! Retenter celui ci en ramassant l'or", "error");
+        swal("Presque !", "Vous êtes arrivé au bout du chemin, malheureusement, sans trésor : vous n'avez pas d'or pour débloquer le prochain niveau ! Retentez celui ci en ramassant l'or", "error");
     }
 
     this.isPlaying = false;
@@ -101,7 +101,7 @@ EngineGame.prototype.triggerGameWin = function(){
 EngineGame.prototype.triggerGameLose = function(){
     console.log("Nombre d'instructions: "+ this.tokens.length);
     console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
-    swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
+    swal("Oh non !", "Vous n'avez malheuresement pas réussi à atteindre l'objectif ! Réessayez, je suis sûr que vous pouvez y arriver !", "error");
     this.isPlaying = false;
 };
 

@@ -48,7 +48,12 @@
                     <button id="whileTuto"> while</button>
             </div>
             <div class="col-lg-4">
-                    <button id="executeTuto"> Tester !</button>
+                <button id="executeTuto"> Tester !</button>
+                <div class="row">
+                    <div class="col-lg-3"><img class="arrowTuto" src="image/toprightarrow.png" class="img-responsive img-rounded"></div>
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3"><img class="arrowTuto" src="image/topleftarrow.png" class="img-responsive img-rounded"></div>
+                </div>
             </div>
             <div class="col-lg-4">
                     <button id="trueTuto"> true/false</button>
