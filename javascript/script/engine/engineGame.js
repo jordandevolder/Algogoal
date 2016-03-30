@@ -15,6 +15,9 @@ function EngineGame(idMap, levelActuel){
     this.associativeMapLevel["mapLevel2"] = mapLevel2;
     this.associativeMapLevel["mapLevel3"] = mapLevel3;
     this.associativeMapLevel["mapLevel4"] = mapLevel4;
+    this.associativeMapLevel["mapLevel5"] = mapLevel5;
+    this.associativeMapLevel["mapLevel6"] = mapLevel6;
+    this.associativeMapLevel["mapLevel7"] = mapLevel7;
 
     this.player = new Player(5,0,OrientationType.RIGHT, 10);
     this.player.updateSpeedDirection();
@@ -58,15 +61,17 @@ function EngineGame(idMap, levelActuel){
  */
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
+<<<<<<< HEAD
         swal("Good job!", "Félicitations, vous avez réussi le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
         //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
+=======
+        swal("Good job!", "Félicitations, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
+>>>>>>> 0a848a16c223e11e9da55e3ccfc2c5d80c61d20e
 
 
         //Data according to game state
-        console.log("Nombre d'instructions: "+ this.tokens.length);
-        console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
         var score = 0;
-        if(this.hasCollectGold == true && this.hasKillMonster == true){
+        if(this.hasCollectGold == true && (this.hasKillMonster == true || this.levelActuel == 1 || this.levelActuel == 2 || this.levelActuel == 3 || this.levelActuel == 4)){
             score = 3;
         }
         else{
@@ -81,8 +86,6 @@ EngineGame.prototype.triggerGameWin = function(){
             dataType : 'text',
             beforeSend:function(){ /* Il faut faire ici un wait ici */ },
             success : function(code){
-                console.log("Oh1");
-                console.log(code);
             }
 
         });
@@ -99,9 +102,13 @@ EngineGame.prototype.triggerGameWin = function(){
  * this functions is call when player has lose the game, that mean a code crash or instruction ending without reaching goal Tile
  */
 EngineGame.prototype.triggerGameLose = function(){
+<<<<<<< HEAD
     console.log("Nombre d'instructions: "+ this.tokens.length);
     console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
     swal("Oh non !", "Vous n'avez malheuresement pas réussi à atteindre l'objectif ! Réessayez, je suis sûr que vous pouvez y arriver !", "error");
+=======
+    swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
+>>>>>>> 0a848a16c223e11e9da55e3ccfc2c5d80c61d20e
     this.isPlaying = false;
 };
 
@@ -131,6 +138,8 @@ EngineGame.prototype.updateGameState = function(){
 EngineGame.prototype.startExecutionListInstructions = function(){
     /* Probleme, quand on fait replay, les objets ne s'affiche plus */
     if(!this.isPlaying) {
+        clearInterval(idProcessusExecution);
+        idProcessusExecution = 0;
         this.player = new Player(5, 0, OrientationType.RIGHT, 10);
         this.player.updateSpeedDirection();
         this.map = new Map(10,10,this.associativeMapLevel[this.currentIdMap]);
