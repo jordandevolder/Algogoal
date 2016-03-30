@@ -74,6 +74,8 @@ InstructionFactory.prototype.constructInstruction = function(string){
     /* On gere les autres cas basiques */
     switch(string)
     {
+        case "break":
+            return new BreakInstruction();
         case "endWhile":
             return new EndWhileInstruction();
         case "endIf":

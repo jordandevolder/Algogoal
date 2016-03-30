@@ -21,10 +21,14 @@ Physics.prototype.willCollided = function(map,player,distance){
     var x1 = player.x + (player.dx * distance);
     var y1 = player.y + (player.dy * distance);
 
-    return (
-        (engineGame.map.map[x1][y1] !== undefined) &&
-        (engineGame.map.map[x1][y1].reachable)
-    )
+    if((x1 < 0 || y1 < 0 || x1 >= 10 || y1 >= 10)) {
+        return false;
+    }else {
+        return(
+            (engineGame.map.map[x1][y1] !== undefined) &&
+            (engineGame.map.map[x1][y1].reachable)
+        )
+    }
 };
 
 /**
@@ -39,12 +43,16 @@ Physics.prototype.ableToPush = function(map,player){
     var x2 = player.x + (2*player.dx);
     var y2 = player.y + (2*player.dy);
 
-    return(
-        (engineGame.map.map[x1][y1] !== undefined)&&
-        (engineGame.map.map[x2][y2] !== undefined)&&
-        (engineGame.map.map[x1][y1] instanceof Obstacle)&&
-        (engineGame.map.map[x2][y2].isFreeCell)
-    )
+    if((x1 < 0 || y1 < 0 || x1 >= 10 || y1 >= 10 || x2 < 0 || x2 >= 10 || y2 < 0 || y2 >= 10)) {
+        return false;
+    }else {
+        return (
+            (engineGame.map.map[x1][y1] !== undefined) &&
+            (engineGame.map.map[x2][y2] !== undefined) &&
+            (engineGame.map.map[x1][y1] instanceof Obstacle) &&
+            (engineGame.map.map[x2][y2].isFreeCell)
+        )
+    }
 };
 
 /**
@@ -61,6 +69,10 @@ Physics.prototype.isHitingMonster = function(map,player){
     }else{
         var x1 = player.x;
         var y1 = player.y;
+
+        if(x1 < 0 || y1 < 0 || x1 >= 10 || y1 >= 10){
+            return false;
+        }
 
         for(var i = 1; i <= player.weapon.range; i++){
             var x2 = x1 + (i*player.dx);

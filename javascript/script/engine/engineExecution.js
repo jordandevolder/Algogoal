@@ -24,6 +24,7 @@ GameExecution.prototype.addInstruction = function(instruction){
 GameExecution.prototype.createInstructionsFromArray = function(){
 
     var whilePosition = [];
+    var breakPosition = [];
     var ifPosition = [];
     for(var i = 0; i < engineGame.tokens.length; i++){
         this.listExecution.push(factoryInstrution.constructInstruction(engineGame.tokens[i]));
@@ -31,9 +32,13 @@ GameExecution.prototype.createInstructionsFromArray = function(){
             whilePosition.push(i);
         }
 
+        if(engineGame.tokens[i] == "break"){
+            breakPosition.push(i);
+        }
+
         if(engineGame.tokens[i].search(this.regexIf) >= 0){
             ifPosition.push(i);
-         }
+        }
 
         if(engineGame.tokens[i] == "endIf"){
           this.listExecution[ifPosition[ifPosition.length-1]].positionEndIf = i;
@@ -44,6 +49,11 @@ GameExecution.prototype.createInstructionsFromArray = function(){
            this.listExecution[whilePosition[whilePosition.length-1]].positionEndWhile = i;
            this.listExecution[i].positionWhile = whilePosition[whilePosition.length-1];
            whilePosition.pop();
+
+            if(breakPosition.length > 0){
+                this.listExecution[breakPosition[breakPosition.length-1]].endWhilePosition = i;
+                breakPosition.pop();
+            }
         }
     }
 };
@@ -53,6 +63,7 @@ GameExecution.prototype.executeNextInstruction = function(){
         engineGame.isPlaying = false;
     }
     else {
+
         engineGame.nbInstructionExecuted++;
 
         var oldExecution = this.currentPosition;
@@ -112,7 +123,6 @@ GameLauncher.prototype.go = function(){
                 engineGame.executer.executeNextInstruction();
                 graphicGame.draw();
             }catch(err){
-                console.log("nique ta mere");
                 clearInterval(idProcessusExecution);
                 engineGame.triggerGameLose();
                 return;
@@ -229,11 +239,11 @@ EndWhileInstruction.prototype.execute = function(){
 
 
 function BreakInstruction(){
-
+    this.endWhilePosition = -1;
 }
 
 BreakInstruction.prototype.execute = function(){
-    engineGame.executer.setCurrentPosition(0); //Ici on doit mettre la position au end while + 1
+    engineGame.executer.setCurrentPosition(this.endWhilePosition+1); //Ici on doit mettre la position au end while + 1
 };
 
 function MoveInstruction(){
