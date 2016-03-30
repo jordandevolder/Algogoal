@@ -87,7 +87,7 @@ ImagePreloader.prototype.createImage = function(){
         imageTab[this.srcArray[i]].onload = function(){
             this.totalImageLoaded++; if(this.totalImageLoaded == this.totalImageToLoad) this.end();
         }.bind(this);
-        imageTab[this.srcArray[i]].src = "../image/"+this.srcArray[i]+".png";
+        imageTab[this.srcArray[i]].src = "/projet/image/"+this.srcArray[i]+".png";
     }
 };
 
