@@ -61,13 +61,7 @@ function EngineGame(idMap, levelActuel){
  */
 EngineGame.prototype.triggerGameWin = function(){
     if(this.hasCollectGold){
-<<<<<<< HEAD
         swal("Good job!", "Félicitations, vous avez réussi le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
-        //Ici dans la base de données MYSQL, il faut changer la donnée currentLevel pour le faire monter
-=======
-        swal("Good job!", "Félicitations, vous avez gagné le niveau en emportant avec vous le trésor, vous pouvez passer au niveau suivant !", "success");
->>>>>>> 0a848a16c223e11e9da55e3ccfc2c5d80c61d20e
-
 
         //Data according to game state
         var score = 0;
@@ -102,14 +96,9 @@ EngineGame.prototype.triggerGameWin = function(){
  * this functions is call when player has lose the game, that mean a code crash or instruction ending without reaching goal Tile
  */
 EngineGame.prototype.triggerGameLose = function(){
-<<<<<<< HEAD
-    console.log("Nombre d'instructions: "+ this.tokens.length);
-    console.log("Nombre d'instructions executees: "+ this.nbInstructionExecuted);
     swal("Oh non !", "Vous n'avez malheuresement pas réussi à atteindre l'objectif ! Réessayez, je suis sûr que vous pouvez y arriver !", "error");
-=======
-    swal("Oh non !", "Vous n'avez malheuresement pas réussit à atteindre l'objectif ! Réessayer je suis sur que vous pouvez y arriver !", "error");
->>>>>>> 0a848a16c223e11e9da55e3ccfc2c5d80c61d20e
-    this.isPlaying = false;
+
+   this.isPlaying = false;
 };
 
 
