@@ -19,6 +19,9 @@
             <a href="/projet/scores/2"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 2</button></a>
             <a href="/projet/scores/3"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 3</button></a>
             <a href="/projet/scores/4"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 4</button></a>
+            <a href="/projet/scores/5"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 5</button></a>
+            <a href="/projet/scores/6"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 6</button></a>
+            <a href="/projet/scores/7"><button type="button" class="btn btn-primary"><span class="glyphicon glyphicon-play-circle"></span> Niveau 7</button></a>
 
         </div>
 
