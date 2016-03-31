@@ -42,7 +42,7 @@ else
             <div class=\"row\">
              <div class=\"col-lg-3\"></div>
              <div class=\"col-lg-2\"><img class=\"imgIndex\" src=\"image/player_right.png\" class=\"img-responsive img-rounded\"></div>
-             <div class=\"col-lg-2\"><img class=\"imgIndex\" src=\"image/Monster.png\" class=\"img-responsive img-rounded\"></div>
+             <div class=\"col-lg-2\"><img class=\"imgIndex\" src=\"image/monster.png\" class=\"img-responsive img-rounded\"></div>
              <div class=\"col-lg-3\"></div>
          </div>
 <div>";
